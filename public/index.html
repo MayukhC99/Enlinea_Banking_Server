@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="./navbar.css">
+        <link rel="stylesheet" href="./Sidebar.css">
+        <link rel="stylesheet" href="./About_us.css">
+        <link rel="stylesheet" href="./services.css">
+        <link rel="stylesheet" href="./team.css">
+        <link rel="stylesheet" href="./Contact_us.css">
+        <link rel="stylesheet" href="./carousel.css">
+        <title>En línea Banking</title>
+    </head>
+
+    <body>
+
+    <!--*************************************Navbar*************************************-->
+
+        <nav>
+          <input type="checkbox" id="check">
+          <label for="check" class="checkbutton">
+              <i class="fas fa-bars"></i>
+          </label>
+          <label class="logo">En línea Banking</label>
+          <ul class="navMenu">
+              <li><a class="active" href="#">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#team">Team</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+
+    <!--***********************************************************************************-->
+
+
+    <!--*************************************Carousel*************************************-->
+        <!--For fake nav traversal-->
+        <div class="home_fake_traversal" style="top:10vh;display:none;"></div>
+
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" style="height: 100vh;">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-interval="2000">
+              <img src=".\Big Ben, Houses of Parliament, London, England.jpg" class="d-block w-100" style="height: 100vh;background-size:cover;" alt="no-repeat">
+            </div>
+            <div class="carousel-item" data-interval="2500">
+              <img src=".\ComputerDesktopWallpapersCollection528_029.jpg" class="d-block w-100" style="height: 100vh;background-size:cover;" alt="no-repeat">
+            </div>
+            <div class="carousel-item" data-interval="2500">
+              <img src=".\ComputerDesktopWallpapersCollection528_032.jpg" class="d-block w-100" style="height: 100vh;background-size:cover;" alt="no-repeat">
+            </div>
+          </div>
+        </div>
+
+        <!--trigger class should always be the first class in class attribute-->
+        <a href="#about"> <div class="trigger_about container_arrows">
+          <div class="content-ar">
+            <svg id="more-arrows">
+              <polygon class="arrow-top" points="37.6,27.9 1.8,1.3 3.3,0 37.6,25.3 71.9,0 73.7,1.3 "/>
+              <polygon class="arrow-middle" points="37.6,45.8 0.8,18.7 4.4,16.4 37.6,41.2 71.2,16.4 74.5,18.7 "/>
+              <polygon class="arrow-bottom" points="37.6,64 0,36.1 5.1,32.8 37.6,56.8 70.4,32.8 75.5,36.1 "/>
+            </svg>
+          </div>
+        </div> </a>
+
+        <i id="start" class="fas fa-chevron-circle-up"></i>
+
+    <!--***********************************************************************************-->
+
+    <!--*************************************Sidebar*************************************-->
+
+        <div class="side">
+          <input type="checkbox" id="checkSide">
+          <label for="checkSide">
+              <i class="fas fa-bars" id="btnSide"></i>
+              <i class="fas fa-times" id="cancelSide"></i>
+          </label>
+          <div class="sidebar">
+            <header>Dashboard</header>
+            <ul style="padding-left: 0;">
+              <li><a href="./login/login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+              <li><a href="./login/signup.html"><i class="fas fa-user-plus"></i>Signup</a></li>
+              <li><a href="https://algobook-io.github.io/Frontend-plugins/404_Error_Page/"><i class="fas fa-bullhorn"></i>Notifications</a></li>
+              <li><a href="https://github.com/AlgoBook-io"><i class="fab fa-github"></i>Contribute</a></li>
+              <li><a href="https://algobook-io.github.io/Frontend-plugins/404_Error_Page/"><i class="fas fa-sliders-h"></i>Services</a></li>
+              <li><a href="https://algobook-io.github.io/Frontend-plugins/404_Error_Page/"><i class="far fa-envelope"></i>Contact Us</a></li>
+            </ul>
+          </div>
+      </div>
+
+    <!--***********************************************************************************-->
+
+
+    <!--*************************************About Us*************************************-->
+
+        <div id="about" class="container-fluid" style="height: 100vh;">
+          <div id="name" class="row">
+            <div class="a1" style="top: 20px;">
+              <h1 id="para">&nbsp;&nbsp;About&nbsp;&nbsp;<font color="blue" style="text-shadow: 4px 4px 4px blue;">Us</font></h1>
+            </div>
+          </div>
+          <div id="us"class="row">
+            <div class="col-6 image_about_us">
+              <img src=".\piggy.png" class="w-50 p1">
+            </div>
+            <div class="col-6 slide-up">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+          </div>
+        </div>
+        <!--trigger class should always be the first class in class attribute-->
+        <a href="#services"> <div class="trigger_services container_arrows">
+          <div class="content-ar">
+            <svg id="more-arrows">
+              <polygon class="arrow-top" points="37.6,27.9 1.8,1.3 3.3,0 37.6,25.3 71.9,0 73.7,1.3 "/>
+              <polygon class="arrow-middle" points="37.6,45.8 0.8,18.7 4.4,16.4 37.6,41.2 71.2,16.4 74.5,18.7 "/>
+              <polygon class="arrow-bottom" points="37.6,64 0,36.1 5.1,32.8 37.6,56.8 70.4,32.8 75.5,36.1 "/>
+            </svg>
+          </div>
+        </div> </a>
+
+    <!--***********************************************************************************-->
+
+    <!--*************************************Services*************************************-->
+
+        <div id="services">
+          <div class="services_fake_traversal" style="top:10vh;"></div>
+        </div>
+
+    <!--***********************************************************************************-->
+
+
+    <!--*************************************Team*************************************-->
+
+
+    <div id="team">
+      <div class="a3">
+        <h1 id="para">&nbsp;&nbsp;Our&nbsp;&nbsp;<font color="blue" style="text-shadow: 4px 4px 4px blue;">Team</font></h1>
+      </div>
+      <div class="team_fake_traversal" style="top:10vh;"></div>
+      <div id="our">
+        <div id="hide"></div>
+        <div class="blog-card">
+          <input type="radio" name="select" class="i1" id="tap-1" checked>
+          <input type="radio" name="select" class="i1" id="tap-2">
+          <input type="radio" name="select" class="i1" id="tap-3">
+          <input type="radio" name="select" class="i1" id="tap-4">
+          <input type="radio" name="select" class="i1" id="tap-5">
+          <input type="checkbox" class="i2" id="tapImg">
+          <div class="sliders">
+            <label for="tap-1" class="tap tap-1"></label>
+            <label for="tap-2" class="tap tap-2"></label>
+            <label for="tap-3" class="tap tap-3"></label>
+            <label for="tap-4" class="tap tap-4"></label>
+            <label for="tap-5" class="tap tap-5"></label>
+          </div>
+          <div class="inner-part">
+            <label for="tapImg" class="image">
+              <img class="img-1" src="./IMG_20200129_171041_405.jpg">
+            </label>
+            <div class="content content-1">
+              <span>17 March 1999</span>
+              <div class="title1">Lorem Ipsum Dolor</div>
+              <div class="text text1">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+              <button id="read1">Read more</button>
+            </div>
+          </div>
+          <div class="inner-part">
+            <label for="tapImg" class="image">
+              <img class="img-2" src="./IMG_20200129_171041_405.jpg">
+            </label>
+            <div class="content content-2">
+              <span>17 March 1999</span>
+              <div class="title1">Lorem Ipsum Dolor</div>
+              <div class="text text2">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+              <button id="read2">Read more</button>
+            </div>
+          </div>
+          <div class="inner-part">
+            <label for="tapImg" class="image">
+              <img class="img-3" src="./IMG_20200129_171041_405.jpg">
+            </label>
+            <div class="content content-3">
+              <span>17 March 1999</span>
+              <div class="title1">Lorem Ipsum Dolor</div>
+              <div class="text text3">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+              <button id="read3">Read more</button>
+            </div>
+          </div>
+          <div class="inner-part">
+            <label for="tapImg" class="image">
+              <img class="img-4" src="./IMG_20200129_171041_405.jpg">
+            </label>
+            <div class="content content-4">
+              <span>17 March 1999</span>
+              <div class="title1">Lorem Ipsum Dolor</div>
+              <div class="text text4">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+              <button id="read4">Read more</button>
+            </div>
+          </div>
+          <div class="inner-part">
+            <label for="tapImg" class="image">
+              <img class="img-5" src="./IMG_20200129_171041_405.jpg">
+            </label>
+            <div class="content content-5">
+              <span>17 March 1999</span>
+              <div class="title1">Lorem Ipsum Dolor</div>
+              <div class="text text5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+              <button id="read5">Read more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!--trigger class should always be the first class in class attribute-->
+        <a href="#contact"> <div class="trigger_contact container_arrows">
+          <div class="content-ar">
+            <svg id="more-arrows">
+              <polygon class="arrow-top" points="37.6,27.9 1.8,1.3 3.3,0 37.6,25.3 71.9,0 73.7,1.3 "/>
+              <polygon class="arrow-middle" points="37.6,45.8 0.8,18.7 4.4,16.4 37.6,41.2 71.2,16.4 74.5,18.7 "/>
+              <polygon class="arrow-bottom" points="37.6,64 0,36.1 5.1,32.8 37.6,56.8 70.4,32.8 75.5,36.1 "/>
+            </svg>
+          </div>
+        </div> </a>
+
+    <!--***********************************************************************************-->
+
+
+    <!--*************************************Contact Us*************************************-->
+
+    <div id="contact">
+        <div class="a4">
+          <h1 id="para">&nbsp;&nbsp;Contact&nbsp;&nbsp;<font color="blue" style="text-shadow: 4px 4px 4px blue;">Us</font></h1>
+        </div>
+        <div class="contact_fake_traversal" style="top:10vh;"></div>
+        <div id="manage">
+          <div id="contact_info">
+            <div id="border"></div>
+            <div id="contact_image">
+              <img src="./Banking.jpg">
+            </div>
+            <header class="ci2" id="ci_name"><h1>Contact Info</h1></header>
+            <span id="sp"><i class="fas fa-home fa-2x ci1"></i></span>
+            <label class="ci"  id="visit_us">Visit Us<br><font color="grey">Mount Everest</font></label>
+            <span id="sp"><i class="fa fa-envelope fa-2x ci1"></i></span>
+            <label class="ci" id="mail_us">Mail Us<br><a id="mail" href="">info.example.com</a></info></label>
+            <span id="sp"><i class="fas fa-phone fa-2x ci1"></i></i></i></span>
+            <label class="ci" id="call_us">Call Us<br><font color="grey">+18044261149</font></info></label>
+          </div>
+          <form method="post" action="" class="ccform">
+            <header class="ccheader">
+              <h1>Get In Touch</h1>
+            </header>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Full Name" required>
+            </div>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Email" required>
+            </div>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-mobile-phone fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Phone">
+            </div>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
+                <input class="ccformfield" type="text" placeholder="Subject" required>
+            </div>
+            <div class="ccfield-prepend">
+                <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
+                <textarea class="ccformfield" name="comments" rows="8" placeholder="Message" required></textarea>
+            </div>
+            <div class="ccfield-prepend">
+                <input class="ccbtn" type="submit" value="Submit">
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="extra"></div>
+
+    <!--***********************************************************************************-->
+
+        <script src="./jquery-3.4.1.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="./script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,192 @@
+
+body{
+  font-family: montserrat;
+}
+
+nav{
+  z-index: 1001;
+  position: fixed;
+  background: #0082e6;
+  height: 50px;
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body{
+  overflow-x: hidden;
+}
+
+
+nav label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 50px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+
+nav ul{
+  z-index: 1000;
+  list-style: none;
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li{
+  z-index: 1000;
+  display: inline-block;
+  line-height: 50px;
+  margin: 0 5px;
+}
+
+nav ul li a{
+  color: white;
+  text-decoration: none !important;
+  font-size: 17px;
+  padding: 6px 11px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+nav ul a.active,nav ul a:hover{
+  background: #1b9bff;
+  color: greenyellow;
+  transition: .5s;
+}
+
+nav .checkbutton{
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 50px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+nav #check{
+  display: none;
+}
+
+@media (max-width: 1200px){
+  nav label.logo{
+    font-size: 25px;
+    padding-left: 10px;
+  }
+  nav ul li a{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1025px){
+  nav .checkbutton{
+    display: block;
+  }
+  nav ul{
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 50px;
+    left: -100%;
+    text-align: center;
+    transition: left .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+  }
+  nav a:hover,nav a.active{
+    background: none;
+    color: greenyellow;
+  }
+  nav #check:checked ~ ul{
+    left: 0;
+  }
+}
+
+@media (max-width: 374px){
+  nav label.logo{
+    font-size: large;
+  }
+}
+
+
+/*Scss compiled for top arrows*/
+
+
+.container_arrows {
+  z-index: 1;
+  position: relative;
+  /* left: 10vw; */
+  top: -10vh;
+  cursor: pointer;
+  margin: 0;
+  text-align: center;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+/* .ar {
+  top: 90vh;
+}
+
+.ar1 {
+  top: 190vh;
+}
+
+.ar3 {
+  top: 295vh;
+} */
+
+.content-ar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.content-ar p {
+  margin: 0 0 20px;
+}
+
+/* Arrow & Hover Animation */
+#more-arrows {
+  width: 75px;
+  height: 65px;
+}
+#more-arrows:hover polygon {
+  fill: rgb(8, 8, 8);
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+#more-arrows:hover polygon.arrow-bottom {
+  -webkit-transform: translateY(-18px);
+          transform: translateY(-18px);
+}
+#more-arrows:hover polygon.arrow-top {
+  -webkit-transform: translateY(18px);
+          transform: translateY(18px);
+}
+
+polygon {
+  fill: rgb(5, 5, 5);
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+polygon.arrow-middle {
+  opacity: 0.75;
+}
+polygon.arrow-top {
+  opacity: 0.5;
+}
+
+/*arrow ends*/
+
