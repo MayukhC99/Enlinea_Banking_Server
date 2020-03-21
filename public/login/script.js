@@ -14,7 +14,7 @@ $(function(){
             },function(user){
                 if(!user){
                     alert('Invalid Username or Password');
-                    window.location.href='/login';
+                    window.location.href='./login.html';
                 } else {
                     window.location.href='/';
                 }
