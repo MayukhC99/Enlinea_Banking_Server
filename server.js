@@ -14,9 +14,10 @@ app.use(express_sessions({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use(express.static(path.join(__dirname,'public')));
-
-
+app.use('/signup',require('./route/signup').route);
+app.use('/login',require('./route/login').route);
 app.use((req,res)=>{
     res.send(`<h1>Error: 404 File Not Found !!!</h1>`)
 })
