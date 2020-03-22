@@ -1,3 +1,64 @@
 #services{
+    height: 160vh;
+}
+
+.all_services{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
     height: 100vh;
+    overflow: hidden;
+}
+
+.s_title{
+    margin-left: 35%;
+    font-size: 40px;
+}
+
+.s{
+    width: 20vh;
+    height: 20vh;
+    background: wheat;
+    transition: .5s;
+}
+
+.s1{
+    margin-left: 50%;
+}
+
+.s2{
+    margin-left: 30%;
+    margin-top: -5%;
+}
+
+.s3{
+    margin-left: 50%;
+    margin-top: -5%;
+}
+
+.s4{
+    margin-left: 30%;
+    margin-top: -5%;
+}
+
+#click_me{
+    height: 50px;
+    width: 180px;
+    margin-left: 40%;
+    background: linear-gradient(147deg, #9f11bb 40%, #0e4bf1 74%);
+    outline: none;
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(164, 13, 235, 0.9);
+    text-transform: uppercase;
+    border: 1px solid #fd35dc;
+    border-radius: 25px;
+}
+
+.s:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }

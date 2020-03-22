@@ -57,12 +57,12 @@
   cursor: pointer;
 }
 .side label #btnSide{
-  z-index: 1001;
+  z-index: 1004;
   position: fixed;
   left: 20px;
   top: 70px;
   font-size: 35px;
-  background: #0082e6;
+  background: #042331;
   color: white;
   padding: 6px 12px;
   transition: all .5s;

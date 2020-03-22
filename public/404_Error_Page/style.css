@@ -1,0 +1,42 @@
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  #display {
+    position: fixed;
+    left: 42%;
+    top: 30%;
+    font-size: 6em;
+  }
+  
+  /*#title {
+    padding: 0.2em;
+    background: rgba(255, 255, 255, 0.5);
+    display: block;
+    text-align: center;
+    font-size: 12px;
+  }*/
+
+  #frame{
+      position: fixed;
+      width:1200px;
+      height:470px;
+      left: 3%;
+  }
+
+  @media only screen and (max-width: 900px){
+    #frame{
+      left: 0;
+      width: 100%;
+      height: 60%;
+    }
+  }

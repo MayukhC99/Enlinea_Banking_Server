@@ -14,6 +14,8 @@ $(document).ready(function(){
     let prev_nav_flag = $('.navMenu li:first-child a');
     let i = 2;
     var tap_slide = 0;
+    let blog_left = $(".blog-card").offset().left;
+    let hide_left = $(".blog-card").offset().left;
 
     //for toggling navbar active class when navbar links are clicked
     $(".navMenu li a").click(function(){
@@ -51,17 +53,29 @@ $(document).ready(function(){
     });
 
     $(window).bind('resize', function() {
-        if ($("#check").is(":checked") && $(window).width() <= 968) {
-            $("#checkSide").attr('checked', false);
+        if ($("#check").is(":checked") && $(window).width() <= 1009) {
+            $("#checkSide").prop('checked', false);
             $('#btnSide').css({ 'margin-left': '100%', 'display': 'none' });
         }
-        if ($("#check").is(":checked") && $(window).width() <= 968) {
+        if ($("#check").is(":checked") && $(window).width() <= 1009) {
             $('#btnSide').css({ 'display': 'inline' });
         }
-        if ($(window).width() > 968) {
+        if ($(window).width() > 1009) {
             $('#btnSide').css({ 'margin-left': '0px', 'display': 'inline' });
         }
+        if ($(window).width() < 834){
+            $("#our #hide").css({'top': $(".blog-card").offset().top, 'left': $(".blog-card").offset().left});
+        }
+
+
+        if ($(window).width() >= 834){
+            $("#our #hide").css({'top': $(".blog-card").offset().top, 'left': $(".blog-card").offset().left});
+        }
     });
+
+    if ($(window).width() < 834){
+        $("#our #hide").css({'top': $(".blog-card").offset().top, 'left': $(".blog-card").offset().left});
+    }
 
 
     $('.carousel').carousel({
@@ -89,6 +103,7 @@ $(document).ready(function(){
                 $(".slide-up").css("animation-play-state", "running");
             }
         }
+
 
         if (isScrolledIntoView($('.image_about_us'))){
             prev_nav_flag.toggleClass('active');
@@ -122,30 +137,75 @@ $(document).ready(function(){
     $(window).trigger( "scroll" );
 
     $("#read1").on('click', function(){
-        $("#hide").css({'left': '250px', 'vertical-align': 'middle'});
-        $("#hide").html($(".text1").html());
+        $("#hide").css({'display': 'inline', 'vertical-align': 'middle'});
+        var arr = [$(".t1").text(), $("#date1").text(), $(".text1").text()]
+        $("#hide").append(arr[0] + "<br/><br/><br/>");
+        $("#hide").append(arr[1] + "<br/><br/>");
+        $("#hide").append(arr[2]);
+        if (tap_slide != null) {
+            clearInterval(tap_slide);
+            tap_slide = null;
+        } else {
+            tap_start();
+        }
         //var r= $('<input type="button" value="new button"/>');
         //$("#hide").append(r);
     });
 
     $("#read2").on('click', function(){
-        $("#hide").css({'left': '250px', 'vertical-align': 'middle'});
-        $("#hide").html($(".text2").html());
+        $("#hide").css({'display': 'inline', 'vertical-align': 'middle'});
+        var arr = [$(".t2").text(), $("#date2").text(), $(".text2").text()]
+        $("#hide").append(arr[0] + "<br/><br/><br/>");
+        $("#hide").append(arr[1] + "<br/><br/>");
+        $("#hide").append(arr[2]);
+        if (tap_slide != null) {
+            clearInterval(tap_slide);
+            tap_slide = null;
+        } else {
+            tap_start();
+        }
     });
 
     $("#read3").on('click', function(){
-        $("#hide").css({'left': '250px', 'vertical-align': 'middle'});
-        $("#hide").html($(".text3").html());
+        $("#hide").css({'display': 'inline', 'vertical-align': 'middle'});
+        var arr = [$(".t3").text(), $("#date3").text(), $(".text3").text()]
+        $("#hide").append(arr[0] + "<br/><br/><br/>");
+        $("#hide").append(arr[1] + "<br/><br/>");
+        $("#hide").append(arr[2]);
+        if (tap_slide != null) {
+            clearInterval(tap_slide);
+            tap_slide = null;
+        } else {
+            tap_start();
+        }
     });
 
     $("#read4").on('click', function(){
-        $("#hide").css({'left': '250px', 'vertical-align': 'middle'});
-        $("#hide").html($(".text4").html());
+        $("#hide").css({'display': 'inline', 'vertical-align': 'middle'});
+        var arr = [$(".t4").text(), $("#date4").text(), $(".text4").text()]
+        $("#hide").append(arr[0] + "<br/><br/><br/>");
+        $("#hide").append(arr[1] + "<br/><br/>");
+        $("#hide").append(arr[2]);
+        if (tap_slide != null) {
+            clearInterval(tap_slide);
+            tap_slide = null;
+        } else {
+            tap_start();
+        }
     });
 
     $("#read5").on('click', function(){
-        $("#hide").css({'left': '250px', 'vertical-align': 'middle'});
-        $("#hide").html($(".text5").html());
+        $("#hide").css({'display': 'inline', 'vertical-align': 'middle'});
+        var arr = [$(".t5").text(), $("#date5").text(), $(".text5").text()]
+        $("#hide").append(arr[0] + "<br/><br/><br/>");
+        $("#hide").append(arr[1] + "<br/><br/>");
+        $("#hide").append(arr[2]);
+        if (tap_slide != null) {
+            clearInterval(tap_slide);
+            tap_slide = null;
+        } else {
+            tap_start();
+        }
     });
 
     $(".i1").on('click', function(){
@@ -182,4 +242,29 @@ $(document).ready(function(){
     if(tap_slide != null){
         tap_start();
     }
+    $("#back").on('click', function(){
+        $("#our #hide").css({'display': 'none'});
+        $("#our #hide").text("");
+        var r=$('<input/>').attr({
+            type: "button",
+            id: "back",
+            value: 'X'
+        });
+        $("#our #hide").append(r);
+        tap_start();
+    });
+
+    $(document).on('click', '#back', function(){
+        $("#our #hide").css({'display': 'none'});
+        $("#our #hide").text("");
+        var r=$('<input/>').attr({
+            type: "button",
+            id: "back",
+            value: 'X'
+        });
+        $("#our #hide").append(r);
+        if(tap_slide == null){
+            tap_start();
+        }
+    });
 });
