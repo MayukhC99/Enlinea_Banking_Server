@@ -7,6 +7,11 @@ route.post('/getin',passport.authenticate('local',{
     successRedirect: '/login/success'
 }));
 
+route.get('/logout',(req,res)=>{
+    req.logout();
+    res.redirect('/');
+})
+
 route.get('/failure',(req,res)=>{
     console.log('Failed to login');
     res.send(undefined);
