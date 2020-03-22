@@ -24,8 +24,12 @@
 
         $(this).on('keydown', function() {
             var key = event.keyCode || event.charCode;
-            if( key == 8 || key == 46 )
+            if( key == 8 || key == 46 ){
                 hideValidate(this);
+                if($(this).val().length <= 1){
+                    $(this).parent().removeClass('true-validate');
+                }
+            }
           });
     });
 
@@ -71,9 +75,9 @@
     function showValidate(input) {
         var thisAlert = $(input).parent();
 
+        $(thisAlert).removeClass('true-validate');
         $(thisAlert).addClass('alert-validate');
-
-        $(thisAlert).append('<span class="btn-hide-validate">&#xf135;</span>')
+        $(thisAlert).append('<span class="btn-hide-validate">&#xf135;</span>');
         $('.btn-hide-validate').each(function(){
             $(this).on('click',function(){
                hideValidate(this);
@@ -86,7 +90,5 @@
         $(thisAlert).removeClass('alert-validate');
         $(thisAlert).find('.btn-hide-validate').remove();
     }
-    
-    
 
 })(jQuery);
