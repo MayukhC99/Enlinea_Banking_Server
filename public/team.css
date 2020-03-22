@@ -215,7 +215,7 @@
 
 #our #hide{
     position: absolute;
-    left: -950px;
+    display: none;
     z-index: 1001;
     height: 370px;
     width: 95%;
@@ -223,9 +223,29 @@
     margin: auto;
     background: white;
     border-radius: 25px;
-    box-shadow: 0 10px 50px rgba(252, 56, 56, .9);
     text-align: center;
-    padding: 10% 0;
+    font-weight: bold;
+    box-shadow: 0 10px 50px rgba(252, 56, 56, .9);
+    padding: 3% 0;
+}
+
+#back{
+    float: right;
+    transform: translateX(-10px);
+    font-size: 18px;
+    background: linear-gradient(147deg, #fe791b 0%, #fd1c1c 74%);
+    color: #fff0e6;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    border: 1px solid #fd3535;
+    cursor: pointer;
+    outline: none;
+}
+
+#back:hover{
+    background: linear-gradient(147deg, #fe791b 0%, #fd1c1c 74%);
 }
 
 @media (max-width: 850px){
@@ -234,10 +254,18 @@
     }
 
     .blog-card{
-        position: relative;
+        margin-top: calc(40px + 20%);
         height: 650px;
         width: 95%;
         max-width: 600px;
+    }
+
+    #our #hide{
+        height: 650px;
+        width: 95%;
+        max-width: 600px;
+        align-items: center;
+        vertical-align: middle;
     }
 
     .blog-card .inner-part{
@@ -276,6 +304,18 @@
     }
 }
 
+@media (max-width: 768px){
+    .blog-card{
+        margin-top: calc(40px + 10%);
+    }
+}
+
+@media (max-width: 731px){
+    .blog-card{
+        margin-top: 30%;
+    }
+}
+
 @media (max-width: 700px) {
     html, body {
         overflow-x: hidden;
@@ -286,9 +326,17 @@
         margin-left: 2%;
     }
     .blog-card{
+        margin-top: 30%;
         height: 600px;
         width: 95%;
         width: 380px;
+    }
+
+    #our #hide{
+        height: 600px;
+        width: 95%;
+        width: 380px;
+        font-size: small;
     }
 
     .inner-part .content{
@@ -331,7 +379,47 @@
         transition: .3s .2s ease-in;
     }
 
+    .sliders{
+        width: 60%;
+        left: 55%;
+    }
+
     .sliders .tap{
         width: 24px;
+    }
+}
+
+@media(max-width: 500px){
+    .blog-card{
+        margin-top: 30%;
+    }
+}
+
+@media(max-width: 400px){
+    .blog-card{
+        width: 95%;
+        max-width: 350px;
+    }
+    #our #hide{
+        width: 95%;
+        max-width: 350px;
+    }
+    #tapImg:checked ~ .inner-part .image{
+        width: 350px;
+    }
+}
+
+@media(max-width: 350px){
+    .blog-card{
+        left: 2%;
+        width: 95%;
+        max-width: 330px;
+    }
+    #our #hide{
+        width: 95%;
+        max-width: 330px;
+    }
+    .text{
+        width: 250px;
     }
 }

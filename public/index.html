@@ -85,10 +85,10 @@
             <ul style="padding-left: 0;">
               <li><a href="./login/login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
               <li><a href="./login/signup.html"><i class="fas fa-user-plus"></i>Signup</a></li>
-              <li><a href="https://algobook-io.github.io/Frontend-plugins/404_Error_Page/"><i class="fas fa-bullhorn"></i>Notifications</a></li>
-              <li><a href="https://github.com/MayukhC99/En-linea-Banking"><i class="fab fa-github"></i>Contribute</a></li>
-              <li><a href="https://algobook-io.github.io/Frontend-plugins/404_Error_Page/"><i class="fas fa-sliders-h"></i>Services</a></li>
-              <li><a href="https://algobook-io.github.io/Frontend-plugins/404_Error_Page/"><i class="far fa-envelope"></i>Contact Us</a></li>
+              <li><a href="./404_Error_Page/index.html"><i class="fas fa-bullhorn"></i>Notifications</a></li>
+              <li><a href="https://github.com/MayukhC99/En-linea-Banking/"><i class="fab fa-github"></i>Contribute</a></li>
+              <li><a href="./404_Error_Page/index.html"><i class="fas fa-sliders-h"></i>Services</a></li>
+              <li><a href="./404_Error_Page/index.html"><i class="far fa-envelope"></i>Contact Us</a></li>
             </ul>
           </div>
       </div>
@@ -129,8 +129,29 @@
     <!--*************************************Services*************************************-->
 
         <div id="services">
+          <div class="a4">
+            <h1 id="para">&nbsp;&nbsp;Our&nbsp;&nbsp;<font color="blue" style="text-shadow: 4px 4px 4px blue;">Services</font></h1>
+          </div>
           <div class="services_fake_traversal" style="top:10vh;"></div>
+          <div class="all_services">
+            <header class="s_title">En línea Banking</header>
+            <div class="s s1"></div>
+            <div class="s s2"></div>
+            <div class="s s3"></div>
+            <div class="s s4"></div>
+            <button id="click_me">start</button>
+          </div>
         </div>
+        <!--trigger class should always be the first class in class attribute-->
+        <a href="#team"> <div class="trigger_services container_arrows">
+          <div class="content-ar">
+            <svg id="more-arrows">
+              <polygon class="arrow-top" points="37.6,27.9 1.8,1.3 3.3,0 37.6,25.3 71.9,0 73.7,1.3 "/>
+              <polygon class="arrow-middle" points="37.6,45.8 0.8,18.7 4.4,16.4 37.6,41.2 71.2,16.4 74.5,18.7 "/>
+              <polygon class="arrow-bottom" points="37.6,64 0,36.1 5.1,32.8 37.6,56.8 70.4,32.8 75.5,36.1 "/>
+            </svg>
+          </div>
+        </div> </a>
 
     <!--***********************************************************************************-->
 
@@ -144,7 +165,9 @@
       </div>
       <div class="team_fake_traversal" style="top:10vh;"></div>
       <div id="our">
-        <div id="hide"></div>
+        <div id="hide">
+          <button id="back">X</button>
+        </div>
         <div class="blog-card">
           <input type="radio" name="select" class="i1" id="tap-1" checked>
           <input type="radio" name="select" class="i1" id="tap-2">
@@ -164,8 +187,8 @@
               <img class="img-1" src="./IMG_20200129_171041_405.jpg">
             </label>
             <div class="content content-1">
-              <span>17 March 1999</span>
-              <div class="title1">Lorem Ipsum Dolor</div>
+              <span id="date1">17 March 1999</span>
+              <div class="t1 title1">Lorem Ipsum Dolor</div>
               <div class="text text1">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </div>
@@ -177,8 +200,8 @@
               <img class="img-2" src="./IMG_20200129_171041_405.jpg">
             </label>
             <div class="content content-2">
-              <span>17 March 1999</span>
-              <div class="title1">Lorem Ipsum Dolor</div>
+              <span id="date2">17 March 1999</span>
+              <div class="t2 title1">Lorem Ipsum Dolor</div>
               <div class="text text2">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </div>
@@ -190,8 +213,8 @@
               <img class="img-3" src="./IMG_20200129_171041_405.jpg">
             </label>
             <div class="content content-3">
-              <span>17 March 1999</span>
-              <div class="title1">Lorem Ipsum Dolor</div>
+              <span id="date3">17 March 1999</span>
+              <div class="t3 title1">Lorem Ipsum Dolor</div>
               <div class="text text3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </div>
@@ -203,8 +226,8 @@
               <img class="img-4" src="./IMG_20200129_171041_405.jpg">
             </label>
             <div class="content content-4">
-              <span>17 March 1999</span>
-              <div class="title1">Lorem Ipsum Dolor</div>
+              <span id="date4">17 March 1999</span>
+              <div class="t4 title1">Lorem Ipsum Dolor</div>
               <div class="text text4">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </div>
@@ -216,8 +239,8 @@
               <img class="img-5" src="./IMG_20200129_171041_405.jpg">
             </label>
             <div class="content content-5">
-              <span>17 March 1999</span>
-              <div class="title1">Lorem Ipsum Dolor</div>
+              <span id="date5">17 March 1999</span>
+              <div class="t5 title1">Lorem Ipsum Dolor</div>
               <div class="text text5">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </div>
@@ -285,7 +308,7 @@
             </div>
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
-                <textarea class="ccformfield" name="comments" rows="8" placeholder="Message" required></textarea>
+                <textarea class="ccformfield" name="comments" max-rows="8" placeholder="Message" required></textarea>
             </div>
             <div class="ccfield-prepend">
                 <input class="ccbtn" type="submit" value="Submit">
