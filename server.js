@@ -4,6 +4,7 @@ const passport= require('./passport');
 const path= require('path');
 
 const app= express();
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -23,4 +24,4 @@ app.use((req,res)=>{
     res.send(`<h1>Error: 404 File Not Found !!!</h1>`)
 })
 
-app.listen(3000,()=>{console.log('Hosted on http://localhost:3000 ')});
+app.listen(port,()=>{console.log('Hosted on http://localhost:3000 ')});
