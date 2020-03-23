@@ -1,7 +1,8 @@
 const express= require('express');
 const multer= require('multer');
 const path= require('path');
-const users= require('../database').users;
+const db= require('../database').db;
+const sequelize= require('sequelize')
 const route= express.Router();
 
 //Set Storage Engine
@@ -36,21 +37,24 @@ const upload = multer({
     fileFilter: customFileFilter
 }).single('profile_image');  //name should be profile_image
 
-//handling post request containing the file
+//handling post request containing the file(profile_picture)
 route.post('/upload/profile_image',(req,res)=>{
     upload(req,res,(err)=>{
         if(err){
             res.send(undefined);
         } else {
-            if(req.file === undefined)
+            if(req.file === undefined){
                 res.send(undefined);
-            else
-                res.send('.\\uploads\\'+req.file.filename);
+            } else {
+                const str= '.\\uploads\\'+req.file.filename;
+                db.query(`UPDATE users SET profile_picture=${req.file.filename} WHERE username= ${req.user.username}`);
+                res.send(str);
+            }
         }
     })
-
-
 })
+
+
 
 route.get('/verify_user',(req,res)=>{
     console.log('Verifying User');
