@@ -56,7 +56,8 @@ route.post('/upload/profile_image',(req,res)=>{
                     });
                 }
                 db.query(`UPDATE users SET profile_picture=${req.file.filename} WHERE username= ${req.user.username}`);
-                res.send('.\\uploads\\'+req.file.filename);
+                req.user.profile_picture = req.file.fieldname;
+                res.send(req.file.filename);
             }
         }
     })
