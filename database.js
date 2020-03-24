@@ -3,7 +3,7 @@ const sequelize= require('sequelize')
 const db= new sequelize(
     'enlinea',
     'root',
-    'admin',
+    'sirsrt',
     {
         dialect: 'mysql',
         host: 'localhost'

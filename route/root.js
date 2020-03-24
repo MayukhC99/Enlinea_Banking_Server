@@ -55,8 +55,10 @@ route.post('/upload/profile_image',(req,res)=>{
                         console.log('The file has been deleted');
                     });
                 }
+                console.log("1");
                 db.query(`UPDATE users SET profile_picture=${req.file.filename} WHERE username= ${req.user.username}`);
-                req.user.profile_picture = req.file.fieldname;
+                console.log("2");
+                req.user.profile_picture = req.file.filename;
                 res.send(req.file.filename);
             }
         }
