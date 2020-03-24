@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="container">
+    <form id="theImageForm" method="post" action="/root/upload/profile_image" enctype="multipart/form-data">
+        <label id="theImageContainer" onclick="myFunction()">
+            <img id="user" src="./user.jpg" width="250px" height="250px">
+        </label>
+        <p id="errorMessage" class="hide"></p>
+        <p id="successMessage" class="hide"></p>
+        <label id="buttonContainer" style="display: none;">
+            <input type="file" name="profile_image" id="theImageField">
+            <label class="btn" for="theImageField"  style="height: 30px; text-align: left;">Choose Photo</label>
+            <button class="btn" type="submit" style="height: 30px; text-align: left; margin-top: -7px;">Save</button>
+            <label class="btn" id="clearImage" style="height: 30px; text-align: left;">Clear</label>
+        </label>
+        <span id="my_name"><h1>Supratim Saha</h1></span>
+    </form>
+    <label class="head active" id="pi">Personal Info</label> <label class="head" id="cp">Change Password</label>
+    <form id="personal">
+        <div class="personal_info">
+            <div id="left">
+                <label>Name</label>
+                <label>Email ID</label>
+                <label>Mobile Number</label>
+                <label>Date Of Birth</label>
+                <label>Gender</label>
+            </div>
+            <div id="right">
+                <input type="text" name="name" placeholder="Full Name" id="name" required>
+                <input type="text" name="email" placeholder="Email ID" id="email" required>
+                <input type="text" name="Mobile" placeholder="Mobile Number" id="mobile_no" required>
+                <input type="date" name="Date" placeholder="Birth Date" id="birth_date" required>
+                <select id="gender" required>
+                    <option value="Choose">--Choose--</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+                </select>
+            </div>
+            <button id="btn1" type="submit">Save</button>
+        </div>
+    </form>
+    <form id="change">
+        <div class="change_password">
+            <div id="left">
+                <label>Current Password</label>
+                <label>New Password</label>
+                <label>Confirm New Password</label>
+            </div>
+            <div id="right">
+                <input type="text" name="Password" placeholder="Current Password" id="password" required>
+                <input type="text" name="Password" placeholder="New Password" id="password" required>
+                <input type="text" name="" placeholder="Confirm New Password" id="password" required>
+            </div>
+            <button id="btn2" type="submit">Save</button>
+        </div>
+    </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

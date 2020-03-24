@@ -1,0 +1,147 @@
+body{
+    background: url(https://images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg);
+    color: white;
+    overflow-x: hidden;
+}
+
+#theImageForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#theImageContainer {
+    height: 250px;
+    width: 250px;
+    background-color: #fffbfb;
+    color: darkgrey;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+#theImageField {
+    display: none;
+}
+
+#errorMessage, #successMessage {
+    font-family: "Calibri";
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+#errorMessage {
+    color: red;
+}
+
+#successMessage {
+    color: green;
+}
+
+#theImageTag {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 110%;
+    transform: translateX(-50%);
+}
+
+.hide {
+    display: none;
+}
+
+#theImageContainer.dragging {
+    border-color: green;
+    border-width: 10px;
+    opacity: .3;
+}
+
+#buttonContainer{
+    background: white;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(250, 247, 249, 0.5);
+}
+
+.btn:hover{
+    background: blue;
+    color: #fff;
+}
+
+#my_name{
+    font-size: 40px;
+}
+
+.personal_info, .change_password{
+    display: grid;
+    margin-top: 10%;
+    margin-left: -5%;
+    float: left;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#change{
+    margin-left: 120%;
+}
+
+#left{
+    display: grid;
+    text-align: right;
+}
+
+#left label{
+    width: 200px;
+    margin-bottom: 20%;
+}
+
+#right{
+    display: grid;
+    margin-left: 10%;
+    text-align: left;
+}
+
+#right input{
+    height: 30px;
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+select{
+    height: 30px;
+}
+
+#btn1, #btn2{
+    color: white;
+    font-size: 18px;
+    background: linear-gradient(147deg, #fe791b 0%, #fd1c1c 74%);
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    border: 1px solid #fd3535;
+    cursor: pointer;
+    outline: none;
+    transform: translate(50%);
+    width: 150px;
+    height: 50px;
+}
+
+#pi, #cp{
+    margin-top: 10%;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+#cp{
+    margin-left: 10%;
+}
+
+.active{
+    border-bottom: 3px solid white;
+}
