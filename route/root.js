@@ -47,17 +47,19 @@ route.post('/upload/profile_image',(req,res)=>{
             if(req.file === undefined){
                 res.send(undefined);
             } else {
-                
-                if(req.user.profile_picture !== '000.png'){
+
+                if(req.user.profile_picture !== '000.jpg'){
                     //deleting the file
-                    fs.unlink('../public/uploads/'+req.user.profile_picture , (err) => {
-                        if (err) throw err;
+                    fs.unlink('./public/uploads/'+req.user.profile_picture , (err) => {
+                        if (err){ 
+                            console.log(err);
+                            throw err;
+                        }
                         console.log('The file has been deleted');
                     });
                 }
-                console.log("1");
-                db.query(`UPDATE users SET profile_picture=${req.file.filename} WHERE username= ${req.user.username}`);
-                console.log("2");
+                
+                db.query(`UPDATE users SET profile_picture="${req.file.filename}" WHERE username= "${req.user.username}"`);
                 req.user.profile_picture = req.file.filename;
                 res.send(req.file.filename);
             }
@@ -68,6 +70,11 @@ route.post('/upload/profile_image',(req,res)=>{
 //get profile picture
 route.get('/get/profile_picture',(req,res)=>{
   res.send(req.user.profile_picture);
+})
+
+//get user full name
+route.get('/get/name',(req,res)=>{
+    res.send(req.user.first_name+' '+req.user.last_name);
 })
 
 route.get('/verify_user',(req,res)=>{

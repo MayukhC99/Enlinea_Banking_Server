@@ -67,7 +67,6 @@ nav ul a.active,nav ul a:hover{
   text-transform: uppercase;
   animation: flicker 1.5s infinite alternate;
 }
-}
 
 nav ul a.active::-moz-selection {
   background-color: var(--neon-border-color);

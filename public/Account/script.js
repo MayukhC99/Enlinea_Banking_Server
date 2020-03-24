@@ -5,6 +5,13 @@ var theErrorMessage = document.querySelector('#errorMessage');
 var theSuccessMessage = document.querySelector('#successMessage');
 var theClearImageLink = document.querySelector('#clearImage');
 var theOpenButton = document.querySelector('#buttonContainer');
+let name = $('#my_name');
+
+$(function(){
+    $.get('/root/get/name',(data)=>{
+        name.html(`<h1>${data}</h1>`);
+    })
+})
 
 var i = 0;
 
