@@ -8,7 +8,7 @@ const route= express.Router();
 
 //Set Storage Engine
 const storage_engine = multer.diskStorage({
-    destination: '../public/uploads/',
+    destination: './public/uploads/',
     filename: function(req,file,done){
 
         done(null,req.user.username+'-'+Date.now()+path.extname(file.originalname));//path.extname can extract extension name from file name
