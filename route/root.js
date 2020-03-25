@@ -33,7 +33,7 @@ const customFileFilter = function(req,file,done){
 
 const upload = multer({
     storage: storage_engine,
-    limits: {fileSize: 5000000},
+    limits: {fileSize: 1000000},
     fileFilter: customFileFilter
 }).single('profile_image');  //name should be profile_image
 
@@ -65,6 +65,28 @@ route.post('/upload/profile_image',(req,res)=>{
     })
 })
 
+
+//to delete profile picture
+route.get('/delete/profile_image',(req,res)=>{
+
+    if(req.user.profile_picture !== '000.jpg'){
+        fs.unlink('./public/uploads/'+req.user.profile_picture , (err) => {
+            if (err){
+                console.log(err);
+                throw err;
+            }
+            console.log('The file has been deleted');
+        });
+    } else {
+        res.send(undefined);
+    }
+
+    db.query(`UPDATE users SET profile_picture="000.jpg" WHERE username= "${req.user.username}"`);
+    req.user.profile_picture = "000.jpg";
+
+    res.redirect('back');
+})
+
 //get profile picture
 route.get('/get/profile_picture',(req,res)=>{
   res.send(req.user.profile_picture);
@@ -73,6 +95,17 @@ route.get('/get/profile_picture',(req,res)=>{
 //get user full name
 route.get('/get/name',(req,res)=>{
     res.send(req.user.first_name+' '+req.user.last_name);
+})
+
+//To change password
+route.post('/change/password',(req,res)=>{
+    let nstr= req.body.new_password;
+    //let nstr= str.trim();
+
+    db.query(`UPDATE users SET password="${nstr}" WHERE username="${req.user.username}"`);
+    req.user.password= nstr;
+
+    res.redirect('back');
 })
 
 route.get('/verify_user',(req,res)=>{

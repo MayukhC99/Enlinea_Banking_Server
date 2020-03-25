@@ -3,7 +3,7 @@ $(function(){
 
     let success_str= `<header>Dashboard</header>
     <ul style="padding-left: 0;">
-      <li><a href="./Account/index.html"><i class="fas fa-user-circle"></i>Account</a></li>
+      <li><a href="./Account/"><i class="fas fa-user-circle"></i>Account</a></li>
       <li><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="fas fa-bullhorn"></i>Notifications</a></li>
       <li><a href="https://github.com/MayukhC99/En-linea-Banking/"><i class="fab fa-github"></i>Contribute</a></li>

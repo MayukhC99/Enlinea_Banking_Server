@@ -3,17 +3,28 @@ var theImageField = document.querySelector('#theImageField');
 var theImageContainer = document.querySelector('#theImageContainer');
 var theErrorMessage = document.querySelector('#errorMessage');
 var theSuccessMessage = document.querySelector('#successMessage');
-var theClearImageLink = document.querySelector('#clearImage');
+//var theClearImageLink = document.querySelector('#clearImage');
 var theOpenButton = document.querySelector('#buttonContainer');
 let name = $('#my_name');
 let image = $('#user');
+let theClearImageLink = $('#clearImage');
 
 $(function(){
+    //to get full name of user
     $.get('/root/get/name',(data)=>{
         name.html(`<h1>${data}</h1>`);
     })
+
+    //to get profile_picture of user
     $.get('/root/get/profile_picture', (data)=>{
         image.attr('src', `../uploads/${data}`);
+    })
+
+    //to clear current profile_picture of user
+    theClearImageLink.click(function(){
+        $.get('/root/delete/profile_image',(data)=>{
+            window.location.href= "./";
+        })
     })
 })
 
@@ -55,7 +66,7 @@ function customFileFilter(file){
 
     const check_mimetype= regex.test(file.type);
 
-    if (file.size > 500000) {
+    if (file.size > 1000000) {
         theErrorMessage.classList.add('hide');
         theErrorMessage.innerHTML = "File too large, cannot be more than 500KB...";
         theErrorMessage.classList.remove('hide');
@@ -118,7 +129,7 @@ $(document).ready(function(){
                 }
                 else{
                     theErrorMessage.classList.add('hide');
-                    theErrorMessage.innerHTML = "Select a File to Upload...";
+                    theErrorMessage.innerHTML = "Select a image file within 1MB size";
                     theErrorMessage.classList.remove('hide');
                 }
             }
