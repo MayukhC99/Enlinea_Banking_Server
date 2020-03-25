@@ -104,6 +104,8 @@ route.post('/change/password',(req,res)=>{
 
     db.query(`UPDATE users SET password="${nstr}" WHERE username="${req.user.username}"`);
     req.user.password= nstr;
+
+    res.redirect('back');
 })
 
 route.get('/verify_user',(req,res)=>{
