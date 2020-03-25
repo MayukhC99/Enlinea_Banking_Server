@@ -55,7 +55,7 @@ function customFileFilter(file){
 
     const check_mimetype= regex.test(file.type);
 
-    if (file.size > 500000) {
+    if (file.size > 1000000) {
         theErrorMessage.classList.add('hide');
         theErrorMessage.innerHTML = "File too large, cannot be more than 500KB...";
         theErrorMessage.classList.remove('hide');
@@ -118,7 +118,7 @@ $(document).ready(function(){
                 }
                 else{
                     theErrorMessage.classList.add('hide');
-                    theErrorMessage.innerHTML = "Select a File to Upload...";
+                    theErrorMessage.innerHTML = "Select a image file within 1MB size";
                     theErrorMessage.classList.remove('hide');
                 }
             }
