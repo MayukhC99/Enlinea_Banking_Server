@@ -77,6 +77,8 @@ route.get('/delete/profile_image',(req,res)=>{
             }
             console.log('The file has been deleted');
         });
+    } else {
+        res.send(undefined);
     }
 
     db.query(`UPDATE users SET profile_picture="000.jpg" WHERE username= "${req.user.username}"`);
