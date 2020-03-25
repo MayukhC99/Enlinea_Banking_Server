@@ -18,7 +18,6 @@ const storage_engine = multer.diskStorage({
 //creating fileFilter function
 
 const customFileFilter = function(req,file,done){
-    
     const regex= /\jpg$|\jpeg$|\png$|\gif$/
 
     const check_filename = regex.test(file.originalname);
@@ -34,7 +33,7 @@ const customFileFilter = function(req,file,done){
 
 const upload = multer({
     storage: storage_engine,
-    limits: {fileSize: 5000000}, 
+    limits: {fileSize: 5000000},
     fileFilter: customFileFilter
 }).single('profile_image');  //name should be profile_image
 
@@ -45,20 +44,19 @@ route.post('/upload/profile_image',(req,res)=>{
             res.send(undefined);
         } else {
             if(req.file === undefined){
-                res.send(undefined);
+                res.send("undefined");
             } else {
 
                 if(req.user.profile_picture !== '000.jpg'){
                     //deleting the file
                     fs.unlink('./public/uploads/'+req.user.profile_picture , (err) => {
-                        if (err){ 
+                        if (err){
                             console.log(err);
                             throw err;
                         }
                         console.log('The file has been deleted');
                     });
                 }
-                
                 db.query(`UPDATE users SET profile_picture="${req.file.filename}" WHERE username= "${req.user.username}"`);
                 req.user.profile_picture = req.file.filename;
                 res.send(req.file.filename);

@@ -6,10 +6,14 @@ var theSuccessMessage = document.querySelector('#successMessage');
 var theClearImageLink = document.querySelector('#clearImage');
 var theOpenButton = document.querySelector('#buttonContainer');
 let name = $('#my_name');
+let image = $('#user');
 
 $(function(){
     $.get('/root/get/name',(data)=>{
         name.html(`<h1>${data}</h1>`);
+    })
+    $.get('/root/get/profile_picture', (data)=>{
+        image.attr('src', `../uploads/${data}`);
     })
 })
 
@@ -37,7 +41,6 @@ $(document).mouseup(function(e){
 
 theImageField.onchange = function (e) {
     var theFile = e.target.files[0];
-    console.log(theFile);
 
     if(customFileFilter(theFile)) {
         handleUploadedFile(theFile);
@@ -46,22 +49,28 @@ theImageField.onchange = function (e) {
 }
 
 function customFileFilter(file){
-    console.log(file);
     const regex= /\jpg$|\jpeg$|\png$|\gif$/
 
     const check_filename = regex.test(file.name);
 
     const check_mimetype= regex.test(file.type);
-    console.log(check_mimetype);
+
+    if (file.size > 500000) {
+        theErrorMessage.classList.add('hide');
+        theErrorMessage.innerHTML = "File too large, cannot be more than 500KB...";
+        theErrorMessage.classList.remove('hide');
+        return false;
+    }
 
     if(check_filename && check_mimetype){
         return true;
     } else {
+        theErrorMessage.classList.add('hide');
+        theErrorMessage.innerHTML = "File type should be png or jpg/jpeg...";
+        theErrorMessage.classList.remove('hide');
         return false;
     }
 }
-
-theClearImageLink.onclick = clearImage;
 
 function handleUploadedFile(file) {
     fileName = file.name;
@@ -93,6 +102,29 @@ function clearImage(e) {
 
 $(document).ready(function(){
     let prev_flag = $('#pi');
+
+    $('#theImageForm').submit(function(e) {
+        $(this).ajaxSubmit({
+
+            error: function(xhr) {
+            status('Error: ' + xhr.status);
+            },
+
+            success: function(res) {
+                if(res !== "undefined"){
+                    theSuccessMessage.classList.add('hide');
+                    theSuccessMessage.innerHTML = "Image uploaded successfully";
+                    theSuccessMessage.classList.remove('hide');
+                }
+                else{
+                    theErrorMessage.classList.add('hide');
+                    theErrorMessage.innerHTML = "Select a File to Upload...";
+                    theErrorMessage.classList.remove('hide');
+                }
+            }
+        });
+        return false;
+    });
 
     $(".head").click(function(){
         prev_flag.toggleClass('active');
