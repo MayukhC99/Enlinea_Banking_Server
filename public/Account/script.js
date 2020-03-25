@@ -22,10 +22,35 @@ $(function(){
 
     //to clear current profile_picture of user
     theClearImageLink.click(function(){
-        $.get('/root/delete/profile_image',(data)=>{
-            window.location.href= "./";
-        })
+        var message = confirm("Are you sure you want to reset your current photo?");
+        if(message == true){
+            $.get('/root/delete/profile_image',(data)=>{
+                window.location.href= "./";
+            })
+        }
     })
+})
+
+const counters = document.querySelectorAll('.counter');
+const speed = 2000;
+
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+
+        const inc = target / speed;
+
+        if(count < target){
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 1);
+        }
+        else{
+            count.innerText = target;
+        }
+    }
+
+    updateCount();
 })
 
 var i = 0;
@@ -134,6 +159,23 @@ $(document).ready(function(){
                 }
             }
         });
+        return false;
+    });
+
+    $('#change').submit(function(e) {
+        $(this).ajaxSubmit({
+
+            error: function(xhr) {
+            status('Error: ' + xhr.status);
+            },
+
+            success: function(res) {
+                alert(res);
+            }
+        });
+        $('#password1').val('');
+        $('#password2').val('');
+        $('#password3').val('');
         return false;
     });
 
