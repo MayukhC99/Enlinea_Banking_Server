@@ -99,13 +99,24 @@ route.get('/get/name',(req,res)=>{
 
 //To change password
 route.post('/change/password',(req,res)=>{
-    let nstr= req.body.new_password;
+    let nstr = req.body.new_password[0];
+    let nstr1= req.body.new_password[1];
+    let nstr2 = req.body.new_password[2];
     //let nstr= str.trim();
+    if(req.user.password === nstr){
+        if(nstr1 === nstr2){
+            db.query(`UPDATE users SET password="${nstr2}" WHERE username="${req.user.username}"`);
+            req.user.password= nstr;
+        }
+        else{
+            res.send("Confirm password not matching with new password.");
+        }
+    }
+    else{
+        res.send("Invalid password.");
+    }
 
-    db.query(`UPDATE users SET password="${nstr}" WHERE username="${req.user.username}"`);
-    req.user.password= nstr;
-
-    res.redirect('back');
+    res.send("Password have successfully changed.");
 })
 
 route.get('/verify_user',(req,res)=>{
