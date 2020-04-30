@@ -3,7 +3,7 @@ body{
 }
 
 nav{
-  z-index: 1004;
+  z-index: 2004;
   position: fixed;
   background: url(https://images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg);
   height: 50px;
@@ -28,7 +28,7 @@ nav label.logo{
 }
 
 nav ul{
-  z-index: 1004;
+  z-index: 2004;
   list-style: none;
   float: right;
   margin-right: 20px;
@@ -36,7 +36,7 @@ nav ul{
 }
 
 nav ul li{
-  z-index: 1004;
+  z-index: 2004;
   display: inline-block;
   line-height: 50px;
   margin: 0 5px;
@@ -141,7 +141,7 @@ nav #check{
     display: block;
   }
   nav ul{
-    z-index: 1004;
+    z-index: 2004;
     position: fixed;
     width: 100%;
     height: 100vh;

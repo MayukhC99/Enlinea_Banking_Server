@@ -105,7 +105,15 @@ body{
 }
 
 #right input{
-    height: 30px;
+    height: 35px;
+    width: 120%;
+    font-size: 13px;
+    outline: none;
+    border-radius: 30px;
+}
+
+#right input:focus{
+    border: 2px solid blue;
 }
 
 input[type=date]::-webkit-inner-spin-button {
