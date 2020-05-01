@@ -86,6 +86,10 @@
 	background:#fd8802f3;
 }
 
+textarea{
+    resize: none;
+}
+
 #contact_info{
     position: absolute;
     width: 95%;
@@ -181,6 +185,12 @@
     }
     #contact_info{
         transform: translateX(14%);
+    }
+}
+
+@media (max-width: 768px){
+    .ccform{
+        transform: translateY(130%);
     }
 }
 

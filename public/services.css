@@ -62,3 +62,34 @@
 .s:hover{
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
+
+@media(max-width: 1024px){
+    .all_services{
+        height: 130vh;
+    }
+    .s{
+        margin-top: 5%;
+    }
+}
+
+@media(max-width: 500px){
+    .s{
+        margin-left: 35%;
+    }
+    .s_title{
+        margin-left: 25%;
+        font-size: xx-large;
+    }
+    #click_me{
+        margin-left: 30%;
+    }
+    #services{
+        height: 180vh;
+    }
+}
+
+@media(max-width: 375px){
+    .s_title{
+        margin-left: 20%;
+    }
+}

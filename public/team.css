@@ -59,7 +59,11 @@
     transition: .3s .2s ease-in;
 }
 
-#tapImg:checked ~ .inner-part .img-1{
+#tapImg:checked ~ .inner-part .img-1,
+#tapImg:checked ~ .inner-part .img-2,
+#tapImg:checked ~ .inner-part .img-3,
+#tapImg:checked ~ .inner-part .img-4,
+#tapImg:checked ~ .inner-part .img-5{
     object-fit: contain;
 }
 
@@ -186,10 +190,10 @@
     transform-origin: left;
 }
 
-/*.sliders .tap:hover:before{
+.sliders .tap:hover:before{
     transform: scaleX(1);
     width: 100%;
-}*/
+}
 
 #tap-1:checked ~ .sliders .tap-1:before,
 #tap-2:checked ~ .sliders .tap-2:before,

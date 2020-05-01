@@ -45,12 +45,12 @@
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
-					<input class="input100" type="text" name="username" placeholder="username or email" id="username">
+					<input class="input100" type="text" name="username" placeholder="username or email" id="username" onchange="change()" required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
-					<input class="input100" type="password" name="password" placeholder="password" id="password">
+					<input class="input100" type="password" name="password" placeholder="password" id="password" required>
 					<span class="focus-input100"></span>
 				</div>
 
@@ -106,7 +106,18 @@
 <!--===============================================================================================-->
 	<script src="./vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="./js/main.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+	<script>
+		var input = $('.validate-input .input100');
+		function change(){
+            hideValidate('.validate-input .input100');
+		}
+		function hideValidate(input) {
+			var thisAlert = $(input).parent();
+			$(thisAlert).removeClass('alert-validate');
+			$(thisAlert).find('.btn-hide-validate').remove();
+    	}
+	</script>
 
 </body>
 </html>
