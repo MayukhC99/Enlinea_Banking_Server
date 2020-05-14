@@ -286,29 +286,29 @@
             <span id="sp"><i class="fas fa-phone fa-2x ci1"></i></i></i></span>
             <label class="ci" id="call_us">Call Us<br><font color="grey">+18044261149</font></info></label>
           </div>
-          <form method="post" action="" class="ccform">
+          <form method="POST" action="/homepage/contact_us_email" class="ccform">
             <header class="ccheader">
               <h1>Get In Touch</h1>
             </header>
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Full Name" required>
+                <input class="ccformfield" type="text" placeholder="Full Name" name="name" required>
             </div>
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Email" required>
+                <input class="ccformfield" type="text" placeholder="Email" name="email" required>
             </div>
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-mobile-phone fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Phone">
+                <input class="ccformfield" type="text" placeholder="Phone" name="phone">
             </div>
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Subject" required>
+                <input class="ccformfield" type="text" placeholder="Subject" name="subject" required>
             </div>
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
-                <textarea class="ccformfield" name="comments" rows="5" placeholder="Message" required></textarea>
+                <textarea class="ccformfield" rows="5" placeholder="Message" name="msg" required></textarea>
             </div>
             <div class="ccfield-prepend">
                 <input class="ccbtn" type="submit" value="Submit">

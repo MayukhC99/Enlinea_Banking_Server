@@ -8,6 +8,10 @@ route.post('/getin',(req,res)=>{
         password: req.body.password,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
+        email_id: null,
+        mobile_number: null,
+        DOB: null,
+        gender: null,
         profile_picture: '000.jpg'
     }).then((created_user)=>{
         if(created_user){
