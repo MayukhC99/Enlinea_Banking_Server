@@ -122,7 +122,7 @@ route.post('/change/password',(req,res)=>{
 route.get('/verify_user',(req,res)=>{
     console.log('Verifying User');
     if (req.user){
-        if(req.user.dataValues.username === "supratim_1703"){
+        if(req.user.dataValues.username === "admin"){
             console.log('Admin');
             res.send('admin');
         } else if(req.user.dataValues.username !== undefined) {

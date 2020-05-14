@@ -21,7 +21,7 @@ app.use('/signup',require('./route/signup').route);
 app.use('/login',require('./route/login').route);
 app.use('/root',require('./route/root').route);
 app.use((req,res)=>{
-    res.send(`<h1>Error: 404 File Not Found !!!</h1>`)
+    res.send(`<h1>Error: 404 Page Not Found !!!</h1>`)
 })
 
 app.listen(port,()=>{console.log('Hosted on http://localhost:3000 ')});
