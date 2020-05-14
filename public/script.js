@@ -271,3 +271,8 @@ $(document).ready(function(){
         }
     });
 });
+
+//submiting contact us form with alert message
+$('.ccform').submit(function(){
+    alert('Thank you for contacting us. Our team will be responding soon. Keep an eye on your email account ;)');
+})
