@@ -158,6 +158,14 @@ route.post('/personal_details/update',(req,res)=>{
             `WHERE username='${req.user.username}'`);
 })
 
+//for admin (get all user details api)
+route.get('/all_user_details', (req,res)=>{
+    db.query("SELECT * FROM users WHERE username<>'admin'", { type: db.QueryTypes.SELECT})
+    .then(users => {
+        res.send(users);
+    })
+})
+
 module.exports= {
     route
 };
