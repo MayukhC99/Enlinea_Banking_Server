@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./transaction.css">
+    <title>Transaction</title>
+</head>
+<body>
+    <div class="col-12 col-md-8 offset-md-2 mt-5">
+        <header><h3>En línea Banking</h3></header>
+    </div>
+    <div class="col-12 col-md-8 offset-md-2 mt-3 container con">
+        <div id="back">
+            <button>
+                <i class="fas fa-chevron-left"></i>
+                <span>GO BACK</span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <label><h5>Add Money to Wallet Order</h5></label>
+                <div>
+                    <span>Transaction ID: </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <label>Amount to be paid </label>
+                <div class="offset-5">
+                    <i class="fas fa-rupee-sign"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-8 offset-md-2 mt-3 container">
+        <div>
+            <label class="m-3">SELECT AN OPTION TO PAY</label>
+        </div>
+        <div style="height: 20px;"></div>
+        <div class="pad">
+            <div class="">
+                <div style="cursor: pointer;">
+                    <div class="middle1 active">
+                        <label class="custom-radio" aria-label="bank">
+                            <input type="radio" name="paymode" id="select1" checked value="bank">
+                            <label for="select1"></label>
+                        </label>
+                        <span>
+                            <span id="name" style="font-size: 20px;">Net Banking</span>
+                        </span>
+                        <div class="row" id="net_details" style="margin-left: 40px;">
+                            <div class="col-8">
+                                <label for="net">Select a Bank</label>
+                                <select class="offset-1" id="net">
+                                    <option value="">choose Bank</option>
+                                </select>
+                            </div>
+                            <div class="col-3 mb-3">
+                                <button class="btn btn-primary w-100 bank">
+                                    <span>
+                                        <span>PAY</span>
+                                        <i class="fas fa-rupee-sign"></i>
+                                        <span></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div style="cursor: pointer;">
+                    <div class="middle2">
+                        <label class="custom-radio" aria-label="card">
+                            <input type="radio" name="paymode" id="select2" value="card">
+                            <label for="select2"></label>
+                        </label>
+                        <span>
+                            <span id="name" style="font-size: 20px;">Debit Card</span>
+                        </span>
+                        <div class="row" id="debit_details" style="margin-left: 25px;display: none;">
+                            <div class="col-4 col-md-5 mb-3">
+                                <div class="col-12">
+                                    <label style="font-size: 10px;"><span>Card Number</span></label>
+                                </div>
+                                <div>
+                                    <div>
+                                        <input type="tel" id="input" maxlength="23" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 mb-3">
+                                <div class="col-12">
+                                    <label style="font-size: 10px;margin-left: -15px;"><span>Card Expiry Date</span></label>
+                                </div>
+                                <div>
+                                    <div class="white border-global">
+                                        <input type="tel" id="mm" maxlength="2" placeholder="MM" autocomplete="off">
+                                        <span>/</span>
+                                        <input type="tel" id="yy" maxlength="2" placeholder="YY" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2 mb-3">
+                                <div class="col-12">
+                                    <label style="font-size: 10px;margin-left: -15px;"><span>CVV</span></label>
+                                </div>
+                                <div>
+                                    <div>
+                                        <input type="tel" id="input1" maxlength="4" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 mb-3 mt-4">
+                                <button class="btn btn-primary w-100 det">
+                                    <span>
+                                        <span>PAY</span>
+                                        <i class="fas fa-rupee-sign"></i>
+                                        <span></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div style="cursor: pointer;">
+                    <div class="middle3">
+                        <label class="custom-radio" aria-label="card">
+                            <input type="radio" name="paymode" id="select3" value="card">
+                            <label for="select3"></label>
+                        </label>
+                        <span>
+                            <span id="name" style="font-size: 20px;">Credit Card</span>
+                        </span>
+                            <div class="row" id="credit_details" style="margin-left: 25px;display: none;">
+                                <div class="col-5 mb-3">
+                                    <div class="col-12">
+                                        <label style="font-size: 10px;"><span>Card Number</span></label>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <input type="tel" id="input" maxlength="23" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 mb-3">
+                                    <div class="col-12">
+                                        <label style="font-size: 10px;margin-left: -15px;"><span>Card Expiry Date</span></label>
+                                    </div>
+                                    <div>
+                                        <div class="white border-global">
+                                            <input type="tel" id="mm" maxlength="2" placeholder="MM" autocomplete="off">
+                                            <span>/</span>
+                                            <input type="tel" id="yy" maxlength="2" placeholder="YY" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 mb-3">
+                                    <div class="col-12">
+                                        <label style="font-size: 10px;margin-left: -15px;"><span>CVV</span></label>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <input type="tel" id="input1" maxlength="4" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-3 mt-4">
+                                    <button class="btn btn-primary w-100 det">
+                                        <span>
+                                            <span>PAY</span>
+                                            <i class="fas fa-rupee-sign"></i>
+                                            <span></span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<script src="./jquery-3.4.1.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

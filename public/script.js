@@ -9,6 +9,9 @@ $(document).ready(function(){
         trigger_contact: $('.navMenu li:nth-child(5) a')
     }
 
+    $(document).on('click', 'li:nth-child(3) a', function(){
+        $(".badge").css({'display': 'none'});
+    })
 
     //this flag is stored for tracking navbar active class
     let prev_nav_flag = $('.navMenu li:first-child a');

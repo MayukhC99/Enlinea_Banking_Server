@@ -53,26 +53,18 @@ counters.forEach(counter => {
     updateCount();
 })
 
-var i = 0;
-
-function myFunction(){
-	if (i > 2){
-		i = 1;
-	}
-	if (theOpenButton.style.display === "none" && i == 1) {
-		theOpenButton.style.display = "grid";
-	} else {
-		i = 0;
-		theOpenButton.style.display = "none";
-	}
-}
-
 $(document).mouseup(function(e){
-	var container = $("#buttonContainer");
-    if(!container.is(e.target)){
-		i++;
+    var container = $("#buttonContainer");
+    if(e.target.id === "user"){
+        if (theOpenButton.style.display === "none") {
+            theOpenButton.style.display = "grid";
+        } else {
+            theOpenButton.style.display = "none";
+        }
+    }
+    else{
         container.hide();
-	}
+    }
 });
 
 theImageField.onchange = function (e) {
@@ -83,7 +75,6 @@ theImageField.onchange = function (e) {
     }
 
 }
-
 function customFileFilter(file){
     const regex= /\jpg$|\jpeg$|\png$|\gif$/
 
@@ -192,4 +183,28 @@ $(document).ready(function(){
             $("#change").css({'margin-left': '0%'});
         }
     });
+
+    function countLines() {
+        var el = document.getElementById('details');
+        var divHeight = el.offsetHeight
+        var lineHeight = parseInt(el.style.lineHeight);
+        var lines = divHeight / lineHeight;
+        alert("Lines: " + lineHeight);
+     }
+
+     $(".merge").on('mousedown', function(){
+        $(this).addClass('focused');
+    })
+
+    $(".merge span").on('click', function(){
+        $(".merge input").focus();
+    })
+
+    $(".merge input").blur(function(){
+        $(".merge").removeClass('focused');
+    })
+
+    $(".addMoney").on('click', function(){
+        $(".addMoney .row").show();
+    })
 });

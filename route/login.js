@@ -18,7 +18,7 @@ route.get('/failure',(req,res)=>{
 })
 route.get('/success',(req,res)=>{
     console.log('Login Success');
-    res.send(req.user);
+    res.send(req.user.dataValues.username);
 })
 
 module.exports= {
