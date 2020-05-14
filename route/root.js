@@ -119,6 +119,7 @@ route.post('/change/password',(req,res)=>{
     res.send("Password have successfully changed.");
 })
 
+//verify existance of a user or admin
 route.get('/verify_user',(req,res)=>{
     console.log('Verifying User');
     if (req.user){
@@ -134,6 +135,28 @@ route.get('/verify_user',(req,res)=>{
         }
     }
 });
+
+//get details of a particular user
+route.get('/personal_details',(req,res)=>{
+    if(req.user)
+        res.send({
+            username: req.user.username,
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            email_id: req.user.email_id,
+            mobile_number: req.user.mobile_number,
+            DOB: req.user.DOB,
+            gender: req.user.gender,
+            profile_picture: req.user.profile_picture
+        });
+})
+
+//updating first_name,last_name,email_id,mobile_number,dob,gender
+route.post('/personal_details/update',(req,res)=>{
+    db.query(`UPDATE users`+
+            `SET first_name='${req.body.first_name}' , last_name='${req.body.last_name}' , email_id='${req.body.email_id}' , mobile_number='${req.body.mobile_number}' , DOB='${req.body.DOB}' , gender='${req.body.gender}'`+
+            `WHERE username='${req.user.username}'`);
+})
 
 module.exports= {
     route
