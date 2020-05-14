@@ -29,6 +29,15 @@ $(function(){
             })
         }
     })
+
+    $.get('/root/personal_details', (data) => {
+        $("#first_name").val(data.first_name);
+        $("#last_name").val(data.last_name);
+        $("#email_id").val(data.email_id);
+        $("#mobile_number").val(data.mobile_number);
+        $("#DOB").val(data.DOB);
+        $("#gender").val(data.gender);
+    });
 })
 
 const counters = document.querySelectorAll('.counter');
@@ -55,7 +64,7 @@ counters.forEach(counter => {
 
 $(document).mouseup(function(e){
     var container = $("#buttonContainer");
-    if(e.target.id === "user"){
+    if(e.target.id === "user" || e.target.id === "theImageTag"){
         if (theOpenButton.style.display === "none") {
             theOpenButton.style.display = "grid";
         } else {
@@ -167,6 +176,20 @@ $(document).ready(function(){
         $('#password1').val('');
         $('#password2').val('');
         $('#password3').val('');
+        return false;
+    });
+
+    $('#personal').submit(function(e) {
+        $(this).ajaxSubmit({
+
+            error: function(xhr) {
+            status('Error: ' + xhr.status);
+            },
+
+            success: function(res) {
+                alert(res);
+            }
+        });
         return false;
     });
 
