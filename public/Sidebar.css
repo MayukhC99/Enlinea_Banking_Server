@@ -34,14 +34,14 @@
   line-height: 65px;
   font-size: 20px;
   color: white;
-  padding-left: 40px;
+  padding-left: 20px;
   box-sizing: border-box;
   border-bottom: 1px solid black;
   border-top: 1px solid rgba(255,255,255,.1);
   transition: .4s;
 }
 .side ul li:hover a{
-  padding-left: 50px;
+  padding-left: 30px;
 }
 .side .sidebar ul a i{
   margin-right: 16px;
@@ -91,4 +91,12 @@
 }
 .side #checkSide:checked ~ section{
   margin-left: 250px;
+}
+
+.badge {
+  background-color: #fa3e3e;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 5px;
+  transform: translate(30%, -100%);
 }

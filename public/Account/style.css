@@ -104,7 +104,7 @@ body{
     text-align: left;
 }
 
-#right input{
+#right input, select{
     height: 35px;
     width: 120%;
     font-size: 13px;
@@ -113,7 +113,7 @@ body{
 }
 
 #right input:focus{
-    border: 2px solid blue;
+    border: 2px solid rgb(82, 166, 187);
 }
 
 input[type=date]::-webkit-inner-spin-button {
@@ -176,4 +176,47 @@ select{
 .counters .counter{
     font-size: 45px;
     margin: 10px 0;
+}
+
+.t_details{
+    height: 30vh;
+}
+
+.rupee{
+    background-color: white;
+    position: absolute;
+    color: black;
+    font-size: 16px;
+    margin-left: 2px;
+    margin-top: 3px;
+}
+
+.merge{
+    background-color: white;
+    width: 62%;
+    border: 2px solid #9ba2aa;
+}
+
+.merge input{
+    margin-left: 15px;
+    margin-top: 2px;
+    border: 0;
+}
+
+.merge input:focus{
+    outline: none;
+}
+
+.merge[class*=focused]{
+    border: 2px solid #00b0f5;
+}
+
+.add{
+    margin-left: 5%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

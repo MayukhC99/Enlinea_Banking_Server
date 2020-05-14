@@ -63,8 +63,9 @@
     }
     #about{
         font-size: small;
+        padding-right: 0px;
         height: 100vh;
-        width: 400px;
+        /* width: 400px; */
         left: 0;
     }
 

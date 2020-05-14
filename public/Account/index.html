@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body class="container">
+<body class="container" onload="countLines();">
     <form id="theImageForm" method="post" action="/root/upload/profile_image" enctype="multipart/form-data">
-        <label id="theImageContainer" onclick="myFunction()">
+        <label id="theImageContainer">
             <img id="user" src="" width="250px", height="250px">
         </label>
         <p id="errorMessage" class="hide"></p>
@@ -28,13 +28,36 @@
     </form>
     <section class="counters">
         <div class="container">
-            <div>
-                <i class="fas fa-money-bill-wave fa-4x"></i>
-                <h3>Balance</h3>
-                <div class="counter" data-target="300">0</div>
+            <div class="row">
+                <div class="col-12 col-sm-4 addMoney">
+                    <img src="./addMoney.svg" width="65" alt="Add Money" style="cursor: pointer;">
+                    <h3>Add Money</h3>
+                    <form class="row" style="display: none;">
+                        <div class="merge">
+                            <span class="rupee" for="amount">₹</span>
+                            <input type="number" value name id="amount" placeholder="Enter Amount" required>
+                        </div>
+                        <button class="btn btn-primary add">Add Money</button>
+                    </form>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <i class="fas fa-money-bill-wave fa-4x"></i>
+                    <h3>Balance</h3>
+                    <div class="counter" data-target="300">0</div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <img src="./sendMoney.svg" width="65" alt="Send Money" style="cursor: pointer;">
+                    <h3>Send Money</h3>
+                </div>
             </div>
         </div>
     </section>
+    <div class="t_details">
+        <header><h3>Transaction Details</h3></header>
+        <div id="details" style="line-height: 25px;">
+            <p><h5>No details found</h5></p>
+        </div>
+    </div>
     <label class="head active" id="pi">Personal Info</label> <label class="head" id="cp">Change Password</label>
     <form id="personal">
         <div class="personal_info">
@@ -52,9 +75,9 @@
                 <input type="date" name="Date" placeholder="Birth Date" id="birth_date" required>
                 <select id="gender" required>
                     <option value="Choose">--Choose--</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Others">Others</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
                 </select>
             </div>
             <button id="btn1" type="submit">Save</button>
@@ -81,6 +104,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
     <script src="./script.js"></script>
+    <script>
+        function countLines(){
+            var el = document.getElementById('details');
+            var divHeight = el.offsetHeight
+            var lineHeight = parseInt(el.style.lineHeight);
+            var lines = divHeight / lineHeight;
+            if (lines > 5){
+                el.style.overflowY = "scroll";
+                el.style.height = "20vh";
+            }
+            else{
+                el.style.overflowY = "hidden";
+            }
+        }
+    </script>
 </body>
 
 </html>

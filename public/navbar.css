@@ -181,7 +181,6 @@ nav #check{
 .container_arrows {
   z-index: 1;
   position: relative;
-  /* left: 10vw; */
   top: -10vh;
   cursor: pointer;
   margin: 0;
@@ -210,6 +209,11 @@ nav #check{
 }
 .content-ar p {
   margin: 0 0 20px;
+}
+
+.serve-ar{
+  top: 5vh;
+  left: 60%;
 }
 
 /* Arrow & Hover Animation */
