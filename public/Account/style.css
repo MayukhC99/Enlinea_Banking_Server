@@ -220,3 +220,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.add_friend{
+    margin-left: 44%;
+}
