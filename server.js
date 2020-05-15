@@ -21,6 +21,7 @@ app.use('/signup',require('./route/signup').route);
 app.use('/login',require('./route/login').route);
 app.use('/root',require('./route/root').route);
 app.use('/homepage',require('./route/homepage').route);
+app.use('/otheruser',require('./route/otheruser').route);
 app.use((req,res)=>{
     res.send(`<h1>Error: 404 Page Not Found !!!</h1>`)
 })
