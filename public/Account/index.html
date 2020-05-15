@@ -59,21 +59,23 @@
         </div>
     </div>
     <label class="head active" id="pi">Personal Info</label> <label class="head" id="cp">Change Password</label>
-    <form id="personal">
+    <form id="personal" method="post" action="/root/personal_details/update">
         <div class="personal_info">
             <div id="left">
-                <label>Name</label>
+                <label>First Name</label>
+                <label>Last Name</label>
                 <label>Email ID</label>
                 <label>Mobile Number</label>
                 <label>Date Of Birth</label>
                 <label>Gender</label>
             </div>
             <div id="right">
-                <input type="text" name="name" placeholder="Full Name" id="name" required>
-                <input type="text" name="email" placeholder="Email ID" id="email" required>
-                <input type="text" name="Mobile" placeholder="Mobile Number" id="mobile_no" required>
-                <input type="date" name="Date" placeholder="Birth Date" id="birth_date" required>
-                <select id="gender" required>
+                <input type="text" name="first_name" placeholder="First Name" id="first_name" required>
+                <input type="text" name="last_name" placeholder="Last Name" id="last_name" required>
+                <input type="text" name="email_id" placeholder="Email ID" id="email_id" required>
+                <input type="text" name="mobile_number" placeholder="Mobile Number" id="mobile_number" required>
+                <input type="date" name="DOB" placeholder="Birth Date" id="DOB" required>
+                <select id="gender" name="gender" required>
                     <option value="Choose">--Choose--</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>

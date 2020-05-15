@@ -154,8 +154,10 @@ route.get('/personal_details',(req,res)=>{
 //updating first_name,last_name,email_id,mobile_number,dob,gender
 route.post('/personal_details/update',(req,res)=>{
     db.query(`UPDATE users`+
-            `SET first_name='${req.body.first_name}' , last_name='${req.body.last_name}' , email_id='${req.body.email_id}' , mobile_number='${req.body.mobile_number}' , DOB='${req.body.DOB}' , gender='${req.body.gender}'`+
-            `WHERE username='${req.user.username}'`);
+            ` SET first_name='${req.body.first_name}' , last_name='${req.body.last_name}' , email_id='${req.body.email_id}' , mobile_number='${req.body.mobile_number}' , DOB='${req.body.DOB}' , gender='${req.body.gender}'`+
+            ` WHERE username='${req.user.username}'`);
+    
+    res.send("Personal details updated.")
 })
 
 //for admin (get all user details api)
