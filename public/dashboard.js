@@ -6,7 +6,7 @@ $(function(){
       <li><a href="./Account/"><i class="fas fa-user-circle"></i>Account</a></li>
       <li><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="fas fa-bullhorn"></i>Send Notifications</a></li>
-      <li><a href="https://github.com/MayukhC99/En-linea-Banking/"><i class="fas fa-users"></i></i>View Users</a></li>
+      <li><a href="./users/index.html"><i class="fas fa-users"></i></i>View Users</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="fas fa-sliders-h"></i>Services</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="far fa-envelope"></i>Contact Us</a></li>
     </ul>`
@@ -17,7 +17,7 @@ $(function(){
       <li><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="fas fa-bullhorn"><span class="badge" style="display: inline-block;"></span></i>Notifications</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="fas fa-university"></i>Banking</a></li>
-      <li><a href="https://github.com/MayukhC99/En-linea-Banking/"><i class="fas fa-users"></i>View Users</a></li>
+      <li><a href="./404_Error_Page/index.html"><i class="fas fa-users"></i>View Users</a></li>
       <li><a href="https://github.com/MayukhC99/En-linea-Banking/"><i class="fab fa-github"></i>Contribute</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="fas fa-sliders-h"></i>Services</a></li>
       <li><a href="./404_Error_Page/index.html"><i class="far fa-envelope"></i>Contact Us</a></li>
