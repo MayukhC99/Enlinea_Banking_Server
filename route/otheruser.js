@@ -7,21 +7,21 @@ const route= express.Router();
 route.get('/:username',(req,res)=>{
 
     console.log('finding user');
-      User.findOne({  
+      User.findOne({
         where: {
           username: req.params.username
-        } 
+        }
       }).then((user)=>{
         if (!user) {
           console.log('user not found');
-          next();
+          //next();
           //return done(null, false, {message: "No such user"})
         }
 
         console.log('success in finding user');
         res.sendFile(path.join(__dirname,'..','public','Account','viewusers.html'));
 
-        //return done(null, user)
+        //return done(null, user);
       }).catch((err)=>{
         console('user not found');
         next();
@@ -30,12 +30,12 @@ route.get('/:username',(req,res)=>{
 })
 
 route.get('/get_details/:username',(req,res,next)=>{
-    
+
     console.log('finding user');
-      User.findOne({  
+      User.findOne({
         where: {
           username: req.params.username
-        } 
+        }
       }).then((user)=>{
         if (!user) {
           console.log('user not found');

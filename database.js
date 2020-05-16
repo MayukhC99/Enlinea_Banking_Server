@@ -3,7 +3,7 @@ const sequelize= require('sequelize');
 const db= new sequelize(
     'enlinea',
     'root',
-    'admin',
+    'sirsrt',
     {
         dialect: 'mysql',
         host: 'localhost'
@@ -26,13 +26,18 @@ const users= db.define('users',{
     mobile_number: sequelize.STRING,
     DOB: sequelize.STRING,
     gender: sequelize.STRING,
-    profile_picture: sequelize.STRING
+    profile_picture: sequelize.STRING,
+    notification: {
+        type: sequelize.BOOLEAN,
+        allowNull: false
+    }
 });
 
 db.sync().then(()=> console.log('Database is syncronized'));
 
 db.query(`INSERT IGNORE INTO users (username,password,first_name,last_name,profile_picture)` +
                 `VALUES ('admin','9073326812','Admin','Admin','000.jpg')`);
+
 
 module.exports = {
     db,

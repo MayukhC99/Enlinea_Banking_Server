@@ -2,6 +2,14 @@ body{
   font-family: montserrat;
 }
 
+body.modal-open {
+  position: fixed;
+}
+
+.modal-open .modal{
+  overflow: hidden;
+}
+
 nav{
   z-index: 2004;
   position: fixed;

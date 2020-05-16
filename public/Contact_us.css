@@ -11,6 +11,10 @@
     text-shadow: 4px 4px 4px gray;
 }
 
+#manage{
+    margin-top: 10vh;
+}
+
 .ccheader {
 	margin: 0 auto;
 	padding: 2em;

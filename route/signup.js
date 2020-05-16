@@ -12,7 +12,8 @@ route.post('/getin',(req,res)=>{
         mobile_number: null,
         DOB: null,
         gender: null,
-        profile_picture: '000.jpg'
+        profile_picture: '000.jpg',
+        notification: 0
     }).then((created_user)=>{
         if(created_user){
             res.send(created_user);
