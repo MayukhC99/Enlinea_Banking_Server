@@ -29,10 +29,16 @@ const users= db.define('users',{
     profile_picture: sequelize.STRING
 });
 
-db.sync().then(()=> console.log('Database is syncronized'));
+function admin_callback(){
+    db.query(`INSERT IGNORE INTO users (username,password,first_name,last_name,profile_picture)` +
+            `VALUES ('admin','9073326812','Admin','Admin','000.jpg')`);
+}
 
-db.query(`INSERT IGNORE INTO users (username,password,first_name,last_name,profile_picture)` +
-                `VALUES ('admin','9073326812','Admin','Admin','000.jpg')`);
+db.sync().then(function(){ 
+    console.log('Database is syncronized')
+    admin_callback();
+});
+
 
 
 module.exports = {
