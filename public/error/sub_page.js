@@ -61,7 +61,7 @@ function resetForm(withKittens){
 
         $('.terminal').append("<p class='prompt'>Redirecting You to Homepage...</p>");
         setTimeout(function() {
-            window.top.location.href="https://github.com/MayukhC99/En-linea-Banking/";
+            window.top.location.href="../";
         }, 3000);
 
         var lines = $('.kittens p');
