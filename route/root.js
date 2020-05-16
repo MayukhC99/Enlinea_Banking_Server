@@ -97,6 +97,11 @@ route.get('/get/name',(req,res)=>{
     res.send(req.user.first_name+' '+req.user.last_name);
 })
 
+//get username
+route.get('/get/username',(req,res)=>{
+    res.send(req.user.username);
+})
+
 //To change password
 route.post('/change/password',(req,res)=>{
     let nstr = req.body.new_password[0];
