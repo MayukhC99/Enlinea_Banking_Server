@@ -3,7 +3,7 @@ const sequelize= require('sequelize');
 const db= new sequelize(
     'enlinea',
     'root',
-    'sirsrt',
+    'admin',
     {
         dialect: 'mysql',
         host: 'localhost'
@@ -26,11 +26,7 @@ const users= db.define('users',{
     mobile_number: sequelize.STRING,
     DOB: sequelize.STRING,
     gender: sequelize.STRING,
-    profile_picture: sequelize.STRING,
-    notification: {
-        type: sequelize.BOOLEAN,
-        allowNull: false
-    }
+    profile_picture: sequelize.STRING
 });
 
 db.sync().then(()=> console.log('Database is syncronized'));

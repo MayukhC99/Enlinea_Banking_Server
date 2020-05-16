@@ -21,9 +21,10 @@ app.use('/signup',require('./route/signup').route);
 app.use('/login',require('./route/login').route);
 app.use('/root',require('./route/root').route);
 app.use('/homepage',require('./route/homepage').route);
-app.use('/otheruser',require('./route/otheruser').route);
+app.use('/account_user',require('./route/account_user').route);
 app.use((req,res)=>{
-    res.send(`<h1>Error: 404 Page Not Found !!!</h1>`)
+    console.log('404 Error')
+    res.sendFile(path.join(__dirname,'public','error','index.html'));
 })
 
 app.listen(port,()=>{console.log('Hosted on http://localhost:3000 ')});
