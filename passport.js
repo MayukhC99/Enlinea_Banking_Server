@@ -21,7 +21,7 @@ passport.use(new LocalStrategy(
         console.log('success');
         return done(null, user)
       }).catch((err)=>{
-        console('error in login');
+        console.log('error in login');
         return done(err);
       })
     }

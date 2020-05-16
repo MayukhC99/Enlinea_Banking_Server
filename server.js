@@ -28,3 +28,7 @@ app.use((req,res)=>{
 })
 
 app.listen(port,()=>{console.log('Hosted on http://localhost:3000 ')});
+
+module.exports={
+    app
+}

@@ -2,6 +2,7 @@ const express= require('express');
 const db= require('../database').db;
 const User= require('../database').users;
 const path= require('path');
+const app= require('../server').app;
 const route= express.Router();
 
 //creating api to simulate node structure
@@ -22,17 +23,18 @@ route.get('/:username',(req,res,next)=>{
           }
         }).then((user)=>{
           if (!user) {
-            console.log('user not found');
+            console.log('user not found 1');
             res.redirect('/error_404');
             //return done(null, false, {message: "No such user"})
           }
   
           console.log('success in finding user');
+
           res.sendFile(path.join(__dirname,'..','public','Account','viewusers.html'));
   
           //return done(null, user);
         }).catch((err)=>{
-          console('user not found');
+          console.log('user not found due to error 1');
           res.redirect('/error_404');
           //return done(err);
         })
@@ -47,17 +49,18 @@ route.get('/:username',(req,res,next)=>{
         }
       }).then((user)=>{
         if (!user) {
-          console.log('user not found');
+          console.log('user not found 2');
           res.redirect('/error_404');
           //return done(null, false, {message: "No such user"})
         }
 
         console.log('success in finding user');
+
         res.sendFile(path.join(__dirname,'..','public','Account','viewusers.html'));
 
         //return done(null, user);
       }).catch((err)=>{
-        console('user not found');
+        console.log('user not found due to error 2');
         res.redirect('/error_404');
         //return done(err);
       })
@@ -67,38 +70,42 @@ route.get('/:username',(req,res,next)=>{
       
 })
 
-route.get('/other_user/get_details/:username',(req,res,next)=>{
+route.post('/other_user/get_details',(req,res,next)=>{
+  
+  User.findOne({
+    where: {
+      username: req.body.otheruser
+    }
+  }).then((user)=>{
+    if (!user) {
+      console.log('user not found 2');
+      res.redirect('/error_404');
+      //return done(null, false, {message: "No such user"})
+    }
 
-    console.log('finding user');
-      User.findOne({
-        where: {
-          username: req.params.username
-        }
-      }).then((user)=>{
-        if (!user) {
-          console.log('user not found');
-          res.redirect('/error_404');
-          //return done(null, false, {message: "No such user"})
-        }
+    console.log('success in finding user');
 
-        console.log('success in finding user');
-        return res.send({
-            username: user.username,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            email_id: user.email_id,
-            mobile_number: user.mobile_number,
-            DOB: user.DOB,
-            gender: user.gender,
-            profile_picture: user.profile_picture
-        });
+    view_other_user= {
+      username: user.username,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email_id: user.email_id,
+      mobile_number: user.mobile_number,
+      DOB: user.DOB,
+      gender: user.gender,
+      profile_picture: user.profile_picture
+  };
 
-        //return done(null, user)
-      }).catch((err)=>{
-        console('user not found');
-        res.redirect('/error_404');
-        //return done(err);
-      })
+  res.send(view_other_user);
+
+    //return done(null, user);
+  }).catch((err)=>{
+    console.log('user not found due to error 2');
+    res.redirect('/error_404');
+    //return done(err);
+  })
+
+
 })
 
 
