@@ -31,6 +31,10 @@
                 }
             }
           });
+
+          $(this).on('change paste', function() {
+            hideValidate(this);
+          })
     });
 
 

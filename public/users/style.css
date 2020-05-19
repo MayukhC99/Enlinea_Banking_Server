@@ -3,7 +3,7 @@
     color: white;
     height: 50px;
     z-index: 1000;
-    width: 50vw;
+    width: 70vw;
 }
 
 .heading{
@@ -14,6 +14,42 @@
 }
 
 .add_user{
-    width: 50vw;
+    width: 70vw;
     box-shadow: 0 10px 25px rgba(252, 167, 56, 0.979);
+}
+
+.user{
+    width: 70vw;
+}
+
+.active_users, .deactivated_users{
+    cursor: pointer;
+    font-weight: 500;
+    font-size: large;
+    text-align: center;
+    padding-top: 5px;
+    height: 40px;
+}
+
+#check1:checked ~ .active_users{
+    background-color: rgba(22, 247, 15, 0.979);
+}
+
+#check1:checked ~ .deactivated_users{
+    background-color: rgba(190, 184, 177, 0.979);
+    color: white;
+}
+
+#check2:checked ~ .deactivated_users{
+    background-color: rgba(248, 9, 9, 0.979);
+    color: white;
+}
+
+#check2:checked ~ .active_users{
+    background-color: rgba(190, 184, 177, 0.979);
+    color: white;
+}
+
+#check1, #check2{
+    display: none;
 }
