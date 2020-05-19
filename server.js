@@ -23,7 +23,6 @@ app.use('/root',require('./route/root').route);
 app.use('/homepage',require('./route/homepage').route);
 app.use('/account_user',require('./route/account_user').route);
 app.use((req,res)=>{
-    console.log('404 Error')
     res.sendFile(path.join(__dirname,'public','error','index.html'));
 })
 

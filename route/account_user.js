@@ -12,7 +12,6 @@ route.get('/:username',(req,res,next)=>{
     if(req.user){
 
       if(req.user.username == req.params.username){
-        
         res.sendFile(path.join(__dirname,'..','public','Account','index.html'));
 
       } else {

@@ -11,16 +11,31 @@
     <title>View Users</title>
 </head>
 <body>
+    <div class="container user">
+        <div class="row">
+            <input type="checkbox" id="check1" checked>
+            <input type="checkbox" id="check2">
+            <div class="col-6 active_users">
+                <label class="checking1" style="cursor: pointer;">Active Users</label>
+            </div>
+            <div class="col-6 deactivated_users">
+                <label class="checking2" style="cursor: pointer;">Deactivated Users</label>
+            </div>
+        </div>
+    </div>
     <div class="container head">
         <div class="row head">
-            <div class="col-4 heading">
+            <div class="col-3 heading">
                 <label>Profile Picture</label>
             </div>
-            <div class="col-4 heading">
+            <div class="col-3 heading">
                 <label>Username</label>
             </div>
-            <div class="col-4 heading">
+            <div class="col-3 heading">
                 <label>Name</label>
+            </div>
+            <div class="col-3 heading">
+                <label>Deactivate/Delete</label>
             </div>
         </div>
     </div>

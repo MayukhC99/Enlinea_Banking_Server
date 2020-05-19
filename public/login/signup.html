@@ -45,17 +45,17 @@
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
-					<input class="input100" type="text" name="username" placeholder="username or email" id="username" onchange="change()" required>
+					<input class="input100" type="text" name="username" placeholder="username or email" id="username" required>
 					<span class="focus-input100"></span>
 				</div>
 
                 <div class="wrap-input100 validate-input m-b-20" data-validate="Enter First Name">
-					<input class="input100" type="text" name="first_name" placeholder="First Name" id="first_name" onchange="change()" required>
+					<input class="input100" type="text" name="first_name" placeholder="First Name" id="first_name" required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter Last Name">
-					<input class="input100" type="text" name="last_name" placeholder="Last Name" id="last_name" onchange="change()" required>
+					<input class="input100" type="text" name="last_name" placeholder="Last Name" id="last_name" required>
 					<span class="focus-input100"></span>
                 </div>
 
@@ -117,17 +117,6 @@
 	<script src="./vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 <script type="text/javascript" src="./js/main.js"></script>
-<script>
-	var input = $('.validate-input .input100');
-	function change(){
-		hideValidate('.validate-input .input100');
-	}
-	function hideValidate(input) {
-		var thisAlert = $(input).parent();
-		$(thisAlert).removeClass('alert-validate');
-		$(thisAlert).find('.btn-hide-validate').remove();
-	}
-</script>
 
 </body>
 </html>
