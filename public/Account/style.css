@@ -224,3 +224,14 @@ input::-webkit-inner-spin-button {
 .add_friend{
     margin-left: 44%;
 }
+
+#accountcontainer{
+    background: white;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(250, 247, 249, 0.5);
+    display: none;
+}
+
+#tog{
+    cursor: pointer;
+}
