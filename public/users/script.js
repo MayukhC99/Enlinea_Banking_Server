@@ -21,15 +21,15 @@ $(document).ready(function(){
         let total = data.length;
         let str = '';
         for(let i = 0; i < total; i++){
-            let add_user = `<div class="row" style="height: 120px;padding-top: 10px;">
+            let add_user = `<div class="row add add${(i+1)}" style="height: 120px;padding-top: 10px;">
                 <div class="col-3">
                     <div style="width: 100px;height: 100px;border-radius: 50px;margin-left: 30%;overflow: hidden;">
                         <label id="theImageContainer">
-                            <img id="user" src="../uploads/${data[i].profile_picture}" width="100px", height="100px">
+                            <img src="../uploads/${data[i].profile_picture}" width="100px", height="100px">
                         </label>
                     </div>
                 </div>
-                <div class="col-3" style="text-align: center;overflow: hidden;word-break: break-all;">
+                <div class="col-3 username" style="text-align: center;overflow: hidden;word-break: break-all;">
                     <h3>${data[i].username}</h3>
                 </div>
                 <div class="col-3" style="text-align: center;overflow: hidden;word-break: break-all;">
@@ -46,4 +46,13 @@ $(document).ready(function(){
 
         $(".add_user").html(str);
     })
+
+    $(document).on('click', '.add', function(){
+        var class_name = $(this).attr("class");
+        var one = class_name.split(' ')[2];
+        var space = $("." + one + " .username").text();
+        var username = $.trim(space);
+        console.log(username);
+        window.location = `/account_user/${username}`;
+    });
 });

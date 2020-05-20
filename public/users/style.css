@@ -22,6 +22,11 @@
     width: 70vw;
 }
 
+.add:hover{
+    background-color: rgba(236, 231, 225, 0.979);
+    cursor: pointer;
+}
+
 .active_users, .deactivated_users{
     cursor: pointer;
     font-weight: 500;
