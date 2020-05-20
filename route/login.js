@@ -25,7 +25,7 @@ route.get('/success',(req,res)=>{
         where: {
           username: req.user.dataValues.username
         }
-    }).then((account_user){
+    }).then((account_user)=>{
         if(!account_user){
           console.log('user not found');
           res.send(undefined);
@@ -33,7 +33,7 @@ route.get('/success',(req,res)=>{
 
         if(account_user.status=="deactive"){
           console.log("The account has been deactivated by the admin");
-          req.user= undefined;
+          req.logout(); //logging out user if deactivated
           res.send({message: "deactive"});
         } else {
           console.log("The account is active");

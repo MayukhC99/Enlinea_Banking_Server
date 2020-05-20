@@ -48,7 +48,7 @@ passport.use(new LocalStrategy(
           where: {
             username: username
           }
-        }).then((account_user){
+        }).then((account_user)=>{
           if(!account_user){
             console.log('user not found');
             return done(null, false, {message: "No such user"});

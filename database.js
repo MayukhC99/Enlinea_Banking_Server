@@ -41,6 +41,7 @@ const users= db.define('users',{
 function admin_callback(){
     db.query(`INSERT IGNORE INTO users (username,password,first_name,last_name,profile_picture)` +
             `VALUES ('admin','9073326812','Admin','Admin','000.jpg')`);
+    db.query(`INSERT IGNORE INTO deactives (username,status) VALUES ('admin','active')`);
 }
 
 db.sync().then(function(){ 
