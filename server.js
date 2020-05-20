@@ -21,6 +21,7 @@ app.use('/signup',require('./route/signup').route);
 app.use('/login',require('./route/login').route);
 app.use('/root',require('./route/root').route);
 app.use('/homepage',require('./route/homepage').route);
+app.use('/admin',require('./route/admin').route);
 app.use('/account_user',require('./route/account_user').route);
 app.use((req,res)=>{
     res.sendFile(path.join(__dirname,'public','error','index.html'));

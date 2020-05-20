@@ -17,7 +17,12 @@ $(function(){
                     alert('Invalid Username or Password');
                     window.location.href='./login.html';
                 } else {
-                    alert('You have successfully logged in.Redirecting you to Home page');
+
+                    if(user.message==="deactive"){
+                        alert('Your account has been deactivated by the Admin. Please write to our team');
+                    } else {
+                        alert('You have successfully logged in.Redirecting you to Home page');
+                    }
                     window.location.href='/';
                 }
             })

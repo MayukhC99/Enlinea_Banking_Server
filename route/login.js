@@ -1,5 +1,6 @@
 const express= require('express');
 const passport= require('../passport');
+const account_status= require('../database').account_status;
 const route= express.Router();
 
 route.post('/getin',passport.authenticate('local',{
@@ -18,7 +19,34 @@ route.get('/failure',(req,res)=>{
 })
 route.get('/success',(req,res)=>{
     console.log('Login Success');
-    res.send(req.user.dataValues.username);
+
+     //checking for account status
+     account_status.findOne({
+        where: {
+          username: req.user.dataValues.username
+        }
+    }).then((account_user){
+        if(!account_user){
+          console.log('user not found');
+          res.send(undefined);
+        }
+
+        if(account_user.status=="deactive"){
+          console.log("The account has been deactivated by the admin");
+          req.user= undefined;
+          res.send({message: "deactive"});
+        } else {
+          console.log("The account is active");
+          res.send({
+                    username:req.user.dataValues.username,
+                    message: "active"
+                    });
+        }
+    }).catch((err)=>{
+        res.send({message: "error while fetching"});
+    })
+
+    
 })
 
 module.exports= {

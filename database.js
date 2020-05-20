@@ -3,12 +3,21 @@ const sequelize= require('sequelize');
 const db= new sequelize(
     'enlinea',
     'root',
-    'sirsrt',
+    'admin',
     {
         dialect: 'mysql',
         host: 'localhost'
     }
 )
+
+const account_status= db.define('deactive',{
+    username: {
+        type: sequelize.STRING,
+        allowNull: false,
+        unique: true
+    },
+    status: sequelize.STRING
+})
 
 const users= db.define('users',{
     username: {
@@ -43,5 +52,6 @@ db.sync().then(function(){
 
 module.exports = {
     db,
-    users
+    users,
+    account_status
 };
