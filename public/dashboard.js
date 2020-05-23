@@ -5,7 +5,8 @@ $(function(){
     <ul style="padding-left: 0;">
       <li><a href="./Account/"><i class="fas fa-user-circle"></i>Account</a></li>
       <li><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-      <li><a href="./error/"><i class="fas fa-bullhorn"></i>Send Notifications</a></li>
+      <li><a href="./notifications/index.html"><i class="fas fa-bullhorn"></i>Send Notifications</a></li>
+      <li><a href="./error/"><i class="fas fa-bullhorn"></i>Received Notifications</a></li>
       <li><a href="./users/index.html"><i class="fas fa-users"></i></i>View Users</a></li>
       <li><a href="./error/"><i class="fas fa-sliders-h"></i>Services</a></li>
       <li><a href="#contact"><i class="far fa-envelope"></i>Contact Us</a></li>
