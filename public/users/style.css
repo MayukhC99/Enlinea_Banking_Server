@@ -58,3 +58,12 @@
 #check1, #check2{
     display: none;
 }
+
+.page-item{
+    cursor: pointer;
+}
+
+.disabled{
+    pointer-events:none;
+    opacity:0.9;
+}

@@ -12,6 +12,13 @@
 </head>
 
 <body class="container">
+    <div class="row ellipsis" style="left: 96%;position: fixed;">
+        <i class="fas fa-ellipsis-v" id="tog"></i>
+        <div class="mt-5" id="accountcontainer" style="margin-left: -90%;">
+            <button class="btn col-12" style="height: 30px; text-align: left;">Report User</button>
+            <button class="btn mb-2 col-12" style="height: 30px; text-align: left;">Block</button>
+        </div>
+    </div>
     <form id="theImageForm" method="get" action="/root/get/profile_picture">
         <label id="theImageContainer">
             <img id="user" src="" width="250px", height="250px">
@@ -21,15 +28,8 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-8">
+            <div class="col-12">
                 <button class="btn btn-primary add_friend"><span><i class="fas fa-user-plus"></i></span>Add Friend</button>
-            </div>
-            <div class="col-4">
-                <i class="fas fa-ellipsis-h fa-3x" id="tog"></i>
-                <div id="accountcontainer">
-                    <button class="btn" style="height: 30px; text-align: left;">Report User</button>
-                    <button class="btn" style="height: 30px; text-align: left;">Block</button>
-                </div>
             </div>
         </div>
     </div>
