@@ -18,6 +18,7 @@ $(function(){
                     window.location.href='./login.html';
                 } else {
 
+                    console.log("Details about account "+user.message);
                     if(user.message==="deactive"){
                         alert('Your account has been deactivated by the Admin. Please write to our team');
                     } else {
