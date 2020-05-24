@@ -38,6 +38,19 @@ const users= db.define('users',{
     profile_picture: sequelize.STRING
 });
 
+//table for friend list records
+const friends= db.define('friends',{
+    username: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    requested_user: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    status: sequelize.STRING
+})
+
 function admin_callback(){
     db.query(`INSERT IGNORE INTO users (username,password,first_name,last_name,profile_picture)` +
             `VALUES ('admin','9073326812','Admin','Admin','000.jpg')`);
