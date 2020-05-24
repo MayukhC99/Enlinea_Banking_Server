@@ -67,5 +67,6 @@ db.sync().then(function(){
 module.exports = {
     db,
     users,
-    account_status
+    account_status,
+    friends
 };
