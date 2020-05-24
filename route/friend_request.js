@@ -45,11 +45,17 @@ route.post('/request',(req,res)=>{
             }
 
             console.log('friend request successfully sent');
-            res.send(user);
             console.log('sending notification to requested user');
-
+            
             //send notification to requested user
+            notification.create({
+                username: req.body.username,
+                from: req.user.username,
+                subject: "Friend Request",
+                msg: `<a href="/friend_request/accept/${req.user.username}">Accept</a> or <a href="/friend_request/reject/${req.user.username}">Reject</a>`
+            })
 
+            res.send(user);
 
         }).catch((err)=>{
 
