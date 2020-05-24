@@ -55,6 +55,9 @@ route.post('/request',(req,res)=>{
                 msg: `<a href="/friend_request/accept/${req.user.username}">Accept</a> or <a href="/friend_request/reject/${req.user.username}">Reject</a>`
             })
 
+            //use socket to send live notification to online users
+            //code here
+
             res.send(user);
 
         }).catch((err)=>{
@@ -71,6 +74,7 @@ route.post('/request',(req,res)=>{
 route.get('/accept/:username',(req,res)=>{
     if(req.user && req.user.message != "deactivated"){
 
+        console.log('accepting friend request if possbile');
         friends.findOne({
             where: {
                 username: req.params.username,
@@ -86,8 +90,46 @@ route.get('/accept/:username',(req,res)=>{
             if(user.status=="pending"){
                 
                 friends.update({
-                    status: accepted
+                    status: "accepted"
                 }, {
+                    where: {
+                        username: req.params.username,
+                        requested_user: req.user.username
+                    }
+                }).catch((err)=>{
+                    console.log(err);
+                    res.redirect('back');
+                })
+            }
+
+            res.redirect('back');
+        })
+
+    } else {
+        res.sendFile(path.join(__dirname,'..','public','login','login.html'));
+    }
+})
+
+
+route.get('/reject/:username',(req,res)=>{
+    if(req.user && req.user.message != "deactivated"){
+
+        console.log('rejecting friend request if possible');
+        friends.findOne({
+            where: {
+                username: req.params.username,
+                requested_user: req.user.username
+            }
+        }).then((user)=>{
+
+            if(!user){
+                console.log('No friend request');
+                res.redirect('back');
+            }
+
+            if(user.status=="pending"){
+                
+                friends.destroy({
                     where: {
                         username: req.params.username,
                         requested_user: req.user.username
