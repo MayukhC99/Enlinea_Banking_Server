@@ -10,6 +10,7 @@ const db= new sequelize(
     }
 )
 
+//account status table
 const account_status= db.define('deactive',{
     username: {
         type: sequelize.STRING,
@@ -19,6 +20,7 @@ const account_status= db.define('deactive',{
     status: sequelize.STRING
 })
 
+//table to store user details
 const users= db.define('users',{
     username: {
         type: sequelize.STRING,
@@ -38,6 +40,30 @@ const users= db.define('users',{
     profile_picture: sequelize.STRING
 });
 
+//table for friend list records
+const friends= db.define('friends',{
+    username: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    requested_user: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    status: sequelize.STRING
+})
+
+//notification table
+const notification= db.define('notification',{
+    username: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    from: sequelize.STRING,
+    subject: sequelize.STRING,
+    msg: sequelize.STRING
+})
+
 function admin_callback(){
     db.query(`INSERT IGNORE INTO users (username,password,first_name,last_name,profile_picture)` +
             `VALUES ('admin','9073326812','Admin','Admin','000.jpg')`);
@@ -54,5 +80,7 @@ db.sync().then(function(){
 module.exports = {
     db,
     users,
-    account_status
+    account_status,
+    friends,
+    notification
 };
