@@ -46,7 +46,7 @@ route.post('/request',(req,res)=>{
 
             console.log('friend request successfully sent');
             console.log('sending notification to requested user');
-            
+
             //send notification to requested user
             notification.create({
                 username: req.body.username,
@@ -61,6 +61,44 @@ route.post('/request',(req,res)=>{
 
             console.log(err);
             res.send(undefined);
+        })
+
+    } else {
+        res.sendFile(path.join(__dirname,'..','public','login','login.html'));
+    }
+})
+
+route.get('/accept/:username',(req,res)=>{
+    if(req.user && req.user.message != "deactivated"){
+
+        friends.findOne({
+            where: {
+                username: req.params.username,
+                requested_user: req.user.username
+            }
+        }).then((user)=>{
+
+            if(!user){
+                console.log('No friend request');
+                res.redirect('back');
+            }
+
+            if(user.status=="pending"){
+                
+                friends.update({
+                    status: accepted
+                }, {
+                    where: {
+                        username: req.params.username,
+                        requested_user: req.user.username
+                    }
+                }).catch((err)=>{
+                    console.log(err);
+                    res.redirect('back');
+                })
+            }
+
+            res.redirect('back');
         })
 
     } else {
