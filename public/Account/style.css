@@ -225,11 +225,53 @@ input::-webkit-inner-spin-button {
     margin-left: 44%;
 }
 
+.sent_friend_request{
+    margin-left: 41%;
+    /* pointer-events: none; */
+}
+
+.sent_friend_request:hover{
+    background: ivory;
+    color: black;
+}
+
+.friend{
+    margin-left: 45%;
+    /* pointer-events: none; */
+}
+
+.friend:hover{
+    background: ivory;
+    color: black;
+}
+
+.unfriend{
+    margin-left: 50%;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+}
+
+.cancel_friend_request{
+    margin-left: 41%;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+}
+
 #accountcontainer{
     background: white;
     width: 200px;
     box-shadow: 0 5px 15px rgba(250, 247, 249, 0.5);
     display: none;
+}
+
+#accept{
+    margin-left: 40%;
+}
+
+#reject:hover{
+    background: red;
 }
 
 #tog{

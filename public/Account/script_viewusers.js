@@ -13,11 +13,91 @@ $(function(){
         image.attr('src', `../uploads/${data.profile_picture}`);
     })
 
-    // $("#accountcontainer").hide();
+    $.post('/friend_request/status',{username: username},(data) => {
+        let str = '';
+        if(data.status === "pending"){
+            if(username === data.requested_user){
+                str = `<div class="col-12">
+                    <button class="btn btn-light sent_friend_request" id="sent_friend_request"><span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Friend Request Sent</button>
+                </div>
+                <button class="cancel_friend_request" id="cancel_friend_request" style="display: none;">Cancel Request</button>`;
+                $(".status").html(str);
+            }
+            else{
+                str = `<button class="btn btn-primary" id="accept">Accept</button>
+                    <button class="btn btn-danger offset-1" id="reject">Reject</button>`;
+                $(".status").html(str);
+            }
+        }
+        else if(data.status === "accepted"){
+            str = `<div class="col-12">
+                <button class="btn btn-light friend" id="friend"><span><i class="fas fa-check"></i></span> Friends</button>
+            </div>
+            <button class="unfriend" id="unfriend" style="display: none;">Unfriend</button>`;
+            $(".status").html(str);
+        }
+    })
+
+    $(".add_friend").on('click', function(){
+        $.post('/friend_request/request',{username: username},(data) => {
+            if(data.status === "pending"){
+                str = `<div class="col-12">
+                    <button class="btn btn-light sent_friend_request" id="sent_friend_request"><span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Friend Request Sent</button>
+                </div>
+                <button class="cancel_friend_request" id="cancel_friend_request" style="display: none;">Cancel Request</button>`;
+                $(".status").html(str);
+            }
+            else{
+                window.location = '../login/login.html';
+            }
+        })
+    })
 
     $(".ellipsis").hover(function(){
         $(".fa-ellipsis-v").toggleClass("fa-2x");
         $("#accountcontainer").toggle();
 
+    })
+
+    $(document).on('click', function(e){
+        console.log(e.target.id);
+        if(e.target.id === "friend"){
+            $(".unfriend").toggle();
+        }
+        else{
+            $(".unfriend").hide();
+        }
+
+        if(e.target.id === "sent_friend_request"){
+            $(".cancel_friend_request").toggle();
+        }
+        else{
+            $(".cancel_friend_request").hide();
+        }
+
+        if(e.target.id === "accept" || e.target.id === "reject"){
+            let response = e.target.id;
+            $.get(`/friend_request/${response}/${username}`, (data) => {
+                if(data === "success"){
+                    setTimeout(location.reload.bind(location), 500);
+                }
+            })
+        }
+
+        if(e.target.id === "unfriend"){
+            $.get(`/friend_request/unfriend/${username}`, (data) => {
+                if(data === "success"){
+                    setTimeout(location.reload.bind(location), 200);
+                }
+            })
+        }
+
+        if(e.target.id === "cancel_friend_request"){
+            $.get(`/friend_request/reject/${username}`, (data) => {
+                if(data === "success"){
+                    setTimeout(location.reload.bind(location), 200);
+                }
+            })
+        }
     })
 })

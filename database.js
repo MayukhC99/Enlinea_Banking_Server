@@ -1,9 +1,10 @@
 const sequelize= require('sequelize');
+const Op = sequelize.Op;
 
 const db= new sequelize(
     'enlinea',
     'root',
-    'admin',
+    'sirsrt',
     {
         dialect: 'mysql',
         host: 'localhost'
@@ -78,6 +79,7 @@ db.sync().then(function(){
 
 
 module.exports = {
+    Op,
     db,
     users,
     account_status,
