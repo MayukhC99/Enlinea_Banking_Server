@@ -3,7 +3,7 @@ const db= require('../database').db;
 const notification= require('../database').notification;
 const route= express.Router();
 
-route.get('/notification/getall',(req,res)=>{
+route.get('/getall',(req,res)=>{
     if(req.user && req.user.message != "deactivated"){
         console.log("Getting all notifications");
         notification.findAll({
