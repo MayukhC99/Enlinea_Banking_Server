@@ -15,7 +15,7 @@ $(function(){
             },function(user){
                 if(!user){
                     alert('Invalid Username or Password');
-                    window.location.href='./login.html';
+                    window.location.reload(true);
                 } else {
 
                     console.log("Details about account "+user.message);
