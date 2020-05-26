@@ -25,7 +25,7 @@ $(document).ready(function(){
         $("#Message").prop('disabled', true);
     })
 
-    $.get('/friend_request/notification', (data) => {
+    $.get('/notification/getall', (data) => {
         let str = '';
         if(data === "No notification"){
             str = str + `<div class="row">No Notification Found</div>`;
