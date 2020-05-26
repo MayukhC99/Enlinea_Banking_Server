@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use(express_sessions({
-    secret: 'SachinTendulkarIsTheBestBatsmanOfAllTime'
+    secret: 'SachinTendulkarIsTheGreatestBatsmanOfAllTime'
 }));
 app.use(passport.initialize());
 app.use(passport.session());
