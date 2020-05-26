@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 const server= http.createServer(app);
 const io= socketio(server);
 
-app.set("io",io); //now we can access io in routes using app.get
+app.set("socket_io",io); //now we can access io in routes using app.get
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -35,7 +35,7 @@ app.use((req,res)=>{
     res.sendFile(path.join(__dirname,'public','error','index.html'));
 })
 
-app.listen(port,()=>{console.log('Hosted on http://localhost:3000 ')});
+server.listen(port,()=>{console.log('Hosted on http://localhost:3000 ')});
 
 module.exports={
     app

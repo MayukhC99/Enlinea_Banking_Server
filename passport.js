@@ -2,6 +2,8 @@ const passport= require('passport');
 const LocalStrategy= require('passport-local').Strategy;
 const User= require('./database').users;
 const account_status= require('./database').account_status;
+const events= require('events');
+const EventEmitter= new events.EventEmitter();
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
@@ -62,6 +64,8 @@ passport.use(new LocalStrategy(
             return done(null,{message: "deactivated"});
           } else {
             console.log("The account is active");
+
+            EventEmitter.emit("user_login",{username: user.username}); //socket call
             return done(null, user);
           }
         }).catch((err)=>{
@@ -73,4 +77,7 @@ passport.use(new LocalStrategy(
     })
   });
 
-  module.exports= passport;
+  module.exports= {
+    passport,
+    EventEmitter
+  };
