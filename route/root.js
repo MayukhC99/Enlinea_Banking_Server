@@ -126,7 +126,7 @@ route.post('/change/password',(req,res)=>{
 
 //verify existance of a user or admin
 route.get('/verify_user',(req,res)=>{
-    console.log('Verifying User '+req.user.username);
+    //console.log('Verifying User '+req.user.username);
     if (req.user){
         if(req.user.dataValues.username === "admin"){
             console.log('Admin');

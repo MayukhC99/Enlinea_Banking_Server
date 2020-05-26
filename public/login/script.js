@@ -1,9 +1,8 @@
 
-let socket= io();
-
 $(function(){
     
     $("#login_btn").click(function(){
+        console.log("Login button clicked")
         let user_text= $('#username');
         let user_password= $('#password')
 

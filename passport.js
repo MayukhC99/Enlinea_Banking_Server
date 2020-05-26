@@ -62,12 +62,12 @@ passport.use(new LocalStrategy(
           if(account_user.status=="deactive"){
             console.log("The account has been deactivated by the admin(deserialize call)");
 
-            EventEmitter.emit("user_logout",{username: user.username}); //event call
+            EventEmitter.emit("user_logout",{username: username}); //event call
             return done(null,{message: "deactivated",});
           } else {
             console.log("The account is active");
 
-            EventEmitter.emit("user_login",{username: user.username}); //event call
+            EventEmitter.emit("user_login",{username: username}); //event call
             return done(null, user);
           }
         }).catch((err)=>{

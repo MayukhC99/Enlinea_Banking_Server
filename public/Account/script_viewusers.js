@@ -103,7 +103,10 @@ $(function(){
         }
     })
 
+    socket.emit("check_isOnline",{username: username});
+
     socket.on("isOnline",(data)=>{
         //display user status as Online or Offline
+        alert(data.status);
     })
 })

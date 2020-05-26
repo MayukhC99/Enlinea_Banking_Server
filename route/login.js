@@ -1,5 +1,5 @@
 const express= require('express');
-const passport= require('../passport');
+const passport= require('../passport').passport;
 const account_status= require('../database').account_status;
 const passportEmitter= require('../passport').EventEmitter;
 const route= express.Router();
