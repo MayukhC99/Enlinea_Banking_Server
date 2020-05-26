@@ -43,7 +43,7 @@ passport.use(new LocalStrategy(
           return done(new Error('No such user'));
         }
 
-        console.log("sending to login.js (from seserialize call)");
+        console.log("sending to login.js (from deserialize call)");
         //return done(null,user);
         
         //checking for account status

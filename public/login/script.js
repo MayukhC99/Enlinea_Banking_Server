@@ -24,7 +24,7 @@ $(function(){
                     } else {
                         alert('You have successfully logged in.Redirecting you to Home page');
                     }
-                    window.location.href='/';
+                    window.location.assign('/');
                 }
             })
         }
