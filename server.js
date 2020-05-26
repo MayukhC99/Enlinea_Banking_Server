@@ -2,9 +2,15 @@ const express = require('express');
 const express_sessions = require('express-session');
 const passport= require('./passport');
 const path= require('path');
+const http= require('http');
+const socketio= require('socket.io');   
 
 const app= express();
 const port = process.env.PORT || 3000;
+const server= http.createServer(app);
+const io= socketio(server);
+
+app.set("io",io); //now we can access io in routes using app.get
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
