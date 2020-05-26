@@ -1,4 +1,5 @@
 const express= require('express');
+const Op = require('../database').Op;
 const db= require('../database').db;
 const users= require('../database').users;
 const friends= require('../database').friends;
@@ -12,18 +13,22 @@ route.post('/status',(req,res)=>{
 
         friends.findOne({
             where: {
-                username: req.user.username,
-                requested_user: req.body.username
+                username: {
+                    [Op.or]: [req.body.username, req.user.username]
+                },
+                requested_user: {
+                    [Op.or]: [req.body.username, req.user.username]
+                }
             }
         }).then((user)=>{
-            
+
             if(!user){
                 console.log('requested user for friend request status, not found');
                 res.send(undefined); //if no friend request has been sent yet
+            }else{
+                console.log('requested user for friend request status, found');
+                res.send(user); // sending friend request status such as pending or accepted
             }
-
-            console.log('requested user for friend request status, found');
-            res.send(user); // sending friend request status such as pending or accepted
         })
 
     } else {
@@ -38,7 +43,7 @@ route.post('/request',(req,res)=>{
         friends.create({
             username: req.user.username,
             requested_user: req.body.username,
-            status: pending
+            status: "pending"
         }).then((user)=>{
             if (!user){
                 res.send(undefined);
@@ -52,7 +57,8 @@ route.post('/request',(req,res)=>{
                 username: req.body.username,
                 from: req.user.username,
                 subject: "Friend Request",
-                msg: `<a href="/friend_request/accept/${req.user.username}">Accept</a> or <a href="/friend_request/reject/${req.user.username}">Reject</a>`
+                //msg: `<a href="/friend_request/accept/${req.user.username}">Accept</a> or <a href="/friend_request/reject/${req.user.username}">Reject</a>`
+                msg: "Accept or Reject"
             })
 
             //use socket to send live notification to online users
@@ -74,11 +80,15 @@ route.post('/request',(req,res)=>{
 route.get('/accept/:username',(req,res)=>{
     if(req.user && req.user.message != "deactivated"){
 
-        console.log('accepting friend request if possbile');
+        console.log('accepting friend request if possible');
         friends.findOne({
             where: {
-                username: req.params.username,
-                requested_user: req.user.username
+                username: {
+                    [Op.or]: [req.params.username, req.user.username]
+                },
+                requested_user: {
+                    [Op.or]: [req.params.username, req.user.username]
+                }
             }
         }).then((user)=>{
 
@@ -88,13 +98,32 @@ route.get('/accept/:username',(req,res)=>{
             }
 
             if(user.status=="pending"){
-                
+
                 friends.update({
                     status: "accepted"
                 }, {
                     where: {
-                        username: req.params.username,
-                        requested_user: req.user.username
+                        username: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        },
+                        requested_user: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        }
+                    }
+                }).catch((err)=>{
+                    console.log(err);
+                    res.redirect('back');
+                })
+
+                notification.destroy({
+                    where: {
+                        username: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        },
+                        from: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        },
+                        subject: "Friend Request"
                     }
                 }).catch((err)=>{
                     console.log(err);
@@ -102,7 +131,7 @@ route.get('/accept/:username',(req,res)=>{
                 })
             }
 
-            res.redirect('back');
+            res.send('success');
         })
 
     } else {
@@ -117,8 +146,12 @@ route.get('/reject/:username',(req,res)=>{
         console.log('rejecting friend request if possible');
         friends.findOne({
             where: {
-                username: req.params.username,
-                requested_user: req.user.username
+                username: {
+                    [Op.or]: [req.params.username, req.user.username]
+                },
+                requested_user: {
+                    [Op.or]: [req.params.username, req.user.username]
+                }
             }
         }).then((user)=>{
 
@@ -128,11 +161,30 @@ route.get('/reject/:username',(req,res)=>{
             }
 
             if(user.status=="pending"){
-                
+
                 friends.destroy({
                     where: {
-                        username: req.params.username,
-                        requested_user: req.user.username
+                        username: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        },
+                        requested_user: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        }
+                    }
+                }).catch((err)=>{
+                    console.log(err);
+                    res.redirect('back');
+                })
+
+                notification.destroy({
+                    where: {
+                        username: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        },
+                        from: {
+                            [Op.or]: [req.params.username, req.user.username]
+                        },
+                        subject: "Friend Request"
                     }
                 }).catch((err)=>{
                     console.log(err);
@@ -140,11 +192,72 @@ route.get('/reject/:username',(req,res)=>{
                 })
             }
 
-            res.redirect('back');
+            res.send('success');
         })
 
     } else {
         res.sendFile(path.join(__dirname,'..','public','login','login.html'));
+    }
+})
+
+route.get('/unfriend/:username',(req,res)=>{
+
+    console.log('unfriend user if possible');
+    friends.findOne({
+        where: {
+            username: {
+                [Op.or]: [req.params.username, req.user.username]
+            },
+            requested_user: {
+                [Op.or]: [req.params.username, req.user.username]
+            }
+        }
+    }).then((user)=>{
+
+        if(!user){
+            console.log('No friend request');
+            res.redirect('back');
+        }
+
+        if(user.status=="accepted"){
+
+            friends.destroy({
+                where: {
+                    username: {
+                        [Op.or]: [req.params.username, req.user.username]
+                    },
+                    requested_user: {
+                        [Op.or]: [req.params.username, req.user.username]
+                    }
+                }
+            }).catch((err)=>{
+                console.log(err);
+                res.redirect('back');
+            })
+        }
+
+        res.send('success');
+    })
+})
+
+route.get('/notification',(req,res)=>{
+    if(req.user && req.user.message != "deactivated"){
+        console.log("Getting all notifications");
+        notification.findAll({
+            where: {
+                username: req.user.username
+            }
+        }).then((user)=>{
+
+            if(user.length === 0){
+                console.log('No notification found');
+                res.send('No notification');
+            }
+            else {
+                console.log("Notification found");
+                res.send(user);
+            }
+        })
     }
 })
 
