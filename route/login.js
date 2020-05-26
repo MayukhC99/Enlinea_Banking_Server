@@ -1,6 +1,7 @@
 const express= require('express');
 const passport= require('../passport');
 const account_status= require('../database').account_status;
+const passportEmitter= require('../passport').EventEmitter;
 const route= express.Router();
 
 route.post('/getin',passport.authenticate('local',{
@@ -9,6 +10,8 @@ route.post('/getin',passport.authenticate('local',{
 }));
 
 route.get('/logout',(req,res)=>{
+
+    passportEmitter.emit("user_logout",{username: req.user.username});//emiting when loggedout
     req.logout();
     res.redirect('/');
 })
@@ -22,6 +25,7 @@ route.get('/success',(req,res)=>{
 
     if(req.user.message==="deactivated"){
         console.log("The account has been deactivated by the admin");
+        //passportEmitter.emit("user_logout",{username: req.user.username});//emiting when loggedout
         req.logout(); //logging out user if deactivated
         res.send({message: "deactive"});
     } else {
