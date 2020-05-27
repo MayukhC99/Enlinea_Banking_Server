@@ -35,12 +35,17 @@ body{
     margin-bottom: 25px;
 }
 
-#errorMessage {
+#errorMessage, #offline_status {
     color: red;
 }
 
-#successMessage {
+#successMessage, #online_status {
     color: green;
+}
+
+#offline_status, #online_status{
+    font-weight: 500;
+    font-size: 15px;
 }
 
 #theImageTag {
