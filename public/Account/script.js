@@ -36,7 +36,12 @@ $(function(){
         $("#email_id").val(data.email_id);
         $("#mobile_number").val(data.mobile_number);
         $("#DOB").val(data.DOB);
-        $("#gender").val(data.gender);
+        if(data.gender === null){
+            $("#gender").val("Choose");
+        }
+        else{
+            $("#gender").val(data.gender);
+        }
     });
 })
 
