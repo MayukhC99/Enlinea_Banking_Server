@@ -1,6 +1,8 @@
+
 $(function(){
     
     $("#login_btn").click(function(){
+        console.log("Login button clicked")
         let user_text= $('#username');
         let user_password= $('#password')
 
@@ -15,7 +17,7 @@ $(function(){
             },function(user){
                 if(!user){
                     alert('Invalid Username or Password');
-                    window.location.href='./login.html';
+                    window.location.reload(true);
                 } else {
 
                     console.log("Details about account "+user.message);
@@ -24,7 +26,7 @@ $(function(){
                     } else {
                         alert('You have successfully logged in.Redirecting you to Home page');
                     }
-                    window.location.href='/';
+                    window.location.assign('/');
                 }
             })
         }

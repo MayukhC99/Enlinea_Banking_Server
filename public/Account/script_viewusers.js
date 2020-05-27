@@ -1,4 +1,6 @@
 
+let socket= io();
+
 $(function(){
 
     let name = $('#my_name');
@@ -99,5 +101,12 @@ $(function(){
                 }
             })
         }
+    })
+
+    socket.emit("check_isOnline",{username: username});
+
+    socket.on("isOnline",(data)=>{
+        //display user status as Online or Offline
+        alert(data.status);
     })
 })
