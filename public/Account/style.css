@@ -35,12 +35,17 @@ body{
     margin-bottom: 25px;
 }
 
-#errorMessage {
+#errorMessage, #offline_status {
     color: red;
 }
 
-#successMessage {
+#successMessage, #online_status {
     color: green;
+}
+
+#offline_status, #online_status{
+    font-weight: 500;
+    font-size: 15px;
 }
 
 #theImageTag {
@@ -113,7 +118,11 @@ body{
 }
 
 #right input:focus{
-    border: 2px solid rgb(82, 166, 187);
+    border: 2px solid rgb(123, 187, 247);
+}
+
+#right select:focus{
+    border: 2px solid rgb(123, 187, 247);
 }
 
 input[type=date]::-webkit-inner-spin-button {
