@@ -13,14 +13,14 @@ $(document).ready(function(){
         $(".badge").css({'display': 'none'});
     })
 
-    $.get('/root/notification_details', (data) => {
-        if(data === false){
-            $(".badge").css({'display': 'none'});
-        }
-        else{
-            $(".badge").css({'display': 'inline-block'});
-        }
-    })
+    // $.get('/root/notification_details', (data) => {
+    //     if(data === false){
+    //         $(".badge").css({'display': 'none'});
+    //     }
+    //     else{
+    //         $(".badge").css({'display': 'inline-block'});
+    //     }
+    // })
 
     //this flag is stored for tracking navbar active class
     let prev_nav_flag = $('.navMenu li:first-child a');

@@ -174,11 +174,11 @@ route.get('/all_user_details', (req,res)=>{
 })
 
 //for notification details
-route.get('/notification_details', (req,res) => {
-    if(req.user){
-        res.send(req.user.notification);
-    }
-})
+// route.get('/notification_details', (req,res) => {
+//     if(req.user){
+//         res.send(req.user.notification);
+//     }
+// })
 
 module.exports= {
     route
