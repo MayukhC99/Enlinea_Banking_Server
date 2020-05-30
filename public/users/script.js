@@ -19,9 +19,11 @@ $(document).ready(function(){
         if(active_check.is(":checked")){
             deactivated_check.prop('checked', false);
             $(".add_user").html('');
+            $(".pagination").html('');
             $.get('/admin/activate/display_users', (data) => {
                 let total = data.length;
                 let page = 0;
+                console.log(data);
                 if(total > 0){
                     let str = '';
                     if(total % 5 !== 0){
@@ -31,15 +33,54 @@ $(document).ready(function(){
                     else{
                         page = Math.floor(total / 5);
                     }
-                    if(num === 1)
+                    if(num == 1)
                         str = `<li class="activate-previous disabled"><a class="page-link" aria-disabled="true">Previous</a></li>`;
                     else
                         str = `<li class="page-item activate-previous"><a class="page-link">Previous</a></li>`;
-                    for(let i = 1; i <= page; i++){
-                        let page_link = `<li class="page-item activate" id="${i}"><a class="page-link">${i}</a></li>`;
-                        str = str + page_link;
+                    if(page <= 5){
+                        for(let i = 1; i <= page; i++){
+                            let page_link = `<li class="page-item activate" id="${i}"><a class="page-link">${i}</a></li>`;
+                            str = str + page_link;
+                        }
                     }
-                    if(num === page)
+                    else{
+                        let first_range = parseInt(num);
+                        let last_range = parseInt(page) - parseInt(num);
+                        let note = parseInt(num) + 3;
+                        let first_link = '';
+                        let last_link = '';
+                        if(first_range <= 2){
+                            for(let i = 1; i <= 4; i++){
+                                let page_link = `<li class="page-item activate" id="${i}"><a class="page-link">${i}</a></li>`;
+                                str = str + page_link;
+                            }
+                            last_link = `<li class="activate-next disabled"><a class="page-link" aria-disabled="true">...</a></li>
+                                <li class="page-item activate" id="${page}"><a class="page-link">${page}</a></li>`;
+                            str = str + last_link;
+                        }
+                        else{
+                            first_link = `<li class="page-item activate" id="1"><a class="page-link">1</a></li>
+                                <li class="activate-next disabled"><a class="page-link" aria-disabled="true">...</a></li>`;
+                            str = str + first_link;
+                        }
+                        if(first_range > 2 && last_range >= 5){
+                            for(let i = num; i <= note; i++){
+                                let page_link = `<li class="page-item activate" id="${i}"><a class="page-link">${i}</a></li>`;
+                                str = str + page_link;
+                            }
+                            last_link = `<li class="activate-next disabled"><a class="page-link" aria-disabled="true">...</a></li>
+                                <li class="page-item activate" id="${page}"><a class="page-link">${page}</a></li>`;
+                            str = str + last_link;
+                        }
+                        else if(first_range > 2 && last_range < 5){
+                            let start = parseInt(page) - 4;
+                            for(let i = start; i <= (start + 4); i++){
+                                let page_link = `<li class="page-item activate" id="${i}"><a class="page-link">${i}</a></li>`;
+                                str = str + page_link;
+                            }
+                        }
+                    }
+                    if(num == page)
                         str = str + `<li class="activate-next disabled"><a class="page-link" aria-disabled="true">Next</a></li>`;
                     else
                         str = str + `<li class="page-item activate-next"><a class="page-link">Next</a></li>`;
@@ -97,7 +138,6 @@ $(document).ready(function(){
 
     $(".pagination").on('click', '.activate-next', function(){
         active_page ++;
-        console.log(active_page);
         active(active_page);
     })
 
@@ -112,6 +152,7 @@ $(document).ready(function(){
         if(deactivated_check.is(":checked")){
             active_check.prop('checked', false);
             $(".add_user").html('');
+            $(".pagination").html('');
             $.get('/admin/deactivate/display_users', (data) => {
                 let total = data.length;
                 let page = 0;
@@ -124,15 +165,54 @@ $(document).ready(function(){
                     else{
                         page = Math.floor(total / 5);
                     }
-                    if(num === 1)
+                    if(num == 1)
                         str = `<li class="deactivate-previous disabled"><a class="page-link" aria-disabled="true">Previous</a></li>`;
                     else
                         str = `<li class="page-item deactivate-previous"><a class="page-link">Previous</a></li>`;
-                    for(let i = 1; i <= page; i++){
-                        let page_link = `<li class="page-item deactivate" id="${i}"><a class="page-link">${i}</a></li>`;
-                        str = str + page_link;
+                    if(page <= 5){
+                        for(let i = 1; i <= page; i++){
+                            let page_link = `<li class="page-item deactivate" id="${i}"><a class="page-link">${i}</a></li>`;
+                            str = str + page_link;
+                        }
                     }
-                    if(num === page)
+                    else{
+                        let first_range = parseInt(num);
+                        let last_range = parseInt(page) - parseInt(num);
+                        let note = parseInt(num) + 3;
+                        let first_link = '';
+                        let last_link = '';
+                        if(first_range <= 2){
+                            for(let i = 1; i <= 4; i++){
+                                let page_link = `<li class="page-item deactivate" id="${i}"><a class="page-link">${i}</a></li>`;
+                                str = str + page_link;
+                            }
+                            last_link = `<li class="activate-next disabled"><a class="page-link" aria-disabled="true">...</a></li>
+                                <li class="page-item deactivate" id="${page}"><a class="page-link">${page}</a></li>`;
+                            str = str + last_link;
+                        }
+                        else{
+                            first_link = `<li class="page-item deactivate" id="1"><a class="page-link">1</a></li>
+                                <li class="deactivate-next disabled"><a class="page-link" aria-disabled="true">...</a></li>`;
+                            str = str + first_link;
+                        }
+                        if(first_range > 2 && last_range >= 5){
+                            for(let i = num; i <= note; i++){
+                                let page_link = `<li class="page-item deactivate" id="${i}"><a class="page-link">${i}</a></li>`;
+                                str = str + page_link;
+                            }
+                            last_link = `<li class="deactivate-next disabled"><a class="page-link" aria-disabled="true">...</a></li>
+                                <li class="page-item deactivate" id="${page}"><a class="page-link">${page}</a></li>`;
+                            str = str + last_link;
+                        }
+                        else if(first_range > 2 && last_range < 5){
+                            let start = parseInt(page) - 4;
+                            for(let i = start; i <= (start + 4); i++){
+                                let page_link = `<li class="page-item deactivate" id="${i}"><a class="page-link">${i}</a></li>`;
+                                str = str + page_link;
+                            }
+                        }
+                    }
+                    if(num == page)
                         str = str + `<li class="deactivate-next disabled"><a class="page-link" aria-disabled="true">Next</a></li>`;
                     else
                         str = str + `<li class="page-item deactivate-next"><a class="page-link">Next</a></li>`;
@@ -198,7 +278,6 @@ $(document).ready(function(){
         var one = class_name.split(' ')[2];
         var space = $("." + one + " .username").text();
         username = $.trim(space);
-        console.log(username);
         window.location = `/account_user/${username}`;
     });
 
@@ -219,7 +298,7 @@ $(document).ready(function(){
                     username: username
                 },
                 success: function (data) {
-                    location.reload();
+                    setTimeout(location.reload.bind(location), 500);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                 }

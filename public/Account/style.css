@@ -258,6 +258,7 @@ input::-webkit-inner-spin-button {
     margin-left: 50%;
     margin-top: 10px;
     background-color: white;
+    position: relative;
     color: black;
 }
 

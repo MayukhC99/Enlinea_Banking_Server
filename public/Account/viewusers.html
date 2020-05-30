@@ -31,7 +31,25 @@
     <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-12 status">
-                <button class="btn btn-primary add_friend"><span><i class="fas fa-user-plus"></i></span> Add Friend</button>
+                <button class="btn btn-primary add_friend" style="display: none;"><span><i class="fas fa-user-plus"></i></span> Add Friend</button>
+            </div>
+        </div>
+    </div>
+
+    <label class="head active" id="pi" style="display: none;">Personal Info</label>
+    <div id="personal" style="display: none;">
+        <div class="personal_info">
+            <div id="left">
+                <label>First Name</label>
+                <label>Last Name</label>
+                <label>Email ID</label>
+                <label>Mobile Number</label>
+            </div>
+            <div id="right">
+                <input type="text" class="text-white" name="first_name" id="first_name" disabled>
+                <input type="text" class="text-white" name="last_name" id="last_name" disabled>
+                <input type="text" class="text-white" name="email_id" id="email_id" disabled>
+                <input type="text" class="text-white" name="mobile_number" id="mobile_number" disabled>
             </div>
         </div>
     </div>

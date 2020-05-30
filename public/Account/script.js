@@ -102,6 +102,7 @@ function customFileFilter(file){
         theErrorMessage.classList.remove('hide');
         return false;
     }
+    console.log(file.size);
 
     if(check_filename && check_mimetype){
         return true;
@@ -115,7 +116,6 @@ function customFileFilter(file){
 
 function handleUploadedFile(file) {
     fileName = file.name;
-    clearImage();
     var img = document.createElement("img");
     img.setAttribute('id', 'theImageTag');
     img.file = file;
@@ -134,7 +134,8 @@ function clearImage(e) {
 
     if(theImageTag) {
         theImageContainer.removeChild(theImageTag);
-        theImageField.value = null;
+        console.log("done");
+        //theImageField.value = null;
     }
 
     theErrorMessage.classList.add('hide');
@@ -148,10 +149,11 @@ $(document).ready(function(){
         $(this).ajaxSubmit({
 
             error: function(xhr) {
-            status('Error: ' + xhr.status);
+                alert("Error : " + xhr.message);
             },
 
             success: function(res) {
+                console.log(res);
                 if(res !== "undefined"){
                     theSuccessMessage.classList.add('hide');
                     theSuccessMessage.innerHTML = "Image uploaded successfully";

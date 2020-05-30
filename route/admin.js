@@ -7,83 +7,92 @@ const route= express.Router();
 //api to deactivate a user
 route.post('/deactivate',(req,res)=>{
 
-if(req.user.username && req.user.username=='admin'){
-    account_status.findOne({
-        where: {
-            username: req.body.username
-        }
-    }).then((user)=>{
+    if(req.user.username && req.user.username=='admin'){
+        account_status.findOne({
+            where: {
+                username: req.body.username
+            }
+        }).then((user)=>{
 
-        if(!user){
-            console.log("User doesn't exist");
+            if(!user){
+                console.log("User doesn't exist");
+                res.redirect('back');
+            }
+
+            db.query(`UPDATE deactives SET status='deactive' WHERE username='${req.body.username}'`);
+            console.log('updated successfully');
+
             res.redirect('back');
-        }
 
-        db.query(`UPDATE deactives SET status='deactive' WHERE username='${req.body.username}'`);
-        console.log('updated successfully');
-
-        res.redirect('back');
-
-    }).catch((err)=>{
-        console.log(err);
-        res.redirect('back');
-    })
-}
+        }).catch((err)=>{
+            console.log(err);
+            res.redirect('back');
+        })
+    }
+    else{
+        res.send(undefined);
+    }
 })
 
 //api to activate a deactivated user
 route.post('/activate',(req,res)=>{
 
-if(req.user.username && req.user.username=='admin'){
-    account_status.findOne({
-        where: {
-            username: req.body.username
-        }
-    }).then((user)=>{
+    if(req.user.username && req.user.username=='admin'){
+        account_status.findOne({
+            where: {
+                username: req.body.username
+            }
+        }).then((user)=>{
 
-        if(!user){
-            console.log("User doesn't exist");
+            if(!user){
+                console.log("User doesn't exist");
+                res.redirect('back');
+            }
+
+            db.query(`UPDATE deactives SET status='active' WHERE username='${req.body.username}'`);
+            console.log('updated successfully');
+
             res.redirect('back');
-        }
 
-        db.query(`UPDATE deactives SET status='active' WHERE username='${req.body.username}'`);
-        console.log('updated successfully');
-
-        res.redirect('back');
-
-    }).catch((err)=>{
-        console.log(err);
-        res.redirect('back');
-    })
-}
+        }).catch((err)=>{
+            console.log(err);
+            res.redirect('back');
+        })
+    }
+    else{
+        res.send(undefined);
+    }
 })
 
 //api to delete a user permanently
 route.post('/delete_user',(req,res)=>{
 
-if(req.user.username && req.user.username=='admin'){
-    account_status.findOne({
-        where: {
-            username: req.body.username
-        }
-    }).then((user)=>{
+    if(req.user.username && req.user.username=='admin'){
+        account_status.findOne({
+            where: {
+                username: req.body.username
+            }
+        }).then((user)=>{
 
-        if(!user){
-            console.log("User doesn't exist");
+            if(!user){
+                console.log("User doesn't exist");
+                res.redirect('back');
+            }
+
+            db.query(`DELETE FROM users WHERE username='${req.body.username}'`);
+            db.query(`DELETE FROM deactives WHERE username='${req.body.username}'`);
+            console.log('deleted successfully');
+
             res.redirect('back');
-        }
 
-        db.query(`DELETE FROM users WHERE username='${req.body.username}'`);
-        db.query(`DELETE FROM deactives WHERE username='${req.body.username}'`);
-        console.log('deleted successfully');
-
-        res.redirect('back');
-
-    }).catch((err)=>{
-        console.log(err);
-        res.redirect('back');
-    })
-}
+        }).catch((err)=>{
+            console.log(err);
+            res.redirect('back');
+        })
+    }
+    else{
+        res.send(undefined);
+    }
 })
 
 
@@ -95,6 +104,9 @@ route.get('/activate/display_users',(req,res)=>{
             res.send(rows);
         })
     }
+    else{
+        res.send(undefined);
+    }
 })
 
 //api to show all deactivated users
@@ -104,6 +116,9 @@ route.get('/deactivate/display_users',(req,res)=>{
         and username in (select username from deactives where status='deactive')`,{ type: db.QueryTypes.SELECT }).then((rows)=>{
             res.send(rows);
         })
+    }
+    else{
+        res.send(undefined);
     }
 })
 

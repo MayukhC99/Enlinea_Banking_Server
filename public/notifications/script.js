@@ -38,12 +38,15 @@ $(document).ready(function(){
                     from[i] = data[i].from;
                     let message = data[i].msg.split(" or ");
                     let notification = `<div class="row">
-                        <div class="col-12">${data[i].subject}</div>
-                        <div class="col-12">
-                            <label>From : ${data[i].from} </label>
-                            <button class="btn btn-primary accept ${i}">${message[0]}</button>
-                            <button class="btn btn-danger reject ${i}">${message[1]}</button>
+                        <div class="col-11">
+                            <div class="col-12">${data[i].subject}</div>
+                            <div class="col-12">
+                                <label>From : ${data[i].from} </label>
+                                <button class="btn btn-primary accept ${i}">${message[0]}</button>
+                                <button class="btn btn-danger reject ${i}">${message[1]}</button>
+                            </div>
                         </div>
+                        <div class="col-1"><span><i class="fas fa-trash-alt mt-3 fa-lg"></i></span></div>
                     </div>`
 
                     str = str + notification;

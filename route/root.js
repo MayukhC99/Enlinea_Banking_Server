@@ -43,6 +43,7 @@ route.post('/upload/profile_image',(req,res)=>{
         if(err){
             res.send(undefined);
         } else {
+            console.log(res);
             if(req.file === undefined){
                 res.send("undefined");
             } else {
@@ -132,12 +133,15 @@ route.get('/verify_user',(req,res)=>{
             console.log('Admin');
             res.send('admin');
         } else if(req.user.dataValues.username !== undefined) {
-            console.log('user varified');
+            console.log('user verified');
             res.send('success');
         } else{
             console.log('No user in cache');
             res.send(undefined);
         }
+    }
+    else{
+        res.send(undefined);
     }
 });
 
