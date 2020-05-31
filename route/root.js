@@ -43,7 +43,6 @@ route.post('/upload/profile_image',(req,res)=>{
         if(err){
             res.send(undefined);
         } else {
-            console.log(res);
             if(req.file === undefined){
                 res.send("undefined");
             } else {
@@ -140,9 +139,8 @@ route.get('/verify_user',(req,res)=>{
             res.send(undefined);
         }
     }
-    else{
-        res.send(undefined);
-    }
+
+    res.send(undefined);
 });
 
 //get details of a particular user

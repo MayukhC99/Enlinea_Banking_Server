@@ -48,7 +48,7 @@ body{
     font-size: 15px;
 }
 
-#theImageTag {
+#theImageTag, #user {
     position: absolute;
     top: -10px;
     left: 50%;
@@ -230,23 +230,13 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.add_friend{
-    margin-left: 44%;
-}
-
-.sent_friend_request{
-    margin-left: 41%;
-    /* pointer-events: none; */
-}
-
 .sent_friend_request:hover{
     background: ivory;
     color: black;
 }
 
 .friend{
-    margin-left: 45%;
-    /* pointer-events: none; */
+    width: 150px;
 }
 
 .friend:hover{
@@ -255,11 +245,12 @@ input::-webkit-inner-spin-button {
 }
 
 .unfriend{
-    margin-left: 50%;
+    margin-left: 60%;
     margin-top: 10px;
     background-color: white;
     position: relative;
     color: black;
+    width: 100px;
 }
 
 .cancel_friend_request{
@@ -267,23 +258,143 @@ input::-webkit-inner-spin-button {
     margin-top: 10px;
     background-color: white;
     color: black;
+    width: 150px;
 }
 
-#accountcontainer{
+.modal-title, .col-form-label{
+    color: black;
+}
+
+#close:hover{
+    background-color: rgb(110, 107, 107);
+}
+
+#accountcontainer, #containing{
     background: white;
     width: 200px;
     box-shadow: 0 5px 15px rgba(250, 247, 249, 0.5);
     display: none;
 }
 
-#accept{
-    margin-left: 40%;
-}
-
 #reject:hover{
     background: red;
 }
 
+#respond{
+    margin-top: 10px;
+    width: 100px;
+    margin-left: 44%;
+}
+
+.mess{
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.line{
+    background-color: white;
+    color: black;
+    border-radius: 0px 5px 5px 0px;
+    border-left-color: lightgray;
+}
+
+.mess:hover{
+    background: rgb(238, 238, 229);
+    color: black;
+}
+
+.line:hover{
+    background: rgb(238, 238, 229);
+    color: black;
+}
+
 #tog{
     cursor: pointer;
+}
+
+.dialog {
+    height: 85vh;
+    background-color: rgba(39, 36, 38, 1);
+    margin-top: 0;
+    padding: 0;
+}
+
+.bid{
+    overflow: hidden;
+    height: 99vh;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: rgba(109, 99, 105, 0.1);
+    overflow: hidden;
+    width: 100%;
+    transition: .5s ease;
+    text-align: right;
+}
+
+.bid:hover .overlay {
+    display: inline-block;
+    height: 100%;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+}
+
+.update {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(109, 99, 105, 0.5);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+}
+
+#theImageContainer:hover .update {
+    height: 50%;
+}
+
+.update:hover{
+    background-color: rgb(29, 27, 28);
+}
+
+.show_div{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(29, 27, 28);
+    overflow: hidden;
+    width: 100%;
+    height: 50%;
+}
+
+.pic_update {
+    color: white;
+    white-space: pre-line;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
