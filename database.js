@@ -4,7 +4,7 @@ const Op = sequelize.Op;
 const db= new sequelize(
     'enlinea',
     'root',
-    'admin',
+    'sirsrt',
     {
         dialect: 'mysql',
         host: 'localhost'
@@ -71,7 +71,7 @@ function admin_callback(){
     db.query(`INSERT IGNORE INTO deactives (username,status) VALUES ('admin','active')`);
 }
 
-db.sync().then(function(){ 
+db.sync().then(function(){
     console.log('Database is syncronized')
     admin_callback();
 });

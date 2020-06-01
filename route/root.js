@@ -132,7 +132,7 @@ route.get('/verify_user',(req,res)=>{
             console.log('Admin');
             res.send('admin');
         } else if(req.user.dataValues.username !== undefined) {
-            console.log('user varified');
+            console.log('user verified');
             res.send('success');
         } else{
             console.log('No user in cache');

@@ -12,26 +12,95 @@
 </head>
 
 <body class="container">
-    <div class="row ellipsis" style="left: 96%;position: fixed;">
+    <!-- <div class="row ellipsis" style="left: 96%;position: fixed;">
         <i class="fas fa-ellipsis-v fa-lg" id="tog"></i>
         <div class="mt-5" id="accountcontainer" style="margin-left: -90%;">
             <button class="btn col-12" style="height: 30px; text-align: left;"><i class="fas fa-flag"></i> Report User</button>
             <button class="btn mb-2 col-12" style="height: 30px; text-align: left;"><i class="fas fa-ban"></i> Block</button>
         </div>
-    </div>
+    </div> -->
     <form id="theImageForm" method="get" action="/root/get/profile_picture">
-        <label id="theImageContainer">
-            <img id="user" src="" width="250px", height="250px">
+        <label id="theImageContainer" data-toggle="" data-target="#exampleModal">
+            <img id="user" src="">
         </label>
         <span id="my_name"></span>
         <p id="online_status" class="hide"><i class="fas fa-circle fa-xs" style="font-size: 8px;vertical-align: middle;"></i> Online</p>
         <p id="offline_status" class="hide"><i class="fas fa-circle fa-xs" style="font-size: 8px;vertical-align: middle;"></i> Offline</p>
     </form>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="close float-right text-light" data-dismiss="modal"><i class="fas fa-times"></i></button>
+        <div class="modal-dialog dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <span type="button" class="modal-title bg-dark" id="exampleModalLabel" style="margin-left: 90%;"><i class="fas fa-pencil-alt" style="color: white;"></i></span>
+                </div>
+                <div class="modal-body bid">
+                    <img id="picture" src="" width="100%" height="100%" style="position: block;">
+                    <div class="overlay" id="exampleModalLabel">
+                        <div class="col-10 text">Profile Picture</div>
+                        <div class="col-1 mt-2 float-right"><i class="fas fa-pencil-alt" style="color: white;"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="Message" class="col-form-label">Message</label>
+                            <textarea type="text" class="form-control" id="Message" name="message" rows="10" placeholder="message" style="resize: none;" required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary">Send</button>
+                        <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
     <div class="container-fluid mt-3">
         <div class="row">
-            <div class="col-12 status">
-                <button class="btn btn-primary add_friend"><span><i class="fas fa-user-plus"></i></span> Add Friend</button>
+            <div class="col-6 status">
+                <button class="btn btn-primary float-right add_friend" style="display: none;"><span><i class="fas fa-user-plus"></i></span> Add Friend</button>
+            </div>
+            <div class="col-6 message" style="display: none;">
+                <button class="btn btn-light mess" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-comment"></i> Message<span><button class="btn btn-light line" id="line"><i class="fas fa-ellipsis-h fa-lg" id="arr"></i></button></span></button>
+                <div class="mt-2 ml-5" id="containing">
+                    <button class="btn col-12" id="r-1" style="height: 30px; text-align: left;"><i class="fas fa-flag" id="r-2"></i> Report User</button>
+                    <button class="btn mb-2 col-12" id="b-1" style="height: 30px; text-align: left;"><i class="fas fa-ban" id="b-2"></i> Block</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <label class="head active" id="pi" style="display: none;">Personal Info</label>
+    <div id="personal" style="display: none;">
+        <div class="personal_info">
+            <div id="left">
+                <label>First Name</label>
+                <label>Last Name</label>
+                <label>Email ID</label>
+                <label>Mobile Number</label>
+            </div>
+            <div id="right">
+                <input type="text" class="text-white" name="first_name" id="first_name" disabled>
+                <input type="text" class="text-white" name="last_name" id="last_name" disabled>
+                <input type="text" class="text-white" name="email_id" id="email_id" disabled>
+                <input type="text" class="text-white" name="mobile_number" id="mobile_number" disabled>
             </div>
         </div>
     </div>

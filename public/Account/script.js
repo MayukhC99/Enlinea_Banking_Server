@@ -8,6 +8,7 @@ var theOpenButton = document.querySelector('#buttonContainer');
 let name = $('#my_name');
 let image = $('#user');
 let theClearImageLink = $('#clearImage');
+window.res = 0;
 
 $(function(){
     //to get full name of user
@@ -18,6 +19,8 @@ $(function(){
     //to get profile_picture of user
     $.get('/root/get/profile_picture', (data)=>{
         image.attr('src', `../uploads/${data}`);
+        if(data !== "000.jpg")
+            window.res = 1;
     })
 
     //to clear current profile_picture of user
@@ -25,7 +28,7 @@ $(function(){
         var message = confirm("Are you sure you want to reset your current photo?");
         if(message == true){
             $.get('/root/delete/profile_image',(data)=>{
-                window.location.href= "./";
+                location.reload();
             })
         }
     })
@@ -42,6 +45,9 @@ $(function(){
         else{
             $("#gender").val(data.gender);
         }
+    });
+
+    $("#theImageContainer").on('click', function(e){
     });
 })
 
@@ -68,8 +74,28 @@ counters.forEach(counter => {
 })
 
 $(document).mouseup(function(e){
+    console.log(e.target.id);
     var container = $("#buttonContainer");
     if(e.target.id === "user" || e.target.id === "theImageTag"){
+        $(".modal-header").hide();
+        $.get('/root/get/profile_picture', (data)=>{
+            if(data !== "000.jpg"){
+                $(".modal-body #picture").attr('src', `../uploads/${data}`);
+                window.res = 1;
+            }
+        })
+
+        if(e.target.id !== "update" || e.target.id !== "pic_update"){
+            if(window.res === 1)
+                $("#theImageContainer").attr("data-toggle", "modal");
+            else
+                $("#theImageContainer").attr("data-toggle", "");
+        }
+        window.res = 0;
+    }
+    if(e.target.id === "update" || e.target.id === "pic_update" || e.target.id === "cam"){
+        $("#theImageContainer").attr("data-toggle", "");
+        $(".update").addClass("show_div");
         if (theOpenButton.style.display === "none") {
             theOpenButton.style.display = "grid";
         } else {
@@ -78,6 +104,7 @@ $(document).mouseup(function(e){
     }
     else{
         container.hide();
+        $(".update").removeClass("show_div");
     }
 });
 
@@ -89,6 +116,7 @@ theImageField.onchange = function (e) {
     }
 
 }
+
 function customFileFilter(file){
     const regex= /\jpg$|\jpeg$|\png$|\gif$/
 
@@ -115,11 +143,10 @@ function customFileFilter(file){
 
 function handleUploadedFile(file) {
     fileName = file.name;
-    clearImage();
     var img = document.createElement("img");
     img.setAttribute('id', 'theImageTag');
     img.file = file;
-    theImageContainer.appendChild(img);
+    $(img).insertAfter("#user");
     var reader = new FileReader();
     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
     reader.readAsDataURL(file);
@@ -134,7 +161,7 @@ function clearImage(e) {
 
     if(theImageTag) {
         theImageContainer.removeChild(theImageTag);
-        theImageField.value = null;
+        //theImageField.value = null;
     }
 
     theErrorMessage.classList.add('hide');
@@ -148,14 +175,16 @@ $(document).ready(function(){
         $(this).ajaxSubmit({
 
             error: function(xhr) {
-            status('Error: ' + xhr.status);
+                alert("Error : " + xhr.message);
             },
 
             success: function(res) {
+                console.log(res);
                 if(res !== "undefined"){
                     theSuccessMessage.classList.add('hide');
                     theSuccessMessage.innerHTML = "Image uploaded successfully";
                     theSuccessMessage.classList.remove('hide');
+                    window.res = 1;
                 }
                 else{
                     theErrorMessage.classList.add('hide');
