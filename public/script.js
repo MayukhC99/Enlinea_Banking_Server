@@ -9,9 +9,20 @@ $(document).ready(function(){
         trigger_contact: $('.navMenu li:nth-child(5) a')
     }
 
-    $(document).on('click', 'li:nth-child(3) a', function(){
+    $(document).on('click', '#success_notification', function(){
         $(".badge").css({'display': 'none'});
     })
+
+    $.ajax({
+        url: `/root/search_user`,
+        type: 'GET',
+        success: function (data) {
+            window.data = data
+            return false;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        }
+    });
 
     // $.get('/root/notification_details', (data) => {
     //     if(data === false){
@@ -78,12 +89,40 @@ $(document).ready(function(){
         if ($(window).width() < 834){
             $("#our #hide").css({'top': $(".blog-card").offset().top, 'left': $(".blog-card").offset().left});
         }
-
+        if($(window).width() <=834){
+            if($(window).height() <= 700){
+                $(".blog-card").css({'margin-top': '30%'});
+                $("#our #hide").css({'margin-top': '0%'});
+            }
+            else if($(window).height() > 700){
+                $(".blog-card").css({'margin-top': 'calc(40px + 10%)'});
+                $("#our #hide").css({'margin-top': '0%'});
+            }
+        }
+        else{
+            $(".blog-card").css({'margin-top': '0%'});
+            $("#our #hide").css({'margin-top': '0%'});
+        }
 
         if ($(window).width() >= 834){
             $("#our #hide").css({'top': $(".blog-card").offset().top, 'left': $(".blog-card").offset().left});
         }
     });
+
+    if($(window).width() <=834){
+        if($(window).height() <= 700){
+            $(".blog-card").css({'margin-top': '30%'});
+            $("#our #hide").css({'margin-top': '0%'});
+        }
+        else if($(window).height() > 700){
+            $(".blog-card").css({'margin-top': 'calc(40px + 10%)'});
+            $("#our #hide").css({'margin-top': '0%'});
+        }
+    }
+    else{
+        $(".blog-card").css({'margin-top': '0%'});
+        $("#our #hide").css({'margin-top': '0%'});
+    }
 
     if ($(window).width() < 834){
         $("#our #hide").css({'top': $(".blog-card").offset().top, 'left': $(".blog-card").offset().left});
@@ -147,6 +186,112 @@ $(document).ready(function(){
         }
     });
     $(window).trigger( "scroll" );
+
+    $(".input span").on('click', function(){
+        if($(".input input").val() == "")
+            $(".input input").focus();
+        else{
+            window.location = `/account_user/${$(".input input").val()}`;
+        }
+    })
+
+    $(document).on('keypress', ".input input", function(e){
+        if(e.which == 13){
+            e.preventDefault();
+            if($(this).val() !== ""){
+                window.location.assign(`/account_user/${$(".input input").val()}`);
+            }
+        }
+        else{
+            function autocomplete(inp, arr) {
+                var currentFocus;
+                inp.addEventListener("input", function(e) {
+                    var a, b, i, val = this.value;
+                    closeAllLists();
+                    if (!val) { return false;}
+                    currentFocus = -1;
+                    document.getElementById("input").classList.add("remove");
+                    /*create a DIV element that will contain the items (values):*/
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    /*append the DIV element as a child of the autocomplete container:*/
+                    this.parentNode.appendChild(a);
+                    let flag = 0;
+                    for (i = 0; i < arr.length; i++) {
+                        /*check if the item starts with the same letters as the text field value:*/
+                        if (arr[i].username.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                            /*create a DIV element for each matching element:*/
+                            b = document.createElement("DIV");
+                            /*make the matching letters bold:*/
+                            b.innerHTML = "<strong>" + arr[i].username.substr(0, val.length) + "</strong>";
+                            b.innerHTML += arr[i].username.substr(val.length);
+                            b.innerHTML += "<input type='hidden' value='" + arr[i].username + "'>";
+                            b.addEventListener("click", function(e) {
+                                inp.value = this.getElementsByTagName("input")[0].value;
+                                closeAllLists();
+                            });
+                            a.appendChild(b);
+                            flag++;
+                            if(flag == 7)
+                                break
+                        }
+                    }
+                    if(flag == 0)
+                        document.getElementById("input").classList.remove("remove");
+                });
+                inp.addEventListener("keydown", function(e) {
+                    var x = document.getElementById(this.id + "autocomplete-list");
+                    if (x) x = x.getElementsByTagName("div");
+                    if (e.keyCode == 40) {
+                        currentFocus++;
+                        addActive(x);
+                    } else if (e.keyCode == 38) {
+                        currentFocus--;
+                        addActive(x);
+                    }
+                    // else if (e.keyCode == 13) {
+                    // /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    // e.preventDefault();
+                    // if (currentFocus > -1) {
+                    //     /*and simulate a click on the "active" item:*/
+                    //     if (x) x[currentFocus].click();
+                    // }
+                    // }
+                });
+                function addActive(x) {
+                    if (!x) return false;
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    x[currentFocus].classList.add("autocomplete-active");
+                    inp.value = $(".autocomplete-active input").val();
+                }
+                function removeActive(x) {
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].classList.remove("autocomplete-active");
+                    }
+                }
+                function closeAllLists(elmnt) {
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    document.getElementById("input").classList.add("remove");
+                    document.getElementById("input").classList.remove("remove");
+                    for (var i = 0; i < x.length; i++) {
+                        if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                        }
+                    }
+                }
+                document.addEventListener("click", function (e) {
+                    if(e.target.id !== "search_user"){
+                        closeAllLists(e.target);
+                    }
+                });
+            }
+
+            autocomplete(document.getElementById("search_user"), window.data);
+        }
+    })
 
     $("#read1").on('click', function(){
         $("#hide").css({'display': 'inline', 'vertical-align': 'middle'});

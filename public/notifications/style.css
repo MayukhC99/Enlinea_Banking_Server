@@ -1,4 +1,58 @@
-a, a:hover{
-    color: white;
-    text-decoration: none;
+.notifications{
+    overflow-x: hidden;
+}
+
+#theImageContainer{
+    width: 75px;
+    height: 75px;
+    background-color: #fffbfb;
+    color: darkgrey;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+#from{
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+.no_break{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: center;
+    margin: 10px 0px 10px 0px;
+}
+
+.accept{
+    margin-left: 20px;
+    margin-top: -30px;
+}
+
+.reject{
+    margin-top: -30px;
+}
+
+.del{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.row:hover{
+    background-color: rgba(188, 184, 192, 0.3);
+}
+
+@media (max-width: 768px){
+    #theImageContainer{
+        width: 50px;
+        height: 50px;
+    }
 }

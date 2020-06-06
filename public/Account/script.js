@@ -11,6 +11,16 @@ let theClearImageLink = $('#clearImage');
 window.res = 0;
 
 $(function(){
+
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	if (isMobile) {
+        $(".update").hide();
+        $(".mobile_pic_update").show();
+	} else {
+        $(".update").show();
+        $(".mobile_pic_update").hide();
+	}
+
     //to get full name of user
     $.get('/root/get/name',(data)=>{
         name.html(`<h1>${data}</h1>`);
@@ -51,6 +61,8 @@ $(function(){
     });
 })
 
+$('img').on('dragstart', function(event) { event.preventDefault(); });
+
 const counters = document.querySelectorAll('.counter');
 const speed = 2000;
 
@@ -86,14 +98,22 @@ $(document).mouseup(function(e){
         })
 
         if(e.target.id !== "update" || e.target.id !== "pic_update"){
-            if(window.res === 1)
+            if(window.res === 1){
+                $("html").css({'overflow-x': 'visible'});
                 $("#theImageContainer").attr("data-toggle", "modal");
-            else
+            }
+            else{
+                $("html").css({'overflow-x': 'hidden'});
                 $("#theImageContainer").attr("data-toggle", "");
+            }
         }
         window.res = 0;
     }
-    if(e.target.id === "update" || e.target.id === "pic_update" || e.target.id === "cam"){
+    else{
+        if(e.target.id !== "picture")
+            $("html").css({'overflow-x': 'hidden'});
+    }
+    if(e.target.id === "update" || e.target.id === "pic_update" || e.target.id === "cam" || e.target.id === "mobile_cam"){
         $("#theImageContainer").attr("data-toggle", "");
         $(".update").addClass("show_div");
         if (theOpenButton.style.display === "none") {
@@ -107,6 +127,40 @@ $(document).mouseup(function(e){
         $(".update").removeClass("show_div");
     }
 });
+
+$(window).bind('resize', function() {
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+        $(".update").hide();
+        $(".mobile_pic_update").show();
+	} else {
+        $(".update").show();
+        $(".mobile_pic_update").hide();
+    }
+    if($(window).width() >= 335 && $(window).width() < 486){
+        $("#pi").css({'font-size': '20px'});
+        $("#cp").css({'font-size': '20px'});
+    }
+    else if($(window).width() < 335){
+        $("#pi").css({'font-size': '17px'});
+        $("#cp").css({'font-size': '17px'});
+    }
+    else if($(window).width() >= 486){
+        $("#pi").css({'font-size': '30px'});
+        $("#cp").css({'font-size': '30px'});
+    }
+})
+
+
+if($(window).width() < 486){
+    $("#pi").css({'font-size': '20px'});
+    $("#cp").css({'font-size': '20px'});
+}
+
+if($(window).width() < 335){
+    $("#pi").css({'font-size': '17px'});
+    $("#cp").css({'font-size': '17px'});
+}
 
 theImageField.onchange = function (e) {
     var theFile = e.target.files[0];
@@ -123,10 +177,11 @@ function customFileFilter(file){
     const check_filename = regex.test(file.name);
 
     const check_mimetype= regex.test(file.type);
+    theErrorMessage.classList.add('hide');
 
     if (file.size > 1000000) {
         theErrorMessage.classList.add('hide');
-        theErrorMessage.innerHTML = "File too large, cannot be more than 500KB...";
+        theErrorMessage.innerHTML = "File too large, cannot be more than 1MB...";
         theErrorMessage.classList.remove('hide');
         return false;
     }
@@ -143,6 +198,9 @@ function customFileFilter(file){
 
 function handleUploadedFile(file) {
     fileName = file.name;
+    var prev_imageTag = document.getElementById('theImageTag');
+    if(prev_imageTag !== null)
+        prev_imageTag.parentNode.removeChild(prev_imageTag);
     var img = document.createElement("img");
     img.setAttribute('id', 'theImageTag');
     img.file = file;
@@ -181,12 +239,14 @@ $(document).ready(function(){
             success: function(res) {
                 console.log(res);
                 if(res !== "undefined"){
+                    theErrorMessage.style.display = "none";
                     theSuccessMessage.classList.add('hide');
                     theSuccessMessage.innerHTML = "Image uploaded successfully";
                     theSuccessMessage.classList.remove('hide');
                     window.res = 1;
                 }
                 else{
+                    theSuccessMessage.style.display = "none";
                     theErrorMessage.classList.add('hide');
                     theErrorMessage.innerHTML = "Select a image file within 1MB size";
                     theErrorMessage.classList.remove('hide');
@@ -233,11 +293,15 @@ $(document).ready(function(){
         prev_flag.toggleClass('active');
         if($('#pi').hasClass('active')){
             $("#personal").css({'margin-left': '0'});
-            $("#change").css({'margin-left': '120%'});
+            $("#change").css({'margin-left': '100%'});
+            $("#personal").css({'visibility': 'visible'});
+            $("#change").css({'visibility': 'hidden'});
         }
         else{
             $("#personal").css({'margin-left': '-100%'});
             $("#change").css({'margin-left': '0%'});
+            $("#personal").css({'visibility': 'hidden'});
+            $("#change").css({'visibility': 'visible'});
         }
     });
 

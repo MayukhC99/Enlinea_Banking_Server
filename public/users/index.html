@@ -11,7 +11,7 @@
     <title>View Users</title>
 </head>
 <body>
-    <div class="container user">
+    <div class="container-fluid user">
         <div class="row">
             <input type="checkbox" id="check1" checked>
             <input type="checkbox" id="check2">
@@ -23,24 +23,30 @@
             </div>
         </div>
     </div>
-    <div class="container head">
-        <div class="row head">
+    <div class="container-fluid head">
+        <div class="row head_row">
             <div class="col-3 heading">
-                <label>Profile Picture</label>
+                <label class="profile_pic">Profile 
+                    Picture</label>
             </div>
             <div class="col-3 heading">
-                <label>Username</label>
+                <label class="usering">Username</label>
             </div>
             <div class="col-3 heading">
                 <label>Name</label>
             </div>
             <div class="col-3 heading">
-                <label>Deactivate/Delete</label>
+                <label class="deactivate_del">Deactivate/
+                    Delete
+                </label>
+                <label class="activate_del" style="display: none;">Activate/
+                    Delete
+                </label>
             </div>
         </div>
     </div>
 
-    <div class="container add_user mt-2">
+    <div class="container-fluid add_user mt-2">
     </div>
 
     <nav class="mt-5">

@@ -4,6 +4,10 @@ body{
     overflow-x: hidden;
 }
 
+html{
+    overflow-x: hidden;
+}
+
 #theImageForm {
     display: flex;
     flex-direction: column;
@@ -13,16 +17,36 @@ body{
 }
 
 #theImageContainer {
-    height: 250px;
     width: 250px;
+    height: 250px;
+    margin: auto;
     background-color: #fffbfb;
     color: darkgrey;
     cursor: pointer;
     border-radius: 50%;
     margin-bottom: 25px;
+    box-sizing: border-box;
     object-fit: cover;
     position: relative;
     overflow: hidden;
+    pointer-events: visible;
+}
+
+.mobile_pic_update{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display:table;
+    background-color: white;
+    color: black;
+    z-index: 1;
+    transform: translate(200%, -200%);
+    text-align: center;
+}
+
+#mobile_cam{
+    display:table-cell;
+    vertical-align:middle;
 }
 
 #theImageField {
@@ -50,9 +74,10 @@ body{
 
 #theImageTag, #user {
     position: absolute;
-    top: -10px;
+    border-radius: 50%;
     left: 50%;
-    width: 110%;
+    width: 100%;
+    height: 100%;
     transform: translateX(-50%);
 }
 
@@ -90,7 +115,7 @@ body{
 }
 
 #change{
-    margin-left: 120%;
+    visibility: hidden;
 }
 
 #left{
@@ -230,8 +255,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.sent_friend_request:hover{
-    background: ivory;
+.btn-light:hover{
+    background: rgb(238, 238, 229);
     color: black;
 }
 
@@ -365,6 +390,7 @@ input::-webkit-inner-spin-button {
     width: 100%;
     height: 0;
     transition: .5s ease;
+    /* border-radius: 0px 0px 250px 250px; */
 }
 
 #theImageContainer:hover .update {
@@ -397,4 +423,78 @@ input::-webkit-inner-spin-button {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+@media (max-width: 632px) {
+    .personal_info{
+        margin-left: -17%;
+    }
+    .change_password{
+        margin-left: -9%;
+    }
+}
+
+@media (max-width: 576px) {
+    .bid{
+        width: 90vw;
+    }
+    .dialog{
+        width: 90vw;
+        justify-content: center;
+    }
+    .con{
+        width: 90vw;
+        overflow: hidden;
+        justify-content: center;
+        background-color: rgba(15, 15, 15, 0.1);
+    }
+}
+
+@media(max-width: 500px) {
+    #theImageContainer {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 425px) {
+    .change_password{
+        margin-left: -13%;
+    }
+}
+
+@media (max-width: 407px) {
+    #change #right input{
+        width: 98%;
+    }
+}
+
+@media (max-width: 392px){
+    .personal_info{
+        margin-left: -28%;
+    }
+}
+
+@media (max-width: 360px) {
+    .personal_info{
+        margin-left: -31%;
+    }
+    #right input, select{
+        width: 105%;
+    }
+    .change_password{
+        margin-left: -14%;
+    }
+}
+
+@media (max-width: 350px) {
+    .change_password #left label{
+        width: 175px;
+        font-size: 14px;
+    }
+    .change_password{
+        margin-left: -13%;
+    }
+    #change #right input{
+        width: 104%;
+    }
 }
