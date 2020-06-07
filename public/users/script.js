@@ -12,6 +12,8 @@ $(document).ready(function(){
 
     $(".active_users").click(function(){
         active_check.prop('checked', true);
+        $(".activate_del").hide();
+        $(".deactivate_del").show();
         active(active_page);
     })
 
@@ -81,9 +83,9 @@ $(document).ready(function(){
                         }
                     }
                     if(num == page)
-                        str = str + `<li class="activate-next disabled"><a class="page-link" aria-disabled="true">Next</a></li>`;
+                        str = str + `<li class="activate-next disabled" id="activate-next"><a class="page-link" aria-disabled="true">Next</a></li>`;
                     else
-                        str = str + `<li class="page-item activate-next"><a class="page-link">Next</a></li>`;
+                        str = str + `<li class="page-item activate-next" id="activate-next"><a class="page-link">Next</a></li>`;
                     $(".pagination").html(str);
                     $("#" + num).addClass("active");
                     str = '';
@@ -96,21 +98,21 @@ $(document).ready(function(){
                     for(let i = page; i < last; i++){
                         let add_user = `<div class="row add add${(i+1)}" style="height: 120px;padding-top: 10px;">
                             <div class="col-3">
-                                <div style="width: 100px;height: 100px;border-radius: 50px;margin-left: 30%;overflow: hidden;">
+                                <div class="image">
                                     <label id="theImageContainer">
-                                        <img src="../uploads/${data[i].profile_picture}" width="100px", height="100px">
+                                        <img id="user" src="../uploads/${data[i].profile_picture}">
                                     </label>
                                 </div>
                             </div>
                             <div class="col-3 username" style="text-align: center;overflow: hidden;word-break: break-all;">
-                                <h3>${data[i].username}</h3>
+                                ${data[i].username}
                             </div>
-                            <div class="col-3" style="text-align: center;overflow: hidden;word-break: break-all;">
-                                <h3>${data[i].first_name} ${data[i].last_name}</h3>
+                            <div class="col-3 full_name" style="text-align: center;overflow: hidden;word-break: break-all;">
+                                ${data[i].first_name} ${data[i].last_name}
                             </div>
-                            <div class="col-3" style="text-align: center;vertical-align: middle;">
-                            <button class="btn btn-primary deactivate deactivate${(i+1)}" type="submit">Deactivate</button>
-                            <button class="btn btn-danger delete_user delete${(i+1)}">Delete</button>
+                            <div class="col-3 button_container">
+                                <button class="btn btn-primary deactivate deactivate${(i+1)} activate_deactivate" type="submit">Deactivate</button>
+                                <button class="btn btn-danger delete_user delete${(i+1)}">Delete</button>
                             </div>
                         </div>`;
         
@@ -118,6 +120,20 @@ $(document).ready(function(){
                     }
         
                     $(".add_user").html(str);
+
+                    if ($(window).width() < 630) {
+                        window.res = $(".button_container").width();
+                        $(".activate_deactivate").width($(".button_container").width() - 30);
+                        $(".delete_user").width($(".activate_deactivate").width());
+                    }
+                    if ($(window).width() < 400) {
+                        $(".activate-previous").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-left"></i></a>`);
+                        $("#activate-next").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-right"></i></a>`);
+                    }
+                    else{
+                        $(".activate-previous").html(`<a class="page-link" aria-disabled="true">Previous</a>`);
+                        $("#activate-next").html(`<a class="page-link" aria-disabled="true">Next</a>`);
+                    }
                 }
                 else
                     $(".pagination").html('');
@@ -145,6 +161,8 @@ $(document).ready(function(){
 
     $(".deactivated_users").click(function(){
         deactivated_check.prop('checked', true);
+        $(".deactivate_del").hide();
+        $(".activate_del").show();
         deactivated(deactivated_page);
     })
 
@@ -213,9 +231,9 @@ $(document).ready(function(){
                         }
                     }
                     if(num == page)
-                        str = str + `<li class="deactivate-next disabled"><a class="page-link" aria-disabled="true">Next</a></li>`;
+                        str = str + `<li class="deactivate-next disabled" id="deactivate-next"><a class="page-link" aria-disabled="true">Next</a></li>`;
                     else
-                        str = str + `<li class="page-item deactivate-next"><a class="page-link">Next</a></li>`;
+                        str = str + `<li class="page-item deactivate-next" id="deactivate-next"><a class="page-link">Next</a></li>`;
                     $(".pagination").html(str);
                     $("#" + num).addClass("active");
                     str = '';
@@ -228,20 +246,20 @@ $(document).ready(function(){
                     for(let i = page; i < last; i++){
                         let add_user = `<div class="row add add${(i+1)}" style="height: 120px;padding-top: 10px;">
                             <div class="col-3">
-                                <div style="width: 100px;height: 100px;border-radius: 50px;margin-left: 30%;overflow: hidden;">
+                                <div class="image">
                                     <label id="theImageContainer">
-                                        <img src="../uploads/${data[i].profile_picture}" width="100px", height="100px">
+                                        <img id="user" src="../uploads/${data[i].profile_picture}">
                                     </label>
                                 </div>
                             </div>
                             <div class="col-3 username" style="text-align: center;overflow: hidden;word-break: break-all;">
-                                <h3>${data[i].username}</h3>
+                                ${data[i].username}
                             </div>
-                            <div class="col-3" style="text-align: center;overflow: hidden;word-break: break-all;">
-                                <h3>${data[i].first_name} ${data[i].last_name}</h3>
+                            <div class="col-3 full_name" style="text-align: center;overflow: hidden;word-break: break-all;">
+                                ${data[i].first_name} ${data[i].last_name}
                             </div>
-                            <div class="col-3" style="text-align: center;vertical-align: middle;">
-                                <button class="btn btn-success activate activate${(i+1)}" type="submit">Activate</button>
+                            <div class="col-3 button_container">
+                                <button class="btn btn-success activate activate${(i+1)} deactivate_active" type="submit">Activate</button>
                                 <button class="btn btn-danger delete_user delete${(i+1)}">Delete</button>
                             </div>
                         </div>`;
@@ -250,6 +268,19 @@ $(document).ready(function(){
                     }
         
                     $(".add_user").html(str);
+                    if ($(window).width() < 630) {
+                        window.res = $(".button_container").width();
+                        $(".deactivate_active").width($(".button_container").width() - 30);
+                        $(".delete_user").width($(".deactivate_active").width());
+                    }
+                    if ($(window).width() < 400) {
+                        $(".deactivate-previous").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-left"></i></a>`);
+                        $("#deactivate-next").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-right"></i></a>`);
+                    }
+                    else{
+                        $(".deactivate-previous").html(`<a class="page-link" aria-disabled="true">Previous</a>`);
+                        $("#deactivate-next").html(`<a class="page-link" aria-disabled="true">Next</a>`);
+                    }
                 }
                 else
                     $(".pagination").html('');
@@ -271,6 +302,42 @@ $(document).ready(function(){
     $(".pagination").on('click', '.deactivate-next', function(){
         deactivated_page ++;
         deactivated(deactivated_page);
+    })
+
+    $(window).bind('resize', function() {
+        $(".active").width();
+        if ($(window).width() < 630) {
+            console.log($(".deactivate").width());
+            $(".activate_deactivate").width($(".button_container").width() - 30);
+            $(".deactivate_active").width($(".button_container").width() - 30);
+            $(".delete_user").width($(".button_container").width() - 30);
+        }
+        else if($(window).width() >= 630 && $(window).width() <= 852){
+            $(".activate_deactivate").width(100);
+            $(".deactivate_active").width(100);
+            $(".delete_user").width(100);
+        }
+        else if($(window).width() > 852){
+            $(".activate_deactivate").width(74.016);
+            $(".deactivate_active").width(56.609399999999994);
+            $(".delete_user").width(45.625);
+        }
+        if ($(window).width() < 400) {
+            $(".activate-previous").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-left"></i></a>`);
+            $("#activate-next").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-right"></i></a>`);
+        }
+        else{
+            $(".activate-previous").html(`<a class="page-link" aria-disabled="true">Previous</a>`);
+            $("#activate-next").html(`<a class="page-link" aria-disabled="true">Next</a>`);
+        }
+        if ($(window).width() < 400) {
+            $(".deactivate-previous").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-left"></i></a>`);
+            $("#deactivate-next").html(`<a class="page-link" aria-disabled="true"><i class="fas fa-angle-right"></i></a>`);
+        }
+        else{
+            $(".deactivate-previous").html(`<a class="page-link" aria-disabled="true">Previous</a>`);
+            $("#deactivate-next").html(`<a class="page-link" aria-disabled="true">Next</a>`);
+        }
     })
 
     $(document).on('click', '.add', function(){

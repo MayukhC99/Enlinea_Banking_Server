@@ -12,6 +12,8 @@ $(function(){
     let username= url.split('/');
     username= username[username.length - 1];
 
+    $("html").css({'overflow-x': 'visible'});
+
     $.post('/account_user/other_user/get_details',{otheruser: username},(data)=>{
         name.html(`<h1>${data.first_name + ' ' + data.last_name}</h1>`);
         image.attr('src', `../uploads/${data.profile_picture}`);
@@ -28,6 +30,11 @@ $(function(){
                 </div>
                 <button class="col-12 float-right cancel_friend_request" id="cancel_friend_request" style="display: none;">Cancel Request</button>`;
                 $(".status").html(str);
+                if($(window).width() < 632){
+                    $(".sent_friend_request").removeClass('btn-light');
+                    $(".sent_friend_request").addClass('btn-primary');
+                    $(".sent_friend_request").html(`<span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Requested`);
+                }
             }
             else{
                 str = `<div class="col-12">
@@ -38,6 +45,11 @@ $(function(){
                     <button class="btn btn-danger" id="reject">Reject</button>
                 </label>`;
                 $(".status").html(str);
+                if($(window).width() < 632){
+                    $(".respond_friend_request").removeClass('btn-light');
+                    $(".respond_friend_request").addClass('btn-primary');
+                    $(".respond_friend_request").html(`<span><i class="fas fa-user-plus"></i></span> Respond`);
+                }
             }
         }
         else if(data.status === "accepted"){
@@ -72,6 +84,12 @@ $(function(){
                 </div>
                 <button class="col-12 float-right cancel_friend_request" id="cancel_friend_request" style="display: none;">Cancel Request</button>`;
                 $(".status").html(str);
+
+                if($(window).width() < 632){
+                    $(".sent_friend_request").removeClass('btn-light');
+                    $(".sent_friend_request").addClass('btn-primary');
+                    $(".sent_friend_request").html(`<span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Requested`);
+                }
             }
             else{
                 window.location = '../login/login.html';
@@ -90,6 +108,25 @@ $(function(){
         $(".modal-title").html('<h5>Message</h5>');
     })
 
+    $(window).bind('resize', function() {
+        if($(window).width() < 632){
+            $(".sent_friend_request").removeClass('btn-light');
+            $(".sent_friend_request").addClass('btn-primary');
+            $(".sent_friend_request").html(`<span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Requested`);
+            $(".respond_friend_request").removeClass('btn-light');
+            $(".respond_friend_request").addClass('btn-primary');
+            $(".respond_friend_request").html(`<span><i class="fas fa-user-plus"></i></span> Respond`);
+        }
+        else{
+            $(".sent_friend_request").addClass('btn-light');
+            $(".sent_friend_request").removeClass('btn-primary');
+            $(".sent_friend_request").html(`<span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Friend Request Sent`);
+            $(".respond_friend_request").addClass('btn-light');
+            $(".respond_friend_request").removeClass('btn-primary');
+            $(".respond_friend_request").html(`<span><i class="fas fa-user-plus"></i></span> Respond to Friend Request`);
+        }
+    })
+
     $(document).mouseup(function(e){
         console.log(e.target.id);
         if(e.target.id === "user"){
@@ -100,10 +137,12 @@ $(function(){
                     window.res = 1;
                 }
             })
-            if(window.res === 1)
+            if(window.res === 1){
                 $("#theImageContainer").attr("data-toggle", "modal");
-            else
+            }
+            else{
                 $("#theImageContainer").attr("data-toggle", "");
+            }
             window.res = 0;
         }
         if(e.target.id === "friend"){

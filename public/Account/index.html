@@ -16,11 +16,14 @@
         <label id="theImageContainer" data-toggle="" data-target="#exampleModal">
             <img id="user" src="">
             <div class="update" id="update">
-                <div class="pic_update" id="pic_update">
-                    <i class="fas fa-camera-retro" id="cam"></i>
-                    Update</div>
+                <div class="pic_update" id="pic_update"><i class="fas fa-camera-retro" id="cam"></i>
+                    Update
+                </div>
             </div>
         </label>
+        <div class="mobile_pic_update" id="mobile_update" style="display: none;">
+            <i class="fas fa-camera-retro fa-lg" id="mobile_cam"></i>
+        </div>
         <p id="errorMessage" class="hide"></p>
         <p id="successMessage" class="hide"></p>
         <label id="buttonContainer" style="display: none;">
@@ -35,17 +38,17 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <button type="button" class="close float-right text-light" data-dismiss="modal"><i class="fas fa-times"></i></button>
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog dialog">
+            <div class="modal-content con">
                 <div class="modal-header bg-dark">
                     <span type="button" class="modal-title bg-dark" id="exampleModalLabel" style="margin-left: 90%;"><i class="fas fa-pencil-alt" style="color: white;"></i></span>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body bid" id="bid">
                     <img id="picture" src="" width="100%" height="100%" style="position: block;">
-                    <div class="overlay" id="exampleModalLabel">
+                    <!-- <div class="overlay" id="exampleModalLabel">
                         <div class="col-10 text">Profile Picture</div>
                         <div class="col-1 mt-2 float-right"><i class="fas fa-pencil-alt" style="color: white;"></i></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

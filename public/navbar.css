@@ -23,8 +23,77 @@ nav label.logo{
   color: white;
   font-size: xx-large;
   line-height: 50px;
-  padding: 0 100px;
+  padding: 0 20px;
   font-weight: bold;
+  float: left;
+}
+
+nav form{
+  margin: 10px 0px 0px 10px;
+  width: fit-content;
+  float: left;
+}
+
+.input{
+  background-color: white;
+  border-radius: 25px;
+}
+
+.input span{
+  padding-right: 0;
+  padding-left: 10px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+nav form input{
+  margin-top: 2px;
+  border: 0;
+  outline: none;
+  border-radius: 0 25px 25px 0;
+}
+
+.remove{
+  border-radius: 10px 10px 0 0;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+#search_userautocomplete-list div:last-child{
+  border-radius: 0 0 10px 10px;
+  border: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
 }
 
 nav ul{
