@@ -28,13 +28,12 @@ nav label.logo{
   float: left;
 }
 
-nav form{
+nav .autocomplete{
   margin: 10px 0px 0px 10px;
   width: fit-content;
-  float: left;
-}
-
-.input{
+  position: relative;
+  display: inline-block;
+  margin-left: 10%;
   background-color: white;
   border-radius: 25px;
 }
@@ -42,24 +41,16 @@ nav form{
 .input span{
   padding-right: 0;
   padding-left: 10px;
-  padding-right: 5px;
+  margin-right: 0;
   cursor: pointer;
 }
 
-nav form input{
+nav .autocomplete input{
   margin-top: 2px;
   border: 0;
+  margin-left: 0;
   outline: none;
   border-radius: 0 25px 25px 0;
-}
-
-.remove{
-  border-radius: 10px 10px 0 0;
-}
-
-.autocomplete {
-  position: relative;
-  display: inline-block;
 }
 
 .autocomplete-items {
@@ -94,6 +85,10 @@ nav form input{
 .autocomplete-active {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
+}
+
+nav .remove{
+  border-radius: 10px 10px 0 0;
 }
 
 nav ul{
@@ -186,7 +181,7 @@ nav .checkbutton{
   color: white;
   float: right;
   line-height: 50px;
-  margin-right: 40px;
+  margin-right: 30px;
   cursor: pointer;
   display: none;
 }
@@ -196,6 +191,15 @@ nav #check{
 }
 
 @media (max-width: 1200px){
+  nav .autocomplete{
+    margin-left: 8%;
+  }
+  /* .input span{
+    width: 50px;
+  }
+  nav .autocomplete input{
+    width: 150px;
+  } */
   nav label.logo{
     font-size: 25px;
     padding-left: 10px;
@@ -237,9 +241,44 @@ nav #check{
   }
 }
 
-@media (max-width: 374px){
+@media(max-width: 500px) {
+  nav .autocomplete{
+    margin-left: 5%;
+  }
+  .input span{
+    width: 50px;
+  }
+  nav .autocomplete input{
+    width: 160px;
+  }
+}
+
+@media (max-width: 390px){
   nav label.logo{
     font-size: large;
+  }
+  nav .autocomplete{
+    margin-left: 1%;
+    width: 180px;
+  }
+  .input span{
+    width: 40px;
+  }
+  nav .autocomplete input{
+    width: 125px;
+  }
+}
+
+@media (max-width: 350px){
+  nav .autocomplete{
+    margin-left: 1%;
+    width: 160px;
+  }
+  .input span{
+    width: 40px;
+  }
+  nav .autocomplete input{
+    width: 100px;
   }
 }
 
@@ -280,9 +319,8 @@ nav #check{
   margin: 0 0 20px;
 }
 
-.serve-ar{
+.serve-ar, .content-ar{
   top: 5vh;
-  left: 60%;
 }
 
 /* Arrow & Hover Animation */

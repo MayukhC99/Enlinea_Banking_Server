@@ -34,9 +34,9 @@ io.on('connection', (socket) => {
 
     passportEmitter.on("user_login",(data)=>{
         console.log(data.username + " connected with "+socket.id);
+        id_storage[data.username]= socket.id;
         console.log(id_storage);
         //user_storage[socket.id]= data.username;
-        id_storage[data.username]= socket.id;
 
         //socket.emit("isOnline",{status: "online"});
     })
@@ -67,6 +67,7 @@ app.use('/root',require('./route/root').route);
 app.use('/homepage',require('./route/homepage').route);
 app.use('/admin',require('./route/admin').route);
 app.use('/friend_request',require('./route/friend_request').route);
+app.use('/friends',require('./route/friends').route);
 app.use('/notification',require('./route/notification').route);
 app.use('/account_user',require('./route/account_user').route);
 app.use((req,res)=>{

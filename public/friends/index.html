@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" href="./style.css">
+    <title>Friends</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark d-none d-md-inline-flex">
+      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link all_friends" href="#">All Friends <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link friend_requests" href="#">Friend Requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link sent_request" href="#">Sent Request</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <span><i class="fas fa-search"></i></span>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search for your friends" aria-label="Search">
+        </form>
+      <!-- </div> -->
+    </nav>
+
+    <div class="container-fluid d-md-none p-0">
+      <div class="row m-0" id="return">
+        <div class="col-12 p-0 bg-dark text-white">
+          <div class="row">
+            <span class="col-4 back_button"><i class="fas fa-arrow-left" id="back"></i></span>
+            <span class="col-8 friends_text">Friends</span>
+          </div>
+        </div>
+      </div>
+      <div class="row m-0" id="other">
+        <div class="col-12 p-0">
+          <form class="">
+            <input class="col-12 form-control pr-0" type="search" placeholder="Search for your friends" aria-label="Search">
+          </form>
+        </div>
+        <div class="col-12 bg-dark text-white all_friends" id="all_friends">
+          <div class="row">
+            <span class="col-8">All Friends</span>
+            <span class="col-4"><i class="fas fa-chevron-right float-right pr-3"></i></span>
+          </div>
+        </div>
+        <div class="col-12 bg-dark text-white friend_requests" id="friend_requests">
+          <div class="row">
+            <span class="col-8">Friend Requests</span>
+            <span class="col-4"><i class="fas fa-chevron-right float-right pr-3"></i></span>
+          </div>
+        </div>
+        <div class="col-12 bg-dark text-white sent_request" id="sent_request">
+          <div class="row">
+            <span class="col-8">Sent Request</span>
+            <span class="col-4"><i class="fas fa-chevron-right float-right pr-3"></i></span>
+          </div>
+        </div>
+        <div class="col-12 bg-dark text-white heading">All Friends</div>
+      </div>
+    </div>
+
+    <div class="container-fluid mt-3">
+      <div class="no_friends" style="display: none;"></div>
+      <div class="row p-2">
+        <div class="col-12 col-lg-6 first"></div>
+        <div class="col-12 col-lg-6 second"></div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

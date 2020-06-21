@@ -1,0 +1,298 @@
+body{
+    overflow-x: hidden;
+}
+
+nav{
+    z-index: 2004;
+    position: fixed;
+    background: url(https://images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg);
+    height: 50px;
+    width: 100%;
+}
+
+nav ul li{
+    font-size: large;
+    font-weight: 500;
+}
+
+nav .form-inline{
+    background-color: white;
+    border-radius: 5px;
+}
+
+nav .form-inline span{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+nav .form-inline .form-control{
+    border: white;
+    margin: 0;
+    padding: 0;
+}
+
+input.form-control:focus{
+    box-shadow: inset 0 -1px 0 #ddd;
+}
+
+/* .container{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.first{
+    width: 100%;
+    margin: 0;
+} */
+
+.image{
+    width: 100px;
+    height: 100px;
+    margin-left: 30%;
+    overflow: hidden;
+}
+
+#theImageContainer{
+    width: 100px;
+    height: 100px;
+    background-color: #fffbfb;
+    color: darkgrey;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+#user{
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+.username, .full_name{
+    font-weight: 500;
+}
+
+.button_container{
+    text-align: center;
+}
+
+.add:hover{
+    background-color: rgba(238, 236, 235, 0.979);
+    cursor: pointer;
+}
+
+#return{
+    position: fixed;
+    height: 40px;
+    z-index: 1000;
+    width: 100%;
+}
+
+#other{
+    padding-top: 40px;
+}
+
+#back{
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+#back:hover{
+    font-size: larger;
+    padding-left: 5px !important;
+}
+
+.back_button, .friends_text{
+    font-weight: 500;
+    font-size: large;
+    padding-top: 5px;
+}
+
+#all_friends{
+    display: none;
+}
+
+#all_friends, #friend_requests, #sent_request{
+    height: 40px;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(156, 155, 155);
+}
+
+#all_friends .row .col-8, #friend_requests .row .col-8, #sent_request .row .col-8{
+    font-weight: 500;
+    font-size: large;
+    padding-left: 50px;
+    padding-top: 5px;
+}
+
+#all_friends span i, #friend_requests span i, #sent_request span i{
+    padding-top: 10px;
+}
+
+#all_friends:hover span i, #friend_requests:hover span i, #sent_request:hover span i{
+    font-size: larger;
+    padding-right: 10px !important;
+}
+
+.heading{
+    height: 40px;
+    text-align: center;
+    font-weight: 500;
+    font-size: large;
+    padding-top: 5px;
+}
+
+@media (max-width: 1329px){
+    .unfriend{
+        margin-top: 9px;
+        width: 95px;
+    }
+}
+
+@media (max-width: 1213px){
+    .remove{
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 1180px){
+    .head{
+        width: 85vw;
+    }
+    .user{
+        width: 85vw;
+    }
+    .add_user{
+        width: 85vw;
+    }
+}
+
+@media (max-width: 992px){
+    .image{
+        width: 75px;
+        height: 75px;
+        margin-left: 10%;
+    }
+    #theImageContainer{
+        width: 75px;
+        height: 75px;
+    }
+    .username, .full_name{
+        font-size: 14px;
+    }
+    .unfriend{
+        margin-top: 0;
+        width: 85px;
+    }
+    .remove{
+        margin-top: 0;
+    }
+    nav ul li{
+        font-size: medium;
+        font-weight: 500;
+    }
+    nav .form-inline{
+        width: 200px;
+    }
+    .form-inline span{
+        width: 30px;
+    }
+    nav .form-inline .form-control{
+        width: 160px;
+        font-size: 14px;
+    }
+    ::-webkit-input-placeholder {
+        font-size: 14px;
+    }
+    ::-moz-placeholder {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 870px){
+    .activate_deactivate{
+        width: 100px;
+    }
+    .delete_user{
+        margin-top: 5px;
+        width: 100px;
+    }
+    .deactivate_active{
+        width: 100px;
+    }
+}
+
+@media (max-width: 672px){
+    .deactivate_del, .activate_del{
+        white-space: pre-line;
+    }
+    .unfriend{
+        margin-top: 9px;
+        width: 95px;
+    }
+}
+
+@media (max-width: 614px){
+    .remove{
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 554px){
+    .profile_pic{
+        white-space: pre-line;
+    }
+    .activate_deactivate{
+        width: auto;
+        text-align: left;
+        font-size: 14px;
+        margin-left: 0;
+    }
+    .delete_user{
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 500px){
+    .image{
+        width: 50px;
+        height: 50px;
+        margin-left: 0;
+    }
+    #theImageContainer{
+        width: 50px;
+        height: 50px;
+    }
+    #user{
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        width: 110%;
+        transform: translateX(-50%);
+    }
+    .button_container{
+        text-align: start;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 400px){
+    #activate_deactivate{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 350px){
+    .heading{
+        margin: 0;
+        padding: 0;
+    }
+}
+

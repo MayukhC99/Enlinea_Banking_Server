@@ -19,6 +19,8 @@ $(function(){
 	} else {
         $(".update").show();
         $(".mobile_pic_update").hide();
+        $(".slider").hide();
+        $(document.body).removeClass("pad");
 	}
 
     //to get full name of user
@@ -34,7 +36,7 @@ $(function(){
     })
 
     //to clear current profile_picture of user
-    theClearImageLink.click(function(){
+    $('#clearImage, #theclearImage').click(function(){
         var message = confirm("Are you sure you want to reset your current photo?");
         if(message == true){
             $.get('/root/delete/profile_image',(data)=>{
@@ -89,7 +91,15 @@ $(document).mouseup(function(e){
     console.log(e.target.id);
     var container = $("#buttonContainer");
     if(e.target.id === "user" || e.target.id === "theImageTag"){
-        $(".modal-header").hide();
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+            $(".modal-header").show();
+            $("#close").hide();
+            $(".dialog, .con, .bid").css({'width': '100vw', 'margin': '0', 'border': '0'});
+        } else {
+            $(".modal-header").hide();
+            $("#close").show();
+        }
         $.get('/root/get/profile_picture', (data)=>{
             if(data !== "000.jpg"){
                 $(".modal-body #picture").attr('src', `../uploads/${data}`);
@@ -103,17 +113,20 @@ $(document).mouseup(function(e){
                 $("#theImageContainer").attr("data-toggle", "modal");
             }
             else{
-                $("html").css({'overflow-x': 'hidden'});
                 $("#theImageContainer").attr("data-toggle", "");
             }
         }
+
         window.res = 0;
     }
     else{
         if(e.target.id !== "picture")
             $("html").css({'overflow-x': 'hidden'});
     }
-    if(e.target.id === "update" || e.target.id === "pic_update" || e.target.id === "cam" || e.target.id === "mobile_cam"){
+    if(e.target.id === "exampleModal" || e.target.id === "close_button"){
+        $("html").css({'overflow-x': 'visible'});
+    }
+    if(e.target.id === "update" || e.target.id === "pic_update" || e.target.id === "cam"){
         $("#theImageContainer").attr("data-toggle", "");
         $(".update").addClass("show_div");
         if (theOpenButton.style.display === "none") {
@@ -126,16 +139,42 @@ $(document).mouseup(function(e){
         container.hide();
         $(".update").removeClass("show_div");
     }
+    if(e.target.id === "mobile_cam" || e.target.id === "slider" || e.target.id === "clear" || e.target.id === "save" || e.target.id === "choose_photo" || e.target.id === "theclearImage" || e.target.id === "saveImage" || e.target.id === "chooseImage"){
+        $(document.body).addClass("pad");
+        $(".slider").show();
+    }
+    else{
+        $(document.body).removeClass("pad");
+        $(".slider").hide();
+    }
 });
+
+$('.modal').on('hidden.bs.modal', function (e) {
+    $("html").css({'overflow-x': 'hidden'});
+})
 
 $(window).bind('resize', function() {
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
         $(".update").hide();
         $(".mobile_pic_update").show();
+        $(".modal-header").show();
+        $("#close").hide();
+        $(".dialog, .con, .bid").css({'width': '100vw', 'margin': '0', 'border': '0'});
 	} else {
         $(".update").show();
         $(".mobile_pic_update").hide();
+        $(".slider").hide();
+        $(document.body).removeClass("pad");
+        $(".modal-header").hide();
+        $("#close").show();
+        if($(window).width() <= 576){
+            $(".dialog, .con, .bid").css({'width': '85vw', 'margin': 'auto'});
+        }
+        else{
+            $(".dialog, .con, .bid").css({'width': 'auto'});
+            $(".dialog").css({'margin': 'auto'});
+        }
     }
     if($(window).width() >= 335 && $(window).width() < 486){
         $("#pi").css({'font-size': '20px'});
@@ -177,21 +216,20 @@ function customFileFilter(file){
     const check_filename = regex.test(file.name);
 
     const check_mimetype= regex.test(file.type);
-    theErrorMessage.classList.add('hide');
+    $('#errorMessage').hide();
+    $('#successMessage').hide();
 
     if (file.size > 1000000) {
-        theErrorMessage.classList.add('hide');
-        theErrorMessage.innerHTML = "File too large, cannot be more than 1MB...";
-        theErrorMessage.classList.remove('hide');
+        $('#errorMessage').show();
+        $('#errorMessage').html('File too large, cannot be more than 1MB...<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
         return false;
     }
 
     if(check_filename && check_mimetype){
         return true;
     } else {
-        theErrorMessage.classList.add('hide');
-        theErrorMessage.innerHTML = "File type should be png or jpg/jpeg...";
-        theErrorMessage.classList.remove('hide');
+        $('#errorMessage').show();
+        $('#errorMessage').html('File type should be png or jpg/jpeg...<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
         return false;
     }
 }
@@ -226,6 +264,10 @@ function clearImage(e) {
     theSuccessMessage.classList.add('hide');
 }
 
+$(document).on('click', '.alert .close', function(){
+    $(".alert").hide();
+})
+
 $(document).ready(function(){
     let prev_flag = $('#pi');
 
@@ -238,18 +280,18 @@ $(document).ready(function(){
 
             success: function(res) {
                 console.log(res);
-                if(res !== "undefined"){
-                    theErrorMessage.style.display = "none";
-                    theSuccessMessage.classList.add('hide');
-                    theSuccessMessage.innerHTML = "Image uploaded successfully";
-                    theSuccessMessage.classList.remove('hide');
+                if(res !== "undefined" && res !== ""){
+                    $('#errorMessage').hide();
+                    $('#successMessage').hide();
+                    $('#successMessage').html('Image uploaded successfully<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                    $('#successMessage').show();
                     window.res = 1;
                 }
                 else{
-                    theSuccessMessage.style.display = "none";
-                    theErrorMessage.classList.add('hide');
-                    theErrorMessage.innerHTML = "Select a image file within 1MB size";
-                    theErrorMessage.classList.remove('hide');
+                    $('#successMessage').hide();
+                    $('#errorMessage').hide();
+                    $('#errorMessage').html('Select a image file within 1MB size<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                    $('#errorMessage').show();
                 }
             }
         });
@@ -287,6 +329,10 @@ $(document).ready(function(){
         return false;
     });
 
+    $("#saveImage").click(function(){
+        $('#theImageForm').submit();
+    })
+
     $(".head").click(function(){
         prev_flag.toggleClass('active');
         prev_flag = $(this);
@@ -294,14 +340,13 @@ $(document).ready(function(){
         if($('#pi').hasClass('active')){
             $("#personal").css({'margin-left': '0'});
             $("#change").css({'margin-left': '100%'});
-            $("#personal").css({'visibility': 'visible'});
-            $("#change").css({'visibility': 'hidden'});
+            $("#personal").show();
+            $("#change").hide();
         }
         else{
             $("#personal").css({'margin-left': '-100%'});
             $("#change").css({'margin-left': '0%'});
-            $("#personal").css({'visibility': 'hidden'});
-            $("#change").css({'visibility': 'visible'});
+            $("#change").show();
         }
     });
 

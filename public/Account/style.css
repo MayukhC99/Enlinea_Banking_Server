@@ -8,6 +8,11 @@ html{
     overflow-x: hidden;
 }
 
+.pad{
+    padding: 0 !important;
+    position: fixed;
+}
+
 #theImageForm {
     display: flex;
     flex-direction: column;
@@ -55,12 +60,29 @@ html{
 
 #errorMessage, #successMessage {
     font-family: "Calibri";
-    font-size: 18px;
-    margin-bottom: 25px;
+    display: none;
+    position: absolute;
+    top: 5px;
+}
+
+.alert .close{
+    outline: none;
+}
+
+.hide{
+    display: none;
+}
+
+#errorMessage .close:hover{
+    color: #ff0202;
+}
+
+#successMessage .close:hover{
+    color: green;
 }
 
 #errorMessage, #offline_status {
-    color: red;
+    color: #ff0202;
 }
 
 #successMessage, #online_status {
@@ -81,10 +103,6 @@ html{
     transform: translateX(-50%);
 }
 
-.hide {
-    display: none;
-}
-
 #theImageContainer.dragging {
     border-color: green;
     border-width: 10px;
@@ -92,9 +110,49 @@ html{
 }
 
 #buttonContainer{
+    position: absolute;
     background: white;
     width: 200px;
     box-shadow: 0 5px 15px rgba(250, 247, 249, 0.5);
+    transform: translate(40%, 110%);
+}
+
+#buttonContainer:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 99%;
+    left: 15px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: #fff transparent;
+}
+
+body .slider{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    overflow: hidden;
+    margin: 0 !important;
+    z-index: 1000;
+    background-color: rgba(22, 21, 22, 0.4);
+}
+
+.slider div {
+    position: relative;
+    height: 20vh;
+    width: 100vw;
+    padding: 5px;
+    background-color: rgb(44, 43, 43);
+    top: 80%;
+    bottom: 0;
+    color: white;
+}
+
+#profile{
+    display: none;
 }
 
 .btn:hover{
@@ -115,7 +173,8 @@ html{
 }
 
 #change{
-    visibility: hidden;
+    display: none;
+    margin-left: 100%;
 }
 
 #left{
@@ -170,7 +229,7 @@ select{
     border: 1px solid #fd3535;
     cursor: pointer;
     outline: none;
-    transform: translate(50%);
+    transform: translateX(100%);
     width: 150px;
     height: 50px;
 }
@@ -436,23 +495,20 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 576px) {
     .bid{
-        width: 90vw;
+        width: 85vw;
+        margin: auto;
     }
     .dialog{
-        width: 90vw;
+        width: 85vw;
         justify-content: center;
+        margin: auto;
     }
     .con{
-        width: 90vw;
+        width: 85vw;
         overflow: hidden;
         justify-content: center;
         background-color: rgba(15, 15, 15, 0.1);
-    }
-}
-
-@media(max-width: 500px) {
-    #theImageContainer {
-        margin-bottom: 0;
+        margin: auto;
     }
 }
 
@@ -496,5 +552,8 @@ input::-webkit-inner-spin-button {
     }
     #change #right input{
         width: 104%;
+    }
+    #btn2{
+        transform: translateX(70%);
     }
 }

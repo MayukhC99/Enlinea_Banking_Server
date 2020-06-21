@@ -59,10 +59,11 @@
 	background:#FFFFFF;
 	border:none;
 	padding:15.5px;
-	width:91.9%;
+	width: 89%;
 	display:block;
 	font-family: 'Lato',Arial,sans-serif;
-	font-size:14px;
+    font-size:14px;
+    margin-left: 0;
 }
 
 .ccformfield {
@@ -144,7 +145,7 @@ textarea{
     font-size: larger;
     margin-top: 20px;
     margin-left: 60px;
-    width: 250px;
+    width: 234px;
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -158,6 +159,7 @@ textarea{
 
 .extra{
     height: 100px;
+    width: 100vw;
     background-color: khaki;
 }
 
@@ -165,6 +167,9 @@ textarea{
     .ccform{
         width: 500px;
         left: 25%;
+    }
+    .ccformfield {
+        width: 88%;
     }
 }
 
@@ -183,7 +188,7 @@ textarea{
         height: 1550px;
     }
     .ccform{
-        transform: translateY(115%);
+        transform: translateY(125%);
         width: 500px;
         left: 20%;
     }
@@ -192,19 +197,38 @@ textarea{
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 760px){
     .ccform{
         transform: translateY(130%);
+        left: 12%;
+        width: 70vw;
+    }
+    #contact_info{
+        transform: none;
+        margin-left: 20%;
+        justify-content: center;
+    }
+    #border{
+        transform: translateX(-5%) translateY(20%);
+    }
+    #contact_image{
+        transform: translateX(-14%) translateY(-56%);
     }
 }
 
-@media (max-width: 700px) {
+@media(max-width: 570px){
+    .ccformfield {
+        width: 87%;
+    }
+}
+
+@media (max-width: 502px) {
     #contact{
         overflow: hidden;
-        width: 410px;
+        width: 100vw;
     }
     .ccform{
-        width: 370px;
+        width: 90vw;
         left: 4%;
     }
     #contact_info{
@@ -244,7 +268,7 @@ textarea{
         width: 100vw;
     }
     .ccform{
-        transform: translateY(100%);
+        transform: translateY(110%);
         width: 90vw;
     }
     #contact_info{
