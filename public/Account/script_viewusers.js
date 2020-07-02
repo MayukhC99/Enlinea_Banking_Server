@@ -243,7 +243,7 @@ $(function(){
 
     socket.on("isOnline",(data)=>{
         //display user status as Online or Offline
-        //alert(data.status);
+        //console.log(data.status);
         if(data.status === "online"){
             $("#online_status").removeClass("hide");
             $("#offline_status").addClass("hide");
@@ -253,4 +253,5 @@ $(function(){
             $("#online_status").addClass("hide");
         }
     })
+    setInterval(() => {socket.emit("check_isOnline",{username: username})}, 1000);
 })

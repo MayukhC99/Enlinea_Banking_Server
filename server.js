@@ -56,7 +56,7 @@ io.on('connection', (socket) => {
             socket.emit("isOnline",{status: "online"});
         else
             socket.emit("isOnline",{status: "offline"});
-    })
+    });
 
 })
 

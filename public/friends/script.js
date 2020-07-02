@@ -16,6 +16,7 @@ $(document).ready(function(){
             $(this).toggleClass('active');
             class_link = class_name[1];
         }
+        window.header = class_link;
         $.ajax(`/friends/${class_link}`, {
             success: (data) =>{
                 let size = data.length;
@@ -91,6 +92,8 @@ $(document).ready(function(){
         let size = data.length;
         let first = '';
         let second = '';
+        window.friends = data;
+        window.header = 'all_friends';
         if(size == 0){
             $(".no_friends").show();
             $(".no_friends").text("You have no friend");
@@ -122,6 +125,73 @@ $(document).ready(function(){
                     second += str;
             }
 
+            $(".first").html(first);
+            $(".second").html(second);
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+    })
+
+    $(document).on('keyup', "input", function(e){
+        let val = $(this).val();
+        if (val == "") {
+            if($(window).width() >= 768){
+                if(window.header === "all_friends")
+                    $(".navbar-nav li:first-child a").trigger('click');
+                else if(window.header === "friend_requests")
+                    $(".navbar-nav li:nth-child(2) a").trigger('click');
+                else
+                    $(".navbar-nav li:last-child a").trigger('click');
+            }
+            else{
+                if(window.header === "all_friends")
+                    $(".all_friends").trigger('click');
+                else if(window.header === "friend_requests")
+                    $(".friend_requests").trigger('click');
+                else
+                    $(".sent_request").trigger('click');
+            }
+            return false;
+        }
+        $(".no_friends").hide();
+        $(".first").html('');
+        $(".second").html('');
+        let first = '';
+        let second = '';
+        let flag = 0;
+        let arr = window.friends;
+        for (i = 0; i < arr.length; i++) {
+            let str = '';
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].username.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                str += `<div class="row add add${(flag+1)}" style="height: 120px;padding-top: 10px;">
+                    <div class="col-4">
+                        <div class="image">
+                            <label id="theImageContainer">
+                                <img id="user" src="../uploads/${arr[i].profile_picture}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4 full_name" style="text-align: center;overflow: hidden;word-break: break-all;">
+                        ${arr[i].first_name} ${arr[i].last_name}<br />
+                        <small class="username text-muted">${arr[i].username}</small>
+                    </div>
+                    <div class="col-4 button_container">
+                        <button class="btn btn-light friend friend${(flag+1)}" data-toggle="tooltip" data-placement="top" title="Friends"><span><i class="fas fa-check"></i></span> Friends</button>
+                        <button class="btn btn-light unfriend unfriend${(flag+1)}" style="display: none;">Unfriend</button>
+                    </div>
+                </div>`;
+                if(flag % 2 == 0)
+                    first += str;
+                else
+                    second += str;
+                flag++;
+            }
+        }
+        if(flag == 0){
+            $(".no_friends").show();
+            $(".no_friends").text(`No results for: ${val}`);
+        }
+        else{
             $(".first").html(first);
             $(".second").html(second);
             $('[data-toggle="tooltip"]').tooltip();
