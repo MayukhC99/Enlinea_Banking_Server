@@ -1,5 +1,5 @@
 
-let socket= io();
+//let socket= io();
 
 $(function(){
 

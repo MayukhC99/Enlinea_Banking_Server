@@ -139,8 +139,8 @@ route.get('/verify_user',(req,res)=>{
             res.send(undefined);
         }
     }
-
-    res.send(undefined);
+    else
+        res.send(undefined);
 });
 
 //get details of a particular user

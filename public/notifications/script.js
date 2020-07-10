@@ -33,6 +33,7 @@ $(document).ready(function(){
                 $(".notifications").html(str);
             }
             else{
+                console.log("notifications found");
                 let total = data.length;
                 for(let i = total-1; i >= 0; i--){
                     if(data[i].subject === "Friend Request"){

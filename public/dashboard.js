@@ -1,10 +1,23 @@
+let socket;
 
 $(function(){
+
+  function login(){
+    return new Promise((resolve , reject)=>{
+      try{
+        //localStorage.setItem('socket' , JSON.stringify( JSON.decycle( io() ) ) );
+        socket = io() ;
+        resolve();
+      } catch(error) {
+        reject(error);
+      }
+    })
+  }
 
   let admin_str= `<header>Dashboard</header>
     <ul style="padding-left: 0;">
       <li><a href="./Account/"><i class="fas fa-user-circle"></i>Account</a></li>
-      <li><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+      <li><a id="logout_link" href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
       <li><a href="./notifications/admin_notification.html"><i class="fas fa-bullhorn"></i>Send Notifications</a></li>
       <li><a href="./notifications/user_notification.html"><i class="fas fa-bullhorn"></i>Received Notifications</a></li>
       <li><a href="./users/index.html"><i class="fas fa-users"></i></i>View Users</a></li>
@@ -23,8 +36,17 @@ $(function(){
       </ul>`;
 
     $.get('/root/verify_user',function(response){
-      if (response=== 'admin')
+      if (response=== 'admin'){
         $('.sidebar').html(admin_str);
+
+        login()
+        .then(()=>{
+          //let soc = localStorage.getItem('socket');
+          //soc = JSON.retrocycle( JSON.parse(soc) );
+          socket.emit("user_login",response);
+          console.log(soc);
+        })
+      }
       else if (response=== 'success'){
         $.get('/root/get/username',(data)=>{
 
@@ -40,6 +62,15 @@ $(function(){
           </ul>`;
 
           $('.sidebar').html(success_str);
+          
+          login()
+          .then(()=>{
+            // let soc = localStorage.getItem('socket');
+            // alert(soc);
+            // soc = JSON.retrocycle( JSON.parse(soc) );
+            socket.emit("user_login",data);
+            console.log(socket);
+          })
         })
       }
       else
