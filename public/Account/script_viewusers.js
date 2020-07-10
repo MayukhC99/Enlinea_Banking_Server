@@ -253,5 +253,5 @@ $(function(){
             $("#online_status").addClass("hide");
         }
     })
-    setInterval(() => {socket.emit("check_isOnline",{username: username})}, 1000);
+    //setInterval(() => {socket.emit("check_isOnline",{username: username})}, 1000);
 })
