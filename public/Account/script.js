@@ -10,6 +10,12 @@ let image = $('#user');
 let theClearImageLink = $('#clearImage');
 window.res = 0;
 
+let socket = io();
+$.get('/root/get/username',(data)=>{
+    if(data)
+        socket.emit("add_page",data);
+});
+
 $(function(){
 
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -59,6 +65,19 @@ $(function(){
 
     $("#theImageContainer").on('click', function(e){
     });
+
+    $( window ).on("unload" , ()=>{
+        console.log("unloading account page");
+        if(socket){
+          $.get('/root/get/username',(data)=>{
+            if(data)
+                socket.emit("remove_page",{
+                    username: data,
+                    page_name: "account"
+                });
+          })
+        }
+    })
 })
 
 $('img').on('dragstart', function(event) { event.preventDefault(); });

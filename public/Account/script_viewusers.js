@@ -3,6 +3,10 @@ let socket= io();
 let target_username = window.location.href.split('/');
 target_username = target_username[ target_username.length - 1 ];
 console.log("targeted username : " + target_username);
+$.get('/root/get/username',(data)=>{
+    if(data)
+        socket.emit("add_page",data);
+})
 
 $(function(){
 
@@ -235,6 +239,19 @@ $(function(){
                 $("#offline_status").removeClass("hide");
                 $("#online_status").addClass("hide");
             }
+        }
+    })
+
+    $( window ).on("unload" , ()=>{
+        console.log("unloading view_user page");
+        if(socket){
+          $.get('/root/get/username',(data)=>{
+            if(data)
+                socket.emit("remove_page",{
+                    username: data,
+                    page_name: "view_user"
+                });
+          })
         }
     })
 })

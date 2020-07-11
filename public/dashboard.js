@@ -49,7 +49,8 @@ $(function(){
           //let soc = localStorage.getItem('socket');
           //soc = JSON.retrocycle( JSON.parse(soc) );
           socket.emit("user_login",response);
-          console.log(soc);
+          console.log(socket);
+          socket.emit("add_page",response);
         })
       }
       else if (response=== 'success'){
@@ -75,6 +76,7 @@ $(function(){
             // soc = JSON.retrocycle( JSON.parse(soc) );
             socket.emit("user_login",data);
             console.log(socket);
+            socket.emit("add_page",data);
           })
         })
       }
@@ -82,4 +84,16 @@ $(function(){
         $('.sidebar').html(failure_str);
     })
 
+    $( window ).on("unload" , ()=>{
+      console.log("unloading main page");
+      if(socket){
+        $.get('/root/get/username',(data)=>{
+          if(data)
+            socket.emit("remove_page",{
+              username: data,
+              page_name: "Main"
+            });
+        })
+      }
+    })
 })

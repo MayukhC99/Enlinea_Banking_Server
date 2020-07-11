@@ -37,7 +37,6 @@ io.on('connection', (socket) => {
         console.log(data + " connected with " + socket.id);
         //if( ! id_storage.hasOwnProperty(data) )
         id_storage[data] = socket.id;
-        page_storage.data.main = true;
         console.log(id_storage);
         console.log(page_storage);
 
@@ -83,6 +82,7 @@ io.on('connection', (socket) => {
     socket.on("add_page",(data)=>{
         if(id_storage[data.username]){
             page_storage[data.username][data.page_name] = true;
+            console.log(page_storage);
         }
     })
 
