@@ -1,5 +1,8 @@
 
-//let socket= io();
+let socket= io();
+let target_username = window.location.href.split('/');
+target_username = target_username[ target_username.length - 1 ];
+console.log("targeted username : " + target_username);
 
 $(function(){
 
@@ -220,6 +223,18 @@ $(function(){
         else{
             $("#offline_status").removeClass("hide");
             $("#online_status").addClass("hide");
+        }
+    })
+
+    socket.on("alter_isOnline",(data)=>{
+        if(target_username === data.username){
+            if(data.status === "online"){
+                $("#online_status").removeClass("hide");
+                $("#offline_status").addClass("hide");
+            } else {
+                $("#offline_status").removeClass("hide");
+                $("#online_status").addClass("hide");
+            }
         }
     })
 })

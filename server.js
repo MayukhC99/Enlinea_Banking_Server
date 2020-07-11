@@ -61,8 +61,8 @@ io.on('connection', (socket) => {
 
     socket.on("user_logout",(data)=>{
         if(id_storage[data]){
-            console.log(id_storage);
             delete id_storage[data];
+            console.log(id_storage);
 
             socket.broadcast.emit("alter_isOnline",{status: "offline" , username: data});
         }
@@ -87,7 +87,7 @@ app.use('/root',require('./route/root').route);
 app.use('/homepage',require('./route/homepage').route);
 app.use('/admin',require('./route/admin').route);
 app.use('/friend_request',require('./route/friend_request').route);
-app.use('/friends',require('./route/friends').route);
+//app.use('/friends',require('./route/friends').route);
 app.use('/notification',require('./route/notification').route);
 app.use('/account_user',require('./route/account_user').route);
 app.use((req,res)=>{
