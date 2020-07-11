@@ -27,6 +27,7 @@ app.use(passport.session());
 
 
 let id_storage= {};
+let page_storage= {};
 
 io.on('connection', (socket) => {
     console.log("New socket with ID : "+socket.id);
@@ -36,33 +37,21 @@ io.on('connection', (socket) => {
         console.log(data + " connected with " + socket.id);
         //if( ! id_storage.hasOwnProperty(data) )
         id_storage[data] = socket.id;
+        page_storage.data.main = true;
         console.log(id_storage);
+        console.log(page_storage);
 
         socket.broadcast.emit("alter_isOnline",{status: "online", username: data});
     })
 
-    // passportEmitter.on("user_login",(data)=>{
-    //     console.log(data.username + " connected with "+socket.id);
-    //     //user_storage[socket.id]= data.username;
-    //     id_storage[data.username]= socket.id;
-    //     console.log(id_storage);
-
-    //     //socket.emit("isOnline",{status: "online"});
-    // })
-
-    // passportEmitter.on("user_logout",(data)=>{
-    //     if(id_storage[data.username]){
-    //         console.log(id_storage);
-    //         delete id_storage[data.username];
-
-    //         socket.broadcast.emit("alter_isOnline",{status: "offline"});
-    //     }
-    // })
 
     socket.on("user_logout",(data)=>{
         if(id_storage[data]){
             delete id_storage[data];
+            if(page_storage.data.main === true)
+                delete page_storage.data;
             console.log(id_storage);
+            console.log(page_storage);
 
             socket.broadcast.emit("alter_isOnline",{status: "offline" , username: data});
         }
@@ -73,6 +62,28 @@ io.on('connection', (socket) => {
             socket.emit("isOnline",{status: "online"});
         else
             socket.emit("isOnline",{status: "offline"});
+    })
+
+    //username and page_name
+    socket.on("remove_page",(data)=>{
+        if(id_storage[data.username]){
+            if(page_storage[data.username][data.page_name])
+                delete page_storage[data.username][data.page_name];
+            console.log(page_storage[data.username]);
+            if(Object.keys(page_storage[data.username]).length === 0){
+                delete page_storage[data.username];
+                delete id_storage[data.username];
+                console.log(page_storage);
+                console.log(id_storage);
+                socket.broadcast.emit("alter_isOnline",{status: "offline" , username: data.username});
+            }
+        }
+    })
+
+    socket.on("add_page",(data)=>{
+        if(id_storage[data.username]){
+            page_storage[data.username][data.page_name] = true;
+        }
     })
 
     socket.on("disconnect",()=>{
