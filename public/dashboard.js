@@ -50,7 +50,10 @@ $(function(){
           //soc = JSON.retrocycle( JSON.parse(soc) );
           socket.emit("user_login",response);
           console.log(socket);
-          socket.emit("add_page",response);
+          socket.emit("add_page",{
+            username: response,
+            page_name: "Main"
+          });
         })
       }
       else if (response=== 'success'){
@@ -76,7 +79,10 @@ $(function(){
             // soc = JSON.retrocycle( JSON.parse(soc) );
             socket.emit("user_login",data);
             console.log(socket);
-            socket.emit("add_page",data);
+            socket.emit("add_page",{
+              username: data,
+              page_name: "Main"
+            });
           })
         })
       }
@@ -88,11 +94,13 @@ $(function(){
       console.log("unloading main page");
       if(socket){
         $.get('/root/get/username',(data)=>{
+          console.log("I am in")
           if(data)
             socket.emit("remove_page",{
               username: data,
               page_name: "Main"
             });
+          console.log("unloading with "+data);
         })
       }
     })

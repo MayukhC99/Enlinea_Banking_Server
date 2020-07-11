@@ -13,7 +13,10 @@ window.res = 0;
 let socket = io();
 $.get('/root/get/username',(data)=>{
     if(data)
-        socket.emit("add_page",data);
+        socket.emit("add_page",{
+            username: data,
+            page_name: "account"
+        });
 });
 
 $(function(){

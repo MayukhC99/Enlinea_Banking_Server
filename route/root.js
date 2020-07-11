@@ -99,6 +99,7 @@ route.get('/get/name',(req,res)=>{
 
 //get username
 route.get('/get/username',(req,res)=>{
+    console.log("SENDING USERNAME TO CLIENT " + req.user.username);
     res.send(req.user.username);
 })
 

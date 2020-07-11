@@ -65,6 +65,7 @@ io.on('connection', (socket) => {
 
     //username and page_name
     socket.on("remove_page",(data)=>{
+        console.log("Inside remove page socket event");
         if(id_storage[data.username]){
             if(page_storage[data.username][data.page_name])
                 delete page_storage[data.username][data.page_name];
@@ -81,7 +82,12 @@ io.on('connection', (socket) => {
 
     socket.on("add_page",(data)=>{
         if(id_storage[data.username]){
-            page_storage[data.username][data.page_name] = true;
+            if(page_storage[data.username])
+                page_storage[data.username][data.page_name] = true;
+            else {
+                page_storage[data.username] = {};
+                page_storage[data.username][data.page_name] = true;
+            }
             console.log(page_storage);
         }
     })

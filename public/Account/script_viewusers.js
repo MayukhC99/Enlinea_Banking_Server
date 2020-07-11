@@ -5,7 +5,10 @@ target_username = target_username[ target_username.length - 1 ];
 console.log("targeted username : " + target_username);
 $.get('/root/get/username',(data)=>{
     if(data)
-        socket.emit("add_page",data);
+        socket.emit("add_page",{
+            username: data,
+            page_name: "view_user"
+        });
 })
 
 $(function(){
