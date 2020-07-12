@@ -90,7 +90,7 @@ $(function(){
           })
         })
       }
-      else{
+      else {
         global_username = undefined;
         $('.sidebar').html(failure_str);
       }

@@ -38,7 +38,7 @@ $(window).on("load", function(){
 
 $(document).ready(function(){
 
-    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	if (isMobile) {
         $(".update").hide();
         $(".mobile_pic_update").show();
