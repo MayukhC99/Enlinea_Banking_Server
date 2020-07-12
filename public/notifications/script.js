@@ -1,3 +1,16 @@
+let socket = io();
+let global_username;
+$.get('/root/get/username',(data)=>{
+    if(data){
+        global_username = data;
+        socket.emit("add_page",{
+            username: data,
+            page_name: "notification"
+        });
+    }
+})
+
+
 $(document).ready(function(){
 
     let from = [];
@@ -89,4 +102,15 @@ $(document).ready(function(){
         let from = $(this).attr('class');
         window.location = `/account_user/${from}`;
     })
+
+    $( window ).on("beforeunload" , ()=>{
+        console.log("unloading notification page");
+        if(socket && global_username){
+            socket.emit("remove_page",{
+                username: global_username,
+                page_name: "notification"
+            });
+        }
+    })
+
 });
