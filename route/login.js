@@ -11,7 +11,8 @@ route.post('/getin',passport.authenticate('local',{
 
 route.get('/logout',(req,res)=>{
 
-    passportEmitter.emit("user_logout",{username: req.user.username});//emiting when loggedout
+    //recently disabled//passportEmitter.emit("user_logout",{username: req.user.username});//emiting when loggedout
+    console.log("logout called");
     req.logout();
     res.redirect('/');
 })

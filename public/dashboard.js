@@ -1,10 +1,29 @@
+let socket;
+let global_username;
 
 $(function(){
+
+  function login(){
+    return new Promise((resolve , reject)=>{
+      try{
+        //localStorage.setItem('socket' , JSON.stringify( JSON.decycle( io() ) ) );
+        socket = io() ;
+        resolve();
+      } catch(error) {
+        reject(error);
+      }
+    })
+  }
+
+  $(document).on('click' , '.logout_request a' , ()=>{
+    console.log("logout triggered");
+    $.get('/root/get/username',(data)=>{ console.log(data); socket.emit("user_logout",data); })
+  })
 
   let admin_str= `<header>Dashboard</header>
     <ul style="padding-left: 0;">
       <li><a href="./Account/"><i class="fas fa-user-circle"></i>Account</a></li>
-      <li><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+      <li class="logout_request"><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
       <li><a href="./notifications/admin_notification.html"><span class="material-icons">add_alert</span>Send Notifications</a></li>
       <li><a href="./notifications/user_notification.html"><i class="fas fa-bullhorn"></i>Received Notifications</a></li>
       <li><a href="./users/index.html"><i class="fas fa-users"></i></i>View Users</a></li>
@@ -23,15 +42,30 @@ $(function(){
       </ul>`;
 
     $.get('/root/verify_user',function(response){
-      if (response=== 'admin')
+      if (response=== 'admin'){
+        global_username = response;
         $('.sidebar').html(admin_str);
+
+        login()
+        .then(()=>{
+          //let soc = localStorage.getItem('socket');
+          //soc = JSON.retrocycle( JSON.parse(soc) );
+          socket.emit("user_login",response);
+          console.log(socket);
+          socket.emit("add_page",{
+            username: response,
+            page_name: "Main"
+          });
+        })
+      }
       else if (response=== 'success'){
         $.get('/root/get/username',(data)=>{
+          global_username = data;
 
         let success_str= `<header>Dashboard</header>
           <ul class="side_bar" style="padding-left: 0;">
             <li><a href="/account_user/${data}"><i class="fas fa-user-circle"></i>Account</a></li>
-            <li><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            <li class="logout_request"><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
             <li><a href="./friends/"><i class="fas fa-user-friends"></i>Friends</a></li>
             <li id="success_notification"><a href="./notifications/user_notification.html"><i class="fas fa-bullhorn"><span class="badge" style="display: inline-block;"></span></i>Notifications</a></li>
             <li><a href="./error/"><i class="fas fa-university"></i>Banking</a></li>
@@ -41,10 +75,35 @@ $(function(){
           </ul>`;
 
           $('.sidebar').html(success_str);
+
+          login()
+          .then(()=>{
+            // let soc = localStorage.getItem('socket');
+            // alert(soc);
+            // soc = JSON.retrocycle( JSON.parse(soc) );
+            socket.emit("user_login",data);
+            console.log(socket);
+            socket.emit("add_page",{
+              username: data,
+              page_name: "Main"
+            });
+          })
         })
       }
-      else
+      else{
+        global_username = undefined;
         $('.sidebar').html(failure_str);
+      }
     })
 
+    $( window ).on("beforeunload" , ()=>{
+      console.log("unloading main page");
+      if(socket && global_username){
+          socket.emit("remove_page",{
+            username: global_username,
+            page_name: "Main"
+          });
+          console.log("unloading with "+data);
+      }
+    })
 })

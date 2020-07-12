@@ -41,7 +41,6 @@ const upload = multer({
 route.post('/upload/profile_image',(req,res)=>{
     upload(req,res,(err)=>{
         if(err){
-            console.log(err);
             res.send(undefined);
         } else {
             console.log(req.file);
@@ -100,7 +99,10 @@ route.get('/get/name',(req,res)=>{
 
 //get username
 route.get('/get/username',(req,res)=>{
-    res.send(req.user.username);
+    if(req.user)
+        res.send(req.user.username);
+    else
+        res.send(undefined);
 })
 
 //To change password
@@ -140,9 +142,8 @@ route.get('/verify_user',(req,res)=>{
             res.send(undefined);
         }
     }
-    else{
+    else
         res.send(undefined);
-    }
 });
 
 //get details of a particular user

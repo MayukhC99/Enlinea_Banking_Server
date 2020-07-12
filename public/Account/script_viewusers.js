@@ -1,5 +1,18 @@
 
 let socket= io();
+let target_username = window.location.href.split('/');
+target_username = target_username[ target_username.length - 1 ];
+console.log("targeted username : " + target_username);
+let global_username;
+$.get('/root/get/username',(data)=>{
+    if(data){
+        global_username = data;
+        socket.emit("add_page",{
+            username: data,
+            page_name: "view_user"
+        });
+    }
+})
 
 $(function(){
 
@@ -243,7 +256,7 @@ $(function(){
 
     socket.on("isOnline",(data)=>{
         //display user status as Online or Offline
-        //console.log(data.status);
+        //alert(data.status);
         if(data.status === "online"){
             $("#online_status").removeClass("hide");
             $("#offline_status").addClass("hide");
@@ -253,5 +266,26 @@ $(function(){
             $("#online_status").addClass("hide");
         }
     })
-    setInterval(() => {socket.emit("check_isOnline",{username: username})}, 1000);
+
+    socket.on("alter_isOnline",(data)=>{
+        if(target_username === data.username){
+            if(data.status === "online"){
+                $("#online_status").removeClass("hide");
+                $("#offline_status").addClass("hide");
+            } else {
+                $("#offline_status").removeClass("hide");
+                $("#online_status").addClass("hide");
+            }
+        }
+    })
+
+    $( window ).on("beforeunload" , ()=>{
+        console.log("unloading view_user page");
+        if(socket && global_username){
+            socket.emit("remove_page",{
+                username: global_username,
+                page_name: "view_user"
+            });
+        }
+    })
 })

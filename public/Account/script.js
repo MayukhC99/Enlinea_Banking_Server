@@ -15,6 +15,18 @@ window.count = 0;
 window.third = 0;
 window.drag = 0;
 
+let socket = io();
+let global_username ;
+$.get('/root/get/username',(data)=>{
+    if(data){
+        global_username = data;
+        socket.emit("add_page",{
+            username: data,
+            page_name: "account"
+        });
+    }
+});
+
 //to get profile_picture of user
 $(window).on("load", function(){
     $.get('/root/get/profile_picture', (data)=>{
@@ -83,6 +95,16 @@ $(document).ready(function(){
 
     $("#theImageContainer").on('click', function(e){
     });
+
+    $( window ).on("beforeunload" , ()=>{
+        console.log("unloading account page");
+        if(socket && global_username){
+            socket.emit("remove_page",{
+                username: global_username,
+                page_name: "account"
+            });
+        }
+    })
 })
 
 $('#img-container').on('update.croppie', function(ev, cropData) {
