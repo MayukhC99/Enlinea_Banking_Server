@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
             socket.emit("isOnline",{status: "offline"});
     })
 
-    //username and page_name
+    //username and page_name 
     socket.on("remove_page",(data)=>{
         console.log("Inside remove page socket event");
         if(id_storage[data.username]){
@@ -73,6 +73,7 @@ io.on('connection', (socket) => {
             if(Object.keys(page_storage[data.username]).length === 0){
                 delete page_storage[data.username];
                 delete id_storage[data.username];
+                console.log("all pages closed");
                 console.log(page_storage);
                 console.log(id_storage);
                 socket.broadcast.emit("alter_isOnline",{status: "offline" , username: data.username});
@@ -81,12 +82,15 @@ io.on('connection', (socket) => {
     })
 
     socket.on("add_page",(data)=>{
-        if(id_storage[data.username]){
+        console.log("adding page in storage");
+        if(data.username){
+            id_storage[data.username] = socket.id;
             if(page_storage[data.username])
                 page_storage[data.username][data.page_name] = true;
             else {
                 page_storage[data.username] = {};
                 page_storage[data.username][data.page_name] = true;
+                socket.broadcast.emit("alter_isOnline",{status: "online" , username: data.username});
             }
             console.log(page_storage);
         }

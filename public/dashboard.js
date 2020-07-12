@@ -1,4 +1,5 @@
 let socket;
+let global_username;
 
 $(function(){
 
@@ -42,6 +43,7 @@ $(function(){
 
     $.get('/root/verify_user',function(response){
       if (response=== 'admin'){
+        global_username = response;
         $('.sidebar').html(admin_str);
 
         login()
@@ -58,6 +60,7 @@ $(function(){
       }
       else if (response=== 'success'){
         $.get('/root/get/username',(data)=>{
+          global_username = data;
 
         let success_str= `<header>Dashboard</header>
           <ul class="side_bar" style="padding-left: 0;">
@@ -86,22 +89,20 @@ $(function(){
           })
         })
       }
-      else
+      else {
+        global_username = undefined;
         $('.sidebar').html(failure_str);
+      }
     })
 
-    $( window ).on("unload" , ()=>{
+    $( window ).on("beforeunload" , ()=>{
       console.log("unloading main page");
-      if(socket){
-        $.get('/root/get/username',(data)=>{
-          console.log("I am in")
-          if(data)
-            socket.emit("remove_page",{
-              username: data,
-              page_name: "Main"
-            });
+      if(socket && global_username){
+          socket.emit("remove_page",{
+            username: global_username,
+            page_name: "Main"
+          });
           console.log("unloading with "+data);
-        })
       }
     })
 })

@@ -11,12 +11,15 @@ let theClearImageLink = $('#clearImage');
 window.res = 0;
 
 let socket = io();
+let global_username ;
 $.get('/root/get/username',(data)=>{
-    if(data)
+    if(data){
+        global_username = data;
         socket.emit("add_page",{
             username: data,
             page_name: "account"
         });
+    }
 });
 
 $(function(){
@@ -69,16 +72,13 @@ $(function(){
     $("#theImageContainer").on('click', function(e){
     });
 
-    $( window ).on("unload" , ()=>{
+    $( window ).on("beforeunload" , ()=>{
         console.log("unloading account page");
-        if(socket){
-          $.get('/root/get/username',(data)=>{
-            if(data)
-                socket.emit("remove_page",{
-                    username: data,
-                    page_name: "account"
-                });
-          })
+        if(socket && global_username){
+            socket.emit("remove_page",{
+                username: global_username,
+                page_name: "account"
+            });
         }
     })
 })

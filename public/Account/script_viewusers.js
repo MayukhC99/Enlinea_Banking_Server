@@ -3,12 +3,15 @@ let socket= io();
 let target_username = window.location.href.split('/');
 target_username = target_username[ target_username.length - 1 ];
 console.log("targeted username : " + target_username);
+let global_username;
 $.get('/root/get/username',(data)=>{
-    if(data)
+    if(data){
+        global_username = data;
         socket.emit("add_page",{
             username: data,
             page_name: "view_user"
         });
+    }
 })
 
 $(function(){
@@ -245,16 +248,13 @@ $(function(){
         }
     })
 
-    $( window ).on("unload" , ()=>{
+    $( window ).on("beforeunload" , ()=>{
         console.log("unloading view_user page");
-        if(socket){
-          $.get('/root/get/username',(data)=>{
-            if(data)
-                socket.emit("remove_page",{
-                    username: data,
-                    page_name: "view_user"
-                });
-          })
+        if(socket && global_username){
+            socket.emit("remove_page",{
+                username: global_username,
+                page_name: "view_user"
+            });
         }
     })
 })
