@@ -24,7 +24,7 @@ $(function(){
     <ul style="padding-left: 0;">
       <li><a href="./Account/"><i class="fas fa-user-circle"></i>Account</a></li>
       <li class="logout_request"><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-      <li><a href="./notifications/admin_notification.html"><i class="fas fa-bullhorn"></i>Send Notifications</a></li>
+      <li><a href="./notifications/admin_notification.html"><span class="material-icons">add_alert</span>Send Notifications</a></li>
       <li><a href="./notifications/user_notification.html"><i class="fas fa-bullhorn"></i>Received Notifications</a></li>
       <li><a href="./users/index.html"><i class="fas fa-users"></i></i>View Users</a></li>
       <li><a href="#services"><i class="fas fa-sliders-h"></i>Services</a></li>
@@ -66,6 +66,7 @@ $(function(){
           <ul class="side_bar" style="padding-left: 0;">
             <li><a href="/account_user/${data}"><i class="fas fa-user-circle"></i>Account</a></li>
             <li class="logout_request"><a href="/login/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            <li><a href="./friends/"><i class="fas fa-user-friends"></i>Friends</a></li>
             <li id="success_notification"><a href="./notifications/user_notification.html"><i class="fas fa-bullhorn"><span class="badge" style="display: inline-block;"></span></i>Notifications</a></li>
             <li><a href="./error/"><i class="fas fa-university"></i>Banking</a></li>
             <li><a href="https://github.com/MayukhC99/En-linea-Banking/"><i class="fab fa-github"></i>Contribute</a></li>
@@ -74,7 +75,7 @@ $(function(){
           </ul>`;
 
           $('.sidebar').html(success_str);
-          
+
           login()
           .then(()=>{
             // let soc = localStorage.getItem('socket');

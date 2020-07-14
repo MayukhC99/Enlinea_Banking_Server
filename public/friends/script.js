@@ -1,3 +1,16 @@
+let socket= io();
+let global_username;
+$.get('/root/get/username',(data)=>{
+    if(data){
+        global_username = data;
+        socket.emit("add_page",{
+            username: data,
+            page_name: "friends_page"
+        });
+    }
+})
+
+
 $(document).ready(function(){
     let prev_nav_flag = $('.navbar-nav li:first-child');
 
@@ -256,5 +269,15 @@ $(document).ready(function(){
 
     $(document).on('click', '#back', function(){
         window.history.back();
+    })
+
+    $( window ).on("beforeunload" , ()=>{
+        console.log("unloading friends page");
+        if(socket && global_username){
+            socket.emit("remove_page",{
+                username: global_username,
+                page_name: "friends_page"
+            });
+        }
     })
 })
