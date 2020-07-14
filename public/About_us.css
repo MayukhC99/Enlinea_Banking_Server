@@ -1,19 +1,24 @@
 
-.container-fluid #team{
+.container #team{
     overflow-y: hidden;
 }
 
-.container-fluid #name .a1{
+.a1{
+    padding-left: 25px;
     text-shadow: 4px 4px 4px gray;
-}
-
-.container-fluid #us .col-6{
-    text-align: center;
-    top: 100px;
 }
 
 #about{
     padding: 50px;
+    min-height: 625px;
+    height: 100vh;
+}
+
+#us{
+    text-align: center;
+    min-height: 400px;
+    height: 65vh;
+    top: 100px;
 }
 
 #para{
@@ -30,6 +35,7 @@
 }
 
 .slide-up{
+    font-size: 18px;
     animation: fadeIn ease 5s;
     -webkit-animation: fadeIn ease 5s;
 }
@@ -51,25 +57,42 @@
     #para{
         font-size: 40px;
     }
+}
 
-    .image_about_us, .slide-up{
-        transform: translateY(-20%);
+@media (max-width: 767px){
+    .a1{
+        padding-left: 70px;
+    }
+    #about{
+        padding-left: 10px;
+        margin-left: 0;
+        padding-right: 10px;
+        margin-right: 0;
+    }
+    #us{
+        padding-left: 0;
+        margin-left: 0;
+        padding-right: 0;
+        margin-right: 0;
+    }
+    #us .col-12:first-child{
+        height: 40vh;
+    }
+    #us .col-12:first-child img{
+        height: 90%;
+    }
+    #us .col-12:last-child{
+        text-align: left;
+        font-size: 15px;
+        padding-left: 0;
+        margin-left: 0;
+        padding-right: 0;
+        margin-right: 0;
     }
 }
 
-@media (max-width: 768px){
-    html, body {
-        overflow-x: hidden;
-    }
-    #about{
-        font-size: small;
-        padding-right: 0px;
-        height: 100vh;
-        /* width: 400px; */
-        left: 0;
-    }
-
-    .image_about_us, .slide-up{
-        transform: none;
+@media (max-width: 400px){
+    #us .col-12:last-child{
+        font-size: 14px;
     }
 }

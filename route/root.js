@@ -33,7 +33,7 @@ const customFileFilter = function(req,file,done){
 
 const upload = multer({
     storage: storage_engine,
-    limits: {fileSize: 1000000},
+    limits: {fileSize: 10000000},
     fileFilter: customFileFilter
 }).single('profile_image');  //name should be profile_image
 
@@ -43,10 +43,10 @@ route.post('/upload/profile_image',(req,res)=>{
         if(err){
             res.send(undefined);
         } else {
+            console.log(req.file);
             if(req.file === undefined){
                 res.send("undefined");
             } else {
-
                 if(req.user.profile_picture !== '000.jpg'){
                     //deleting the file
                     fs.unlink('./public/uploads/'+req.user.profile_picture , (err) => {

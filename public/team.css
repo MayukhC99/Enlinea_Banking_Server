@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
 
 #team{
+    min-height: 625px;
     height: 100vh;
 }
 
@@ -19,7 +20,7 @@
 }
 
 .blog-card{
-    position: absolute;
+    position: relative;
     height: 370px;
     width: 95%;
     max-width: 850px;
@@ -222,8 +223,6 @@
     display: none;
     z-index: 1001;
     height: 370px;
-    width: 95%;
-    max-width: 850px;
     margin: auto;
     background: white;
     border-radius: 25px;
@@ -258,7 +257,7 @@
     }
 
     .blog-card{
-        margin-top: calc(40px + 20%);
+        /* margin-top: calc(40px + 20%); */
         height: 650px;
         width: 95%;
         max-width: 600px;
@@ -266,8 +265,6 @@
 
     #our #hide{
         height: 650px;
-        width: 95%;
-        max-width: 600px;
         align-items: center;
         vertical-align: middle;
     }
@@ -281,7 +278,7 @@
 
     .inner-part .image{
         margin-top: 45px;
-        margin-left: 150px;
+        margin-left: 175px;
     }
 
     .sliders{
@@ -317,8 +314,15 @@
         width: 96%;
         margin-left: 2%;
     }
+    .inner-part .image{
+        margin-top: 45px;
+        margin-left: 120px;
+        height: 180px;
+        width: 150px;
+        overflow: hidden;
+    }
     .blog-card{
-        margin-top: 30%;
+        /* margin-top: 35%; */
         height: 600px;
         width: 95%;
         width: 380px;
@@ -326,14 +330,16 @@
 
     #our #hide{
         height: 600px;
-        width: 95%;
-        width: 380px;
         font-size: small;
     }
 
     .inner-part .content{
         padding-left: 25px;
         width: 350px;
+    }
+
+    .content span{
+        padding-left: 40px;
     }
 
     .text{
@@ -352,14 +358,6 @@
         grid-gap: 20px;
         padding: 0;
         align-items: center;
-    }
-
-    .inner-part .image{
-        margin-top: 45px;
-        margin-left: 30%;
-        height: 180px;
-        width: 150px;
-        overflow: hidden;
     }
 
     #tapImg:checked ~ .inner-part .image {
@@ -382,20 +380,23 @@
 }
 
 @media(max-width: 500px){
-    .blog-card{
-        margin-top: 30%;
+    #team{
+        height: 900px;
     }
 }
 
 @media(max-width: 400px){
     .blog-card{
-        width: 95%;
+        /* margin-top: 50%; */
+        width: 97%;
         max-width: 350px;
         overflow: hidden;
     }
-    #our #hide{
-        width: 95%;
-        max-width: 350px;
+    .inner-part .image{
+        margin-left: 100px;
+    }
+    .content span{
+        padding-left: 0px;
     }
     #tapImg:checked ~ .inner-part .image{
         width: 350px;
@@ -405,24 +406,20 @@
 @media(max-width: 359px){
     body{
         width: 100vw;
+        margin: 0;
+        padding: 0;
     }
     .title1, .content{
         transform: translateX(-4%);
     }
     .inner-part .image{
-        margin-left: 22%;
-    }
-    #team{
-        overflow: hidden;
+        margin-left: 85px;
     }
     .blog-card{
-        left: 2%;
-        width: 95%;
+        /* margin-top: 60%; */
+        /* left: 2%; */
+        width: 98%;
         max-width: 320px;
-    }
-    #our #hide{
-        width: 95%;
-        max-width: 330px;
     }
     .text{
         margin-left: 5%;

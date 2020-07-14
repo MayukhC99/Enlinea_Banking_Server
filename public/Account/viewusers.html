@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Account</title>
+    <title></title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/Account/style.css">
@@ -30,18 +30,19 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <button type="button" class="close float-right text-light" data-dismiss="modal"><i class="fas fa-times"></i></button>
+        <button type="button" class="close float-right text-light" id="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
         <div class="modal-dialog dialog">
             <div class="modal-content con">
-                <div class="modal-header bg-dark">
-                    <span type="button" class="modal-title bg-dark" id="exampleModalLabel" style="margin-left: 90%;"><i class="fas fa-pencil-alt" style="color: white;"></i></span>
+                <div class="modal-header bg-dark" style="display: table;">
+                    <span style="width: 60vw; font-size: large; vertical-align: middle;display: table-cell;">Profile Picture</span>
+                    <span type="button" class="modal-title close" id="exampleModalLabel" data-dismiss="modal"><i class="fas fa-times" style="color: white;"></i></span>
                 </div>
-                <div class="modal-body bid">
+                <div class="modal-body bid" id="bid">
                     <img id="picture" src="" width="100%" height="100%" style="position: block;">
-                    <div class="overlay" id="exampleModalLabel">
+                    <!-- <div class="overlay" id="exampleModalLabel">
                         <div class="col-10 text">Profile Picture</div>
                         <div class="col-1 mt-2 float-right"><i class="fas fa-pencil-alt" style="color: white;"></i></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -75,10 +76,10 @@
     <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-6 status">
-                <button class="btn btn-primary float-right add_friend" style="display: none;"><span><i class="fas fa-user-plus"></i></span> Add Friend</button>
+                <button class="btn btn-primary float-right add_friend" data-toggle="tooltip" data-placement="top" title="Add Friend" style="display: none;"><span><i class="fas fa-user-plus"></i></span> Add Friend</button>
             </div>
             <div class="col-6 message" style="display: none;">
-                <button class="btn btn-light mess" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-comment"></i> Message<span><button class="btn btn-light line" id="line"><i class="fas fa-ellipsis-h fa-lg" id="arr"></i></button></span></button>
+                <button class="btn btn-light mess" data-toggle="modal" data-target="#staticBackdrop" data-tooltip="tooltip" data-placement="top" title="Message"><i class="fas fa-comment"></i> Message<span><button class="btn btn-light line" id="line"><i class="fas fa-ellipsis-h fa-lg" id="arr"></i></button></span></button>
                 <div class="mt-2 ml-5" id="containing">
                     <button class="btn col-12" id="r-1" style="height: 30px; text-align: left;"><i class="fas fa-flag" id="r-2"></i> Report User</button>
                     <button class="btn mb-2 col-12" id="b-1" style="height: 30px; text-align: left;"><i class="fas fa-ban" id="b-2"></i> Block</button>
@@ -97,16 +98,17 @@
                 <label>Mobile Number</label>
             </div>
             <div id="right">
-                <input type="text" class="text-white" name="first_name" id="first_name" disabled>
-                <input type="text" class="text-white" name="last_name" id="last_name" disabled>
-                <input type="text" class="text-white" name="email_id" id="email_id" disabled>
-                <input type="text" class="text-white" name="mobile_number" id="mobile_number" disabled>
+                <input type="text" class="text-white" name="first_name" id="first_name" readonly disabled>
+                <input type="text" class="text-white" name="last_name" id="last_name" readonly disabled>
+                <input type="text" class="text-white" name="email_id" id="email_id" readonly disabled>
+                <input type="text" class="text-white" name="mobile_number" id="mobile_number" readonly disabled>
             </div>
         </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
     <script src="/Account/script_viewusers.js"></script>

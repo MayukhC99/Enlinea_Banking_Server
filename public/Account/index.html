@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Account</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" />
     <link rel="stylesheet" href="/Account/style.css">
 </head>
 
@@ -24,24 +26,43 @@
         <div class="mobile_pic_update" id="mobile_update" style="display: none;">
             <i class="fas fa-camera-retro fa-lg" id="mobile_cam"></i>
         </div>
-        <p id="errorMessage" class="hide"></p>
-        <p id="successMessage" class="hide"></p>
+        <div class="alert alert-primary fade show" id="deleting" role="alert" >
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Deleting...
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" id="errorMessage" role="alert"></div>
+        <div class="alert alert-success alert-dismissible fade show hide" id="successMessage" role="alert"></div>
         <label id="buttonContainer" style="display: none;">
-            <input type="file" name="profile_image" id="theImageField">
-            <label class="btn" for="theImageField"  style="height: 30px; text-align: left;">Choose Photo</label>
-            <button class="b btn" type="" style="height: 30px; text-align: left; margin-top: -7px;">Save</button>
+            <!-- <input type="file" name="profile_image" id="theImageField"> -->
+            <label class="btn" for="theImageField" id="choose"  style="height: 30px; text-align: left;margin-top: 7px;">Choose Photo</label>
+            <!-- <button class="b btn" type="" style="height: 30px; text-align: left; margin-top: -7px;">Save</button> -->
             <label class="btn" id="clearImage" style="height: 30px; text-align: left;">Clear</label>
         </label>
         <span id="my_name"></span>
     </form>
+    <div class="container slider" style="display: none;">
+        <div class="row sliding_up" id="slider">
+            <span class="col-3" id="clear" style="white-space: pre-line;"><i class="fas fa-trash" id="theclearImage" style="font-size: 26px;"></i> 
+                Clear
+            </span>
+            <span class="col-3" id="save" style="white-space: pre-line;"><i class="material-icons" id="saveImage" style="font-size: 30px;">add_to_photos</i> 
+                Save
+            </span>
+            <input type="file" name="profile_image" id="theImageField">
+            <span class="col-6" id="choose_photo" style="white-space: pre-line;"><label for="theImageField" id="chooseImage"><i class="material-icons" id="chooseImage" style="font-size: 30px;">camera</i></label> 
+                Choose Photo
+            </span>
+        </div>
+    </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <button type="button" class="close float-right text-light" data-dismiss="modal"><i class="fas fa-times"></i></button>
+    <div class="modal fade modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="close text-light" id="close" data-dismiss="modal"><i class="fas fa-times" id="close_button"></i></button>
         <div class="modal-dialog dialog">
             <div class="modal-content con">
-                <div class="modal-header bg-dark">
-                    <span type="button" class="modal-title bg-dark" id="exampleModalLabel" style="margin-left: 90%;"><i class="fas fa-pencil-alt" style="color: white;"></i></span>
+                <div class="modal-header bg-dark" id="img-modal-header" style="display: table;">
+                    <span style="width: 60vw; font-size: large; vertical-align: middle;display: table-cell;">Profile Picture</span>
+                    <span type="button" class="modal-title close" id="exampleModalLabel" data-dismiss="modal"><i class="fas fa-times" style="color: white;"></i></span>
                 </div>
                 <div class="modal-body bid" id="bid">
                     <img id="picture" src="" width="100%" height="100%" style="position: block;">
@@ -51,6 +72,26 @@
                     </div> -->
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel">Change picture</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="img-container" id="img-container" method="POST" action="/root/upload/profile_image" enctype="multipart/form-data">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success crop_image">Save</button>
+            </div>
+          </div>
         </div>
     </div>
     <section class="counters">
@@ -103,7 +144,7 @@
                 <input type="text" name="mobile_number" placeholder="Mobile Number" id="mobile_number" required>
                 <input type="date" name="DOB" placeholder="Birth Date" id="DOB" required>
                 <select id="gender" name="gender" required>
-                    <option value="Choose" selected="selected">--Choose--</option>
+                    <option value="Choose" selected="selected" disabled>--Choose--</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Others">Others</option>
@@ -132,6 +173,8 @@
     <script src="../jquery-3.4.1.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js"></script>
     <script src="/Account/script.js"></script>
     <script>
         function countLines(){

@@ -2,6 +2,7 @@
 
 #contact{
     overflow: hidden;
+    min-height: 92vh;
     height: 1040px;
     width: 100vw;
 }
@@ -59,10 +60,11 @@
 	background:#FFFFFF;
 	border:none;
 	padding:15.5px;
-	width:91.9%;
+	width: 89%;
 	display:block;
 	font-family: 'Lato',Arial,sans-serif;
-	font-size:14px;
+    font-size:14px;
+    margin-left: 0;
 }
 
 .ccformfield {
@@ -144,7 +146,7 @@ textarea{
     font-size: larger;
     margin-top: 20px;
     margin-left: 60px;
-    width: 250px;
+    width: 234px;
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -158,6 +160,9 @@ textarea{
 
 .extra{
     height: 100px;
+    width: 100vw;
+    bottom: 0;
+    position: relative;
     background-color: khaki;
 }
 
@@ -165,6 +170,9 @@ textarea{
     .ccform{
         width: 500px;
         left: 25%;
+    }
+    .ccformfield {
+        width: 88%;
     }
 }
 
@@ -183,7 +191,7 @@ textarea{
         height: 1550px;
     }
     .ccform{
-        transform: translateY(115%);
+        transform: translateY(125%);
         width: 500px;
         left: 20%;
     }
@@ -192,19 +200,38 @@ textarea{
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 760px){
     .ccform{
         transform: translateY(130%);
+        left: 12%;
+        width: 70vw;
+    }
+    #contact_info{
+        transform: none;
+        margin-left: 20%;
+        justify-content: center;
+    }
+    #border{
+        transform: translateX(-5%) translateY(20%);
+    }
+    #contact_image{
+        transform: translateX(-14%) translateY(-56%);
     }
 }
 
-@media (max-width: 700px) {
+@media(max-width: 570px){
+    .ccformfield {
+        width: 87%;
+    }
+}
+
+@media (max-width: 502px) {
     #contact{
         overflow: hidden;
-        width: 410px;
+        width: 100vw;
     }
     .ccform{
-        width: 370px;
+        width: 90vw;
         left: 4%;
     }
     #contact_info{
@@ -224,6 +251,7 @@ textarea{
     }
     #contact_image img{
         width: 90%;
+        height: 69%;
         object-fit: contain;
         background-size: cover;
         background-position: center center;
@@ -237,6 +265,17 @@ textarea{
     }
 }
 
+@media (max-width: 420px) {
+    #border{
+        width: 81%;
+        height: 30%;
+    }
+    #contact_image img{
+        width: 90%;
+        height: 69%;
+    }
+}
+
 @media (max-width: 400px) {
     #contact{
         overflow: hidden;
@@ -244,7 +283,7 @@ textarea{
         width: 100vw;
     }
     .ccform{
-        transform: translateY(100%);
+        transform: translateY(110%);
         width: 90vw;
     }
     #contact_info{
@@ -256,14 +295,15 @@ textarea{
         object-fit: cover;
     }
     #border{
-        width: 78%;
-        height: 24%;
+        width: 76%;
+        height: 27%;
         border-style: solid;
         border-color: blacks;
         transform: translate(12%, 25%);
     }
     #contact_image img{
         width: 85%;
+        height: 66%;
         object-fit: contain;
     }
     #contact_image{
@@ -275,5 +315,20 @@ textarea{
     }
     #call_us, #mail_us, #visit_us{
         width: 50%;
+    }
+}
+
+@media (max-width: 370px) {
+    #border{
+        width: 76%;
+        height: 25%;
+    }
+}
+
+@media (max-width: 350px) {
+    #border{
+        width: 76%;
+        height: 23%;
+        transform: translate(12%, 21%);
     }
 }

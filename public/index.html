@@ -5,8 +5,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="./logo_transparent1.ico" />
       <link rel="stylesheet" href="./CSS/navbar.css">
       <link rel="stylesheet" href="./CSS/Sidebar.css">
       <link rel="stylesheet" href="./CSS/About_us.css">
@@ -14,6 +17,7 @@
       <link rel="stylesheet" href="./CSS/team.css">
       <link rel="stylesheet" href="./CSS/Contact_us.css">
       <link rel="stylesheet" href="./CSS/carousel.css">
+      
       <title>En línea Banking</title>
     </head>
 
@@ -24,15 +28,19 @@
         <nav>
           <input type="checkbox" id="check">
           <label for="check" class="checkbutton">
-              <i class="fas fa-bars"></i>
+              <span></span>
+              <span></span>
+              <span></span>
+              <!-- <i class="fas fa-bars"></i> -->
           </label>
-          <label class="logo">En línea Banking</label>
-          <form autocomplete="off" method="GET">
-            <div class="autocomplete input" id="input">
+          <label class="logo" style="overflow: hidden;margin-top: -2px;height: 50px;">
+            <a href="/"><img title="En línea Banking" src="./logo_transparent1.png" width="50px" height="50px"></a>
+            <!-- En línea Banking -->
+          </label>
+          <div class="autocomplete input" id="input">
               <span><i class="fas fa-search"></i></span>
-              <input type="text" id="search_user" placeholder="Search User">
-            </div>
-          </form>
+              <input type="text" id="search_user" placeholder="Search User" autocomplete="off">
+          </div>
           <ul class="navMenu">
               <li><a class="active" href="#">Home</a></li>
               <li><a href="#about">About Us</a></li>
@@ -48,7 +56,7 @@
         <!--For fake nav traversal-->
         <div class="home_fake_traversal" style="top:10vh;display:none;"></div>
 
-        <div id="carousel hide_loading" class="carousel slide carousel-fade" data-ride="carousel" style="height: 100vh;">
+        <div id="carousel hide_loading" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active" data-interval="2000">
               <img src="./img/Big Ben, Houses of Parliament, London, England.jpg" class="d-block w-100" style="height: 100vh;background-size:cover;" alt="no-repeat">
@@ -103,7 +111,7 @@
 
     <!--*************************************About Us*************************************-->
 
-        <div id="about" class="container-fluid" style="height: 100vh;">
+        <div id="about" class="container-fluid">
           <div id="name" class="row">
             <div class="a1" style="top: 20px;">
               <h1 id="para">&nbsp;&nbsp;About&nbsp;&nbsp;<font color="blue" style="text-shadow: 4px 4px 4px blue;">Us</font></h1>
@@ -113,7 +121,7 @@
             <div class="col-6 image_about_us">
               <img src="./img/piggy.png" class="w-50 p1">
             </div>
-            <div class="col-6 slide-up">
+            <div class="col-12 col-md-6 my-auto slide-up">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             </div>
           </div>
@@ -138,13 +146,57 @@
             <h1 id="para">&nbsp;&nbsp;Our&nbsp;&nbsp;<font color="blue" style="text-shadow: 4px 4px 4px blue;">Services</font></h1>
           </div>
           <div class="services_fake_traversal" style="top:10vh;"></div>
-          <div class="all_services">
-            <header class="s_title">En línea Banking</header>
+          <div class="container all_services">
+            <div class="row">
+              <div class="col-12 col-lg-5 service-1-w3pvt">
+                <div class="row">
+                  <div class="col-12 text-danger font-weight-bold">WHAT WE PROVIDE</div>
+                  <div class="col-12"><h2>Services we’re Provided</h2></div>
+                  <div class="col-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porta erat sit amet eros sagittis, quis hendrerit libero aliquam. Fusce semper augue ac dolor efficitur, a pretium metus pellentesque.</div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-7">
+                <div class="row">
+                  <div class="col-sm-4 service-1-w3pvt serve-gd1">
+                    <div class="serve-grid mt-4">
+                      <span class="fas fa-users text-primary"></span>
+                      <p class="mt-2">Personal Loan</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 service-1-w3pvt serve-gd2">
+                    <div class="serve-grid mt-4">
+                      <span class="far fa-handshake-o text-danger"></span>
+                      <p class="mt-2">Business Loan</p>
+                    </div>
+                    <div class="serve-grid mt-4">
+                      <span class="fas fa-home text-success"></span>
+                      <p class="mt-2">Home Loan</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 service-1-w3pvt serve-gd3">
+                    <div class="serve-grid mt-4">
+                      <span class="fas fa-car" style="color: turquoise;"></span>
+                      <p class="mt-2">Auto Loan</p>
+                    </div>
+                    <div class="serve-grid mt-4">
+                      <span class="fas fa-stethoscope text-danger"></span>
+                      <p class="mt-2">Health Loan</p>
+                    </div>
+                    <div class="serve-grid mt-4">
+                      <span class="fas fa-graduation-cap" style="color: yellow;"></span>
+                      <p class="mt-2">Education Loan</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <header class="s_title">En línea Banking</header>
             <div class="s s1"></div>
             <div class="s s2"></div>
             <div class="s s3"></div>
             <div class="s s4"></div>
-            <button id="click_me">start</button>
+            <button id="click_me">start</button> -->
           </div>
         </div>
         <!--trigger class should always be the first class in class attribute-->
@@ -282,45 +334,45 @@
             <div id="contact_image">
               <img src="./img/Banking.jpg">
             </div>
-            <header class="ci2" id="ci_name"><h1>Contact Info</h1></header>
-            <span id="sp"><i class="fas fa-home fa-2x ci1"></i></span>
-            <label class="ci"  id="visit_us">Visit Us<br><font color="grey">Mount Everest</font></label>
-            <span id="sp"><i class="fa fa-envelope fa-2x ci1"></i></span>
-            <label class="ci" id="mail_us">Mail Us<br><a id="mail" href="">info.example.com</a></info></label>
-            <span id="sp"><i class="fas fa-phone fa-2x ci1"></i></i></i></span>
-            <label class="ci" id="call_us">Call Us<br><font color="grey">+18044261149</font></info></label>
-          </div>
-          <form method="POST" action="/homepage/contact_us_email" class="ccform">
-            <header class="ccheader">
-              <h1>Get In Touch</h1>
-            </header>
-            <div class="ccfield-prepend">
-                <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Full Name" name="name" required>
-            </div>
-            <div class="ccfield-prepend">
-                <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Email" name="email" required>
-            </div>
-            <div class="ccfield-prepend">
-                <span class="ccform-addon"><i class="fa fa-mobile-phone fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Phone" name="phone">
-            </div>
-            <div class="ccfield-prepend">
-                <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="Subject" name="subject" required>
-            </div>
-            <div class="ccfield-prepend">
-                <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
-                <textarea class="ccformfield" rows="5" placeholder="Message" name="msg" required></textarea>
-            </div>
-            <div class="ccfield-prepend">
-                <input class="ccbtn" type="submit" value="Submit">
-            </div>
-          </form>
+          <header class="ci2" id="ci_name"><h1>Contact Info</h1></header>
+          <span id="sp"><i class="fas fa-home fa-2x ci1"></i></span>
+          <label class="ci"  id="visit_us">Visit Us<br><font color="grey">Mount Everest</font></label>
+          <span id="sp"><i class="fa fa-envelope fa-2x ci1"></i></span>
+          <label class="ci" id="mail_us">Mail Us<br><a id="mail" href="">info.example.com</a></info></label>
+          <span id="sp"><i class="fas fa-phone fa-2x ci1"></i></i></i></span>
+          <label class="ci" id="call_us">Call Us<br><font color="grey">+18044261149</font></info></label>
         </div>
+        <form method="POST" action="/homepage/contact_us_email" class="ccform">
+          <header class="ccheader">
+            <h1>Get In Touch</h1>
+          </header>
+          <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
+            <input class="ccformfield" type="text" placeholder="Full Name" name="name" required>
+          </div>
+          <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
+            <input class="ccformfield" type="text" placeholder="Email" name="email" required>
+          </div>
+          <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-mobile-phone fa-2x"></i></span>
+            <input class="ccformfield" type="text" placeholder="Phone" name="phone">
+          </div>
+          <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
+            <input class="ccformfield" type="text" placeholder="Subject" name="subject" required>
+          </div>
+          <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
+            <textarea class="ccformfield" rows="5" placeholder="Message" name="msg" required></textarea>
+          </div>
+          <div class="ccfield-prepend">
+            <input class="ccbtn" type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
     </div>
-    <footer class="extra"></footer>
+    <footer class="container-fluid extra"></footer>
 
     <!--***********************************************************************************-->
 
