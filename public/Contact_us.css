@@ -1,0 +1,279 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+#contact{
+    overflow: hidden;
+    height: 1040px;
+    width: 100vw;
+}
+
+.a4{
+    padding: 50px;
+    text-shadow: 4px 4px 4px gray;
+}
+
+#manage{
+    margin-top: 10vh;
+}
+
+.ccheader {
+	margin: 0 auto;
+	padding: 2em;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.ccheader h1 {
+	margin: 0;
+	font-weight: 300;
+	font-size: 2.5em;
+	line-height: 1.3;
+}
+
+/* Form CSS*/
+.ccform {
+    transform: translateX(65%);
+    position: relative;
+    min-height: 300px;
+    max-height: 700px;
+    max-width: 600px;
+    left: 20%;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 50px rgba(252, 167, 56, 0.979);
+}
+.ccfield-prepend{
+	margin-bottom:10px;
+    width:100%;
+}
+
+.ccform-addon{
+    color:#f8ae45;
+	float:left;
+	padding:8px;
+	width:8%;
+    background: white;
+    text-align: center;
+}
+
+.ccformfield {
+	background:#FFFFFF;
+	border:none;
+	padding:15.5px;
+	width:91.9%;
+	display:block;
+	font-family: 'Lato',Arial,sans-serif;
+	font-size:14px;
+}
+
+.ccformfield {
+	font-family: 'Lato',Arial,sans-serif;
+}
+.ccbtn{
+    display: inline-flex;
+    z-index: 1000;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff0e6;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    border: 1px solid #fcca29;
+    cursor: pointer;
+    outline: none;
+    background:#f8ae45;
+}
+.ccbtn:hover{
+	background:#fd8802f3;
+}
+
+textarea{
+    resize: none;
+}
+
+#contact_info{
+    position: absolute;
+    width: 95%;
+    max-width: 400px;
+    height: 700px;
+    margin-left: 150px;
+}
+
+#border{
+    width: 350px;
+    height: 250px;
+    transform: translateX(10%) translateY(20%);
+    border-style: solid;
+    border-color: blacks;
+}
+
+#contact_image{
+    width: 400px;
+    height: 400px;
+    transform: translateY(-56%);
+}
+
+#contact_image img{
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.ci{
+    transform: translateY(-500%);
+}
+
+.ci1{
+    transform: translateY(-900%);
+}
+
+.ci2{
+    transform: translateY(-600%);
+}
+
+#sp{
+    margin-left: 30px;
+    color: rgba(32, 112, 218, 0.781);
+}
+
+#call_us, #mail_us, #visit_us{
+    position: relative;
+    font-size: larger;
+    margin-top: 20px;
+    margin-left: 60px;
+    width: 250px;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#mail{
+    color: grey;
+}
+
+#mail:hover{
+    color: orange;
+}
+
+.extra{
+    height: 100px;
+    background-color: khaki;
+}
+
+@media (max-width: 1250px) {
+    .ccform{
+        width: 500px;
+        left: 25%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .ccform{
+        width: 490px;
+        left: 16%;
+    }
+    #contact_info{
+        transform: translateX(-24%);
+    }
+}
+
+@media (max-width: 1000px) {
+    #contact{
+        height: 1550px;
+    }
+    .ccform{
+        transform: translateY(115%);
+        width: 500px;
+        left: 20%;
+    }
+    #contact_info{
+        transform: translateX(14%);
+    }
+}
+
+@media (max-width: 768px){
+    .ccform{
+        transform: translateY(130%);
+    }
+}
+
+@media (max-width: 700px) {
+    #contact{
+        overflow: hidden;
+        width: 410px;
+    }
+    .ccform{
+        width: 370px;
+        left: 4%;
+    }
+    #contact_info{
+        transform: none;
+        margin-left: 4%;
+    }
+    #contact_image{
+        width: 90%;
+        object-fit: cover;
+    }
+    #border{
+        width: 82%;
+        height: 31%;
+        border-style: solid;
+        border-color: blacks;
+        transform: translate(12%, 20%);
+    }
+    #contact_image img{
+        width: 90%;
+        object-fit: contain;
+        background-size: cover;
+        background-position: center center;
+    }
+    #contact_image{
+        transform: translate(3%, -56%);
+    }
+    .ccformfield{
+        width: 80%;
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 400px) {
+    #contact{
+        overflow: hidden;
+        height: 1570px;
+        width: 100vw;
+    }
+    .ccform{
+        transform: translateY(100%);
+        width: 90vw;
+    }
+    #contact_info{
+        transform: none;
+        margin-left: 4%;
+    }
+    #contact_image{
+        width: 90%;
+        object-fit: cover;
+    }
+    #border{
+        width: 78%;
+        height: 24%;
+        border-style: solid;
+        border-color: blacks;
+        transform: translate(12%, 25%);
+    }
+    #contact_image img{
+        width: 85%;
+        object-fit: contain;
+    }
+    #contact_image{
+        transform: translate(3%, -50%);
+    }
+    .ccformfield{
+        width: 80%;
+        margin-left: 15%;
+    }
+    #call_us, #mail_us, #visit_us{
+        width: 50%;
+    }
+}
