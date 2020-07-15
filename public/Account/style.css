@@ -1,12 +1,13 @@
+/* https://images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg */
 body{
-    background: url(https://images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg);
+    background: url("../img/account_background.jpg");
     color: white;
     overflow-x: hidden;
 }
 
-html{
+/* html{
     overflow-x: hidden;
-}
+} */
 
 .pad{
     padding: 0 !important;

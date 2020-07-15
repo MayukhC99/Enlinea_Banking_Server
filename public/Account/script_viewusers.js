@@ -46,7 +46,7 @@ $(function(){
                     <button class="btn btn-light float-right sent_friend_request" id="sent_friend_request" data-toggle="tooltip" data-placement="top" title="Friend Request Sent"><span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Friend Request Sent</button>
                 </div>
                 <button class="col-12 float-right cancel_friend_request" id="cancel_friend_request" style="display: none;">Cancel Request</button>`;
-                $(".status").html(str);
+                $(".status_script").html(str);
                 if($(window).width() < 632){
                     $(".sent_friend_request").removeClass('btn-light');
                     $(".sent_friend_request").addClass('btn-primary');
@@ -61,13 +61,15 @@ $(function(){
                     <button class="btn btn-primary" id="accept">Accept</button>
                     <button class="btn btn-danger" id="reject">Reject</button>
                 </label>`;
-                $(".status").html(str);
+                $(".status_script").html(str);
                 if($(window).width() < 632){
                     $(".respond_friend_request").removeClass('btn-light');
                     $(".respond_friend_request").addClass('btn-primary');
                     $(".respond_friend_request").html(`<span><i class="fas fa-user-plus"></i></span> Respond`);
                 }
             }
+            //hiding the chatbox
+            $(".fabs").hide();
         }
         else if(data.status === "accepted"){
             str = `<div class="col-12">
@@ -75,7 +77,7 @@ $(function(){
             </div>
             <button class="col-12 float-right unfriend" id="unfriend" style="display: none;">Unfriend</button>`;
 
-            $(".status").html(str);
+            $(".status_script").html(str);
 
             $.post('/account_user/other_user/get_details',{otheruser: username}, (res) => {
                 $("#first_name").val(res.first_name);
@@ -86,9 +88,24 @@ $(function(){
             $("#pi").show();
             $("#personal").show();
             $("input").css({'font-weight': '800'});
+            //showing the chatbox
+            new Promise(function(resolve,reject){
+                $.post('/account_user/other_user/get_details',{otheruser: username},(user)=>{
+                    if(user) {
+                        $('.fabs .chat_header .header_img img').attr("src" , "../uploads/" + user.profile_picture );
+                        $('.fabs .chat_header #chat_head').html(user.first_name);
+                        resolve();
+                    } else {
+                        reject();
+                    }
+                })
+            })
+            .then(()=>{$(".fabs").show();});
+            
         }
         else{
             $(".add_friend").show();
+            $(".fabs").hide();
         }
         $(".message").show();
         $('[data-toggle="tooltip"]').tooltip();
@@ -101,7 +118,7 @@ $(function(){
                     <button class="btn btn-light float-right sent_friend_request" id="sent_friend_request" data-toggle="tooltip" data-placement="top" title="Friend Request Sent"><span><i class="fas fa-user"><i class="fas fa-arrow-right"></i></i></span> Friend Request Sent</button>
                 </div>
                 <button class="col-12 float-right cancel_friend_request" id="cancel_friend_request" style="display: none;">Cancel Request</button>`;
-                $(".status").html(str);
+                $(".status_script").html(str);
 
                 if($(window).width() < 632){
                     $(".sent_friend_request").removeClass('btn-light');
@@ -122,10 +139,10 @@ $(function(){
 
     })
 
-    $(document).on('click', ".mess", function(){
-        $(".modal-header").show();
-        $(".modal-title").html('<h5>Message</h5>');
-    })
+    // $(document).on('click', ".mess", function(){
+    //     $(".modal-header").show();
+    //     $(".modal-title").html('<h5>Message</h5>');
+    // })
 
     $(window).bind('resize', function() {
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
