@@ -58,7 +58,7 @@ nav .autocomplete input{
   position: absolute;
   border-bottom: none;
   border-top: none;
-  z-index: 99;
+  z-index: 3004;
   /*position the autocomplete items to be the same width as the container:*/
   top: 100%;
   left: 0;
@@ -75,6 +75,38 @@ nav .autocomplete input{
   cursor: pointer;
   background-color: #fff; 
   border-bottom: 1px solid #d4d4d4; 
+  padding-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+.autocomplete-items div #theImageContainer{
+  background-color: #fffbfb;
+  color: darkgrey;
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  margin-right: 20px;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.autocomplete-items div #theImageContainer #user{
+  position: absolute;
+  border-radius: 50%;
+  left: 50%;
+  width: 30px !important;
+  height: 30px !important;
+  margin-left: 5px;
+  transform: translateX(-50%);
+}
+
+.autocomplete-items div small{
+  margin-left: 30px;
 }
 
 /*when hovering an item:*/

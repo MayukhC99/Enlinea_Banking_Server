@@ -216,16 +216,28 @@ $(document).ready(function(){
                     let flag = 0;
                     for (i = 0; i < arr.length; i++) {
                         /*check if the item starts with the same letters as the text field value:*/
-                        if (arr[i].username.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        let first = arr[i].first_name.substr(0, val.length).toUpperCase() == val.toUpperCase();
+                        let user = arr[i].username.substr(0, val.length).toUpperCase() == val.toUpperCase();
+                        let last = arr[i].last_name.substr(0, val.length).toUpperCase() == val.toUpperCase();
+                        if (arr[i].username.substr(0, val.length).toUpperCase() == val.toUpperCase() || arr[i].first_name.substr(0, val.length).toUpperCase() == val.toUpperCase() || arr[i].last_name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                             /*create a DIV element for each matching element:*/
                             b = document.createElement("DIV");
+                            b.innerHTML = `<span id="theImageContainer"><img id="user" src="../uploads/${arr[i].profile_picture}"></span>`;
                             /*make the matching letters bold:*/
-                            b.innerHTML = "<strong>" + arr[i].username.substr(0, val.length) + "</strong>";
-                            b.innerHTML += arr[i].username.substr(val.length);
+                            if(first)
+                                b.innerHTML += "<strong>" + arr[i].first_name.substr(0, val.length) + "</strong>" + arr[i].first_name.substr(val.length);
+                            else
+                                b.innerHTML += arr[i].first_name;
+                            if(last)
+                                b.innerHTML += " <strong>" + arr[i].last_name.substr(0, val.length) + "</strong>" + arr[i].last_name.substr(val.length);
+                            else
+                                b.innerHTML += arr[i].last_name;
+                            b.innerHTML += "<br /><small>" + arr[i].username + "</small>";
                             b.innerHTML += "<input type='hidden' value='" + arr[i].username + "'>";
                             b.addEventListener("click", function(e) {
                                 inp.value = this.getElementsByTagName("input")[0].value;
                                 closeAllLists();
+                                window.location.assign(`/account_user/${inp.value}`);
                             });
                             a.appendChild(b);
                             flag++;

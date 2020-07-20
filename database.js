@@ -4,7 +4,7 @@ const Op = sequelize.Op;
 const db= new sequelize(
     'enlinea',
     'root',
-    'admin',
+    'sirsrt',
     {
         dialect: 'mysql',
         host: 'localhost'

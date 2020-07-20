@@ -186,7 +186,7 @@ route.get('/all_user_details', (req,res)=>{
 // })
 
 route.get('/search_user',(req,res)=>{
-    db.query(`select username from users`,{ type: db.QueryTypes.SELECT }).then((rows)=>{
+    db.query(`select * from users`,{ type: db.QueryTypes.SELECT }).then((rows)=>{
         res.send(rows);
     })
 })

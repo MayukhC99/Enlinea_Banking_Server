@@ -30,6 +30,7 @@
 }
 
 .p1{
+    object-fit: contain;
     animation: fadeIn ease 5s;
     -webkit-animation: fadeIn ease 5s;
 }
