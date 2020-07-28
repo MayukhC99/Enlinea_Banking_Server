@@ -27,6 +27,88 @@ $.get('/root/get/username',(data)=>{
     }
 });
 
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const snap = document.getElementById("snap");
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+    audio: false,
+    video: true
+};
+
+$("#buttonContainer .b, .slider #camera").on('click', function(){
+    // Access webcam
+    async function init() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            console.log(stream);
+            handleSuccess(stream);
+        } catch (e) {
+            if(e.toString() !== "NotAllowedError: Permission denied"){
+                $('#errorMessage').html('Your device does not have any Camera<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                $('#errorMessage').show();
+            }
+            else{
+                $('#errorMessage').html('You have been denied permission<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                $('#errorMessage').show();
+            }
+        }
+    }
+
+    // Success
+    function handleSuccess(stream) {
+        window.stream = stream;
+        video.srcObject = stream;
+        $(".video-wrap").css({'left': '0'});
+        $(".video-wrap video").css({'margin-left': '0'});
+        $("#snap").css({'left': '48vw'});
+        $("#back-arrow span").css({'left': '20px'});
+        $(document.body).addClass("pad");
+    }
+
+    // Load init
+    init();
+})
+
+function stop(){
+    window.stream.getTracks().forEach(function(track) {
+        if (track.readyState == 'live' && track.kind === 'video') {
+            track.stop();
+        }
+    });
+}
+
+$("#back-arrow span").on("click", function(){
+    stop();
+    $(".video-wrap").css({'left': '-100%'});
+    $(".video-wrap video").css({'margin-left': '-100%'});
+    $("#snap").css({'left': '-100%'});
+    $("#back-arrow span").css({'left': '-100%'});
+})
+
+// Draw image
+var context = canvas.getContext('2d');
+snap.addEventListener("click", function() {
+    context.drawImage(video, 0, 0, 640, 480);
+    stop();
+    $(".video-wrap").css({'left': '-100%'});
+    $(".video-wrap video").css({'margin-left': '-100%'});
+    $("#snap").css({'left': '-100%'});
+    $("#back-arrow span").css({'left': '-100%'});
+    var file = convertCanvasToImage(context.canvas);
+    handleUploadedFile(file, 640, 480);
+});
+
+function convertCanvasToImage(canvas) {
+	var image = new Image();
+    image.src = canvas.toDataURL("image/png");
+    var block = image.src.split(";");
+    var contentType = block[0].split(":")[1];
+    var realData = block[1].split(",")[1];
+	return b64toBlob(realData, contentType, "img.png");
+}
+
 //to get profile_picture of user
 $(window).on("load", function(){
     $.get('/root/get/profile_picture', (data)=>{
@@ -230,13 +312,16 @@ $(document).mouseup(function(e){
         container.hide();
         $(".update").removeClass("show_div");
     }
-    if(e.target.id === "mobile_cam" || e.target.id === "slider" || e.target.id === "clear" || e.target.id === "save" || e.target.id === "choose_photo" || e.target.id === "theclearImage" || e.target.id === "saveImage" || e.target.id === "chooseImage"){
+    if(e.target.id === "mobile_cam" || e.target.id === "slider" || e.target.id === "clear" || e.target.id === "camera" || e.target.id === "choose_photo" || e.target.id === "theclearImage" || e.target.id === "saveImage" || e.target.id === "chooseImage"){
         $(document.body).addClass("pad");
         $(".slider").show();
     }
     else{
         $(document.body).removeClass("pad");
         $(".slider").hide();
+    }
+    if(e.target.id === "video"){
+        $(document.body).addClass("pad");
     }
 });
 
@@ -505,7 +590,7 @@ function handleUploadedFile(file, imgHeight, imgWidth) {
       $image_crop.croppie('bind', {
         url: event.target.result,
       }).then(function(){
-        var min;
+        var min, max=1.5000;
         if((250 / imgHeight) > (250 / imgWidth)){
             min = (250 / imgHeight);
             if(Math.abs(imgHeight - imgWidth) > 25){
@@ -535,7 +620,7 @@ function handleUploadedFile(file, imgHeight, imgWidth) {
                 window.third = 1;
             }
             else
-                $(".croppie-container .cr-image").css({'top': '25px'});
+                $(".croppie-container .cr-image").css({'top': '50px'});
             if($(window).width() < 350)
                 $(".croppie-container .cr-image").css({'left': '12.5px'});
             else if($(window).width() >= 350 && $(window).width() < 420)
@@ -544,7 +629,9 @@ function handleUploadedFile(file, imgHeight, imgWidth) {
                 $(".croppie-container .cr-image").css({'left': '50px'});
             window.imgLeft = 2;
         }
-        $('.cr-slider').attr({'min':min, 'max':1.5000, 'aria-valuenow': min});
+        if(min >= max)
+            max *= min;
+        $('.cr-slider').attr({'min':min, 'max':max, 'aria-valuenow': min});
         $image_crop.croppie('setZoom', 0);
       });
     }

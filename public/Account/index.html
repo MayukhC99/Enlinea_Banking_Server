@@ -34,9 +34,9 @@
         <div class="alert alert-success alert-dismissible fade show hide" id="successMessage" role="alert"></div>
         <label id="buttonContainer" style="display: none;">
             <!-- <input type="file" name="profile_image" id="theImageField"> -->
-            <label class="btn" for="theImageField" id="choose"  style="height: 30px; text-align: left;margin-top: 7px;">Choose Photo</label>
-            <!-- <button class="b btn" type="" style="height: 30px; text-align: left; margin-top: -7px;">Save</button> -->
-            <label class="btn" id="clearImage" style="height: 30px; text-align: left;">Clear</label>
+            <label class="btn" for="theImageField" id="choose"  style="height: 30px; text-align: left;margin-top: 7px; margin-bottom: 3px;">Choose Photo</label>
+            <label class="b btn" style="height: 30px; text-align: left; margin-top: -5px; margin-bottom: 3px;">Camera</label>
+            <label class="btn" id="clearImage" style="height: 30px;margin-top: -5px; text-align: left; margin-bottom: 3px;">Clear</label>
         </label>
         <span id="my_name"></span>
     </form>
@@ -45,11 +45,11 @@
             <span class="col-3" id="clear" style="white-space: pre-line;"><i class="fas fa-trash" id="theclearImage" style="font-size: 26px;"></i> 
                 Clear
             </span>
-            <span class="col-3" id="save" style="white-space: pre-line;"><i class="material-icons" id="saveImage" style="font-size: 30px;">add_to_photos</i> 
-                Save
+            <span class="col-3" id="camera" style="white-space: pre-line;"><i class="material-icons" id="saveImage" style="font-size: 30px;">camera</i> 
+                Camera
             </span>
             <input type="file" name="profile_image" id="theImageField">
-            <span class="col-6" id="choose_photo" style="white-space: pre-line;"><label for="theImageField" id="chooseImage"><i class="material-icons" id="chooseImage" style="font-size: 30px;">camera</i></label> 
+            <span class="col-6" id="choose_photo" style="white-space: pre-line;"><label for="theImageField" id="chooseImage"><i class="material-icons" id="chooseImage" style="font-size: 30px;">photo_library</i></label> 
                 Choose Photo
             </span>
         </div>
@@ -94,6 +94,24 @@
           </div>
         </div>
     </div>
+    <!-- Stream video via webcam -->
+    <div class="video-wrap">
+        <video id="video" playsinline autoplay>Video stream not available.</video>
+    </div>
+
+    <!-- Trigger canvas web API -->
+    <div class="controller">
+        <button id="snap"></button>
+    </div>
+
+    <!-- Webcam video snapshot -->
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <span id="back-arrow"><span class="material-icons">
+        keyboard_backspace
+        </span>
+    </span>
+
     <section class="counters">
         <div class="container">
             <div class="row">

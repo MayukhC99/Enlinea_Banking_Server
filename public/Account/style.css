@@ -1,8 +1,10 @@
 /* https://images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg */
 body{
-    background: url("../img/account_background.jpg");
+    background: url("../img/account_background.jpg") no-repeat;
+    background-size: 100% 100%;
     color: white;
     overflow-x: hidden;
+    background-attachment: fixed;
 }
 
 /* html{
@@ -12,6 +14,56 @@ body{
 .pad{
     padding: 0 !important;
     position: fixed;
+}
+
+.video-wrap{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    z-index: 10000;
+}
+
+.video-wrap video{
+    background: black;
+    z-index: 10000;
+    object-fit: cover !important;
+    padding: 0;
+    margin-left: -100%;
+    width: 100vw;
+    height: 100vh;
+}
+
+#snap{
+    position: absolute;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 20002;
+    top: 85vh;
+    left: -100%;
+    outline: none;
+}
+
+#back-arrow span{
+    position: absolute;
+    cursor: pointer;
+    font-size: 35px;
+    top: 5vh;
+    height: 10px;
+    z-index: 30002;
+    left: -100%;
+}
+
+#back-arrow span:hover{
+    margin-left: -5px;
+}
+
+#canvas{
+    display: none;
 }
 
 #theImageForm {
@@ -108,6 +160,10 @@ body{
     border-color: green;
     border-width: 10px;
     opacity: .3;
+}
+
+.cr-slider{
+    border: none;
 }
 
 #buttonContainer{
