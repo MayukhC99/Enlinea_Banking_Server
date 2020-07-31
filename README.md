@@ -1,7 +1,7 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![Contributors][contributors-shield]][https://github.com/MayukhC99/Enlinea_Banking_Server/graphs/contributors]
+[![Forks][forks-shield]][https://github.com/MayukhC99/Enlinea_Banking_Server/network/members]
+[![Stargazers][stars-shield]][https://github.com/MayukhC99/Enlinea_Banking_Server/stargazers]
+[![Issues][issues-shield]][https://github.com/MayukhC99/Enlinea_Banking_Server/issues]
 
 <!-- PROJECT LOGO -->
 <br />
