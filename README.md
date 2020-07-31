@@ -155,13 +155,13 @@ Project Link: [https://github.com/MayukhC99/Enlinea_Banking_Server](https://gith
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/badge/Contributors-2-green
 [contributors-url]: https://github.com/MayukhC99/Enlinea_Banking_Server/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/MayukhC99/Enlinea_Banking_Server
 [forks-url]: https://github.com/MayukhC99/Enlinea_Banking_Server/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/MayukhC99/Enlinea_Banking_Server
 [stars-url]: https://github.com/MayukhC99/Enlinea_Banking_Server/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/MayukhC99/Enlinea_Banking_Server
 [issues-url]: https://github.com/MayukhC99/Enlinea_Banking_Server/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
