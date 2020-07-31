@@ -1,3 +1,4 @@
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -7,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/MayukhC99/Enlinea_Banking_Server">
-    <img src="public/img/logo_transparent1.png" alt="Logo" width="80" height="80">
+    <img src="public/img/logo_transparent1.png" alt="Logo" width="1000" height="750">
   </a>
 
   <h3 align="center">En línea Banking</h3>
@@ -36,7 +37,6 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -48,30 +48,32 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]<img src="public/img/Screenshot (9).png" alt="Logo" width="80" height="80">
-
-This is a online money transaction web app which is basically build with Html, Css, JavaScript in Frontend and node.js in Backend. This application has social media features. So, you can add friends and send money to them or receive money from them.
+This is your personal E-Wallet combined with Social Networking facilities. Here you can manage your bank account and your personal E-Wallet, send friend requests, build connections, chat with them and can even have video conferencing. It's an amazing way to stay connected and send money whenever required. Enlinea provides you with many other facilities and even a live support. Banking has never been so fun before.
 
 Major facilities:
-* Simple money transaction application
-* Social media facilities like make friends, chat and Video call with them
+* Managing your Enlinea bank account and E-Wallet, transfer money, gift money to your near ones.
+* Social media features, stay connected with friends, video calling, chatting and lots more.
 
-Of course we give top priority to our users security. Our web application is secure to any kind of money transaction.
+We give top priority to our users security. Our web application is secure to any kind of money transaction.
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Some major frameworks/library used in this project:-
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
+* [Croppie](https://foliotek.github.io/Croppie/)
 * [NodeJs](https://nodejs.org)
+* [ExpressJs](https://expressjs.com/)
+* [MySql2](https://www.npmjs.com/package/mysql2)
+* [Passport](http://www.passportjs.org/)
+* [Sequelize](https://sequelize.org/)
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
@@ -96,18 +98,14 @@ npm install
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/MayukhC99/Enlinea_Banking_Server/issues) for a list of proposed features (and known issues).
 
 
 
@@ -134,17 +132,14 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [Enlinea Banking](enlineabanking@gmail.com) - enlineabanking@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/MayukhC99/Enlinea_Banking_Server](https://github.com/MayukhC99/Enlinea_Banking_Server)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Pages](https://pages.github.com)
 * [Animate.css](https://daneden.github.io/animate.css)
 * [Loaders.css](https://connoratherton.com/loaders)
