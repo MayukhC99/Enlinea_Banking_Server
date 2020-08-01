@@ -68,6 +68,7 @@ Some major frameworks/library used in this project:-
 * [MySql2](https://www.npmjs.com/package/mysql2)
 * [Passport](http://www.passportjs.org/)
 * [Sequelize](https://sequelize.org/)
+* [Socket.io](https://socket.io/)
 
 
 
