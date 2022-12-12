@@ -10,7 +10,7 @@
   "author": "Mayukh Chakrabarti",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.1",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
